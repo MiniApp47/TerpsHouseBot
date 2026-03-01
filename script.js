@@ -202,6 +202,18 @@ if (activeConfig.luffa) {
                     tarifs: [{ weight: '1g', price: 50 }, { weight: '5g', price: 180 }, { weight: '10g', price: 300 }, { weight: '20g', price: 560 }]
                 }
             ]},
+            { id: 'FROZEN_US', name: 'FROZEN US 🇺🇸', products: [
+                {
+                    id: 'FROZEN_CALIPLATES',
+                    name: 'FROZEN CALIPLATES 🇺🇸', // Différencié
+                    farm: '🧬 CALIPLATES',
+                    strains: ['🔥 OMG', '🧊 Otter Pops'],
+                    description: '🔥 OMG: Gas sucré + notes crémeuses. Fumée bien grasse, effet rapide et lourd.\n🧊 Otter Pops: Profil fruité glacé, très aromatique. High clean puis détente.',
+                    image: 'ProductCalip.jpg',
+                    video: 'VideoCalip.mp4',
+                    tarifs: [{weight: '1g', price: 40}, {weight: '2.5g', price: 70}, {weight: '5g', price: 140}, {weight: '10g', price: 250}]
+                },
+            ]},
             { id: 'FROZEN', name: 'FROZEN ❄️', products: [
                 {
                     id: 'FROZEN_HWORLD',
@@ -222,16 +234,6 @@ if (activeConfig.luffa) {
                     image: 'ProductAnon.jpg',
                     video: 'VideoAnon.mov',
                     tarifs: [{weight: '2.5g', price: 70}, {weight: '5g', price: 120}, {weight: '10g', price: 230}, {weight: '25g', price: 500}, {weight: '50g', price: 900}, {weight: '100g', price: 1450}]
-                },
-                {
-                    id: 'FROZEN_CALIPLATES',
-                    name: 'FROZEN CALIPLATES 🇺🇸', // Différencié
-                    farm: '🧬 CALIPLATES',
-                    strains: ['🔥 OMG', '🧊 Otter Pops'],
-                    description: '🔥 OMG: Gas sucré + notes crémeuses. Fumée bien grasse, effet rapide et lourd.\n🧊 Otter Pops: Profil fruité glacé, très aromatique. High clean puis détente.',
-                    image: 'ProductCalip.jpg',
-                    video: 'VideoCalip.mp4',
-                    tarifs: [{weight: '1g', price: 40}, {weight: '2.5g', price: 70}, {weight: '5g', price: 140}, {weight: '10g', price: 250}]
                 },
                 {
                     id: 'FROZEN_VVS',
@@ -287,6 +289,23 @@ if (activeConfig.luffa) {
                 }
             ]},
             { id: 'DRY_90', name: 'DRY 90u ⚡️', products: [
+                {
+                    id: 'CaliH',
+                    name: 'CaliH 🎓', 
+                    farm: '🎩 Darks Farm',
+                    strains: ['RS11', 'Papaya', 'Sherbalto'],
+                    description: 'RS11 : Profil fruité/candy, léger gaz (effet équilibré) \n  Papaya : Tropical sucré mangue/papaye (relax corporel marqué) \n  Sherbalto : Crémeux dessert + touche gas (calmant, parfait le soir).',
+                    image: 'Product90Rs.jpg',
+                    video: 'Video90Rs.mov',
+                    tarifs: [
+                        {weight: '2.2g 📍 (Sur place)', price: 20}, 
+                        {weight: '5g', price: 60}, 
+                        {weight: '10g', price: 110}, 
+                        {weight: '25g', price: 250}, 
+                        {weight: '50g', price: 450}, 
+                        {weight: '100g', price: 660}
+                    ]
+                },
                 {
                     id: 'DRY_90_VVS',
                     name: 'DRY 90u VVS 💎', // Différencié
@@ -404,7 +423,7 @@ if (activeConfig.luffa) {
                     video: 'VideoGelato.mov',
                     tarifs: [{weight: '1.2g', price: 20}, {weight: '3.5g', price: 60}, {weight: '5g', price: 80}, {weight: '10g', price: 150}, {weight: '100g', price: 850}]
                 },
-                {
+               /*  {
                     id: 'CALI_LEMON',
                     name: 'LEMON CHERRY 🍋🍒',
                     farm: '🇺🇸 Cali US',
@@ -413,7 +432,7 @@ if (activeConfig.luffa) {
                     image: 'ProductLemon.jpg',
                     video: 'VideoLemon.mov',
                     tarifs: [{weight: '1.6g', price: 20}]
-                },
+                }, */
                 {
                     id: 'CALI_IRON',
                     name: 'IRON MAIDEN PINK 🎸',
