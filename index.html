@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TerpsHouse - Hub</title>
+    <style>
+        body { 
+            background: #1c1c1d; 
+            color: white; 
+            font-family: 'Copperplate', sans-serif; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            justify-content: center; 
+            min-height: 100vh; 
+            margin: 0 auto; 
+            max-width: 430px; 
+            background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('Fondecran.jpg');
+            background-size: cover;
+            box-shadow: 0 0 30px rgba(183, 19, 255, 0.15);
+            position: relative;
+        }
+
+        /* --- 1. DESIGN DU LOADER --- */
+        #page-loader {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+        #page-loader .loader-box {
+            background: rgba(44, 44, 46, 0.5);
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid #b713ff;
+            width: 80%;
+            max-width: 300px;
+            box-shadow: 0 0 25px rgba(183, 19, 255, 0.3);
+        }
+        #page-loader img { 
+            width: 100px; 
+            height: 100px; 
+            border-radius: 20%; 
+            margin-bottom: 20px; 
+            border: 2px solid #b713ff;
+            object-fit: cover;
+        }
+        #page-loader .app-name { font-size: 1.5rem; font-weight: 700; font-family: impact, sans-serif; letter-spacing: 2px; }
+        #page-loader .loading-text { color: #8e8e93; margin-top: 10px; font-size: 0.9rem; font-family: sans-serif; }
+        
+        .progress-container { width: 100%; background-color: #3a3a3c; border-radius: 10px; margin-top: 20px; height: 6px; overflow: hidden; }
+        .progress-bar { width: 0%; height: 100%; background: linear-gradient(90deg, #b713ff, #ff3b30); border-radius: 10px; transition: width 1.5s cubic-bezier(0.25, 1, 0.5, 1); box-shadow: 0 0 10px rgba(183, 19, 255, 0.5); }
+
+        /* --- 2. DESIGN DU HUB --- */
+        .main-hub-logo {
+            width: 130px;
+            height: 130px;
+            border-radius: 20%;
+            box-shadow: 0 0 20px rgba(183, 19, 255, 0.5);
+            margin-bottom: 20px;
+            object-fit: cover;
+            border: 2px solid #b713ff;
+        }
+
+        h1 { margin-top: 0; margin-bottom: 40px; font-size: 2rem; letter-spacing: 2px; text-shadow: 0px 0px 10px #b713ff; text-align: center; }
+        .grid { display: grid; grid-template-columns: 1fr; gap: 15px; width: 90%; }
+
+        .btn { 
+            background: linear-gradient(90deg, #2c2c2e, #3a1c42); 
+            padding: 12px 15px; 
+            text-decoration: none; 
+            color: white; 
+            border-radius: 12px; 
+            font-weight: bold; 
+            font-size: 1.1rem; 
+            border: 1px solid #b713ff; 
+            box-shadow: 0 4px 15px rgba(183, 19, 255, 0.2); 
+            min-height: 60px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: flex-start;
+            gap: 20px; 
+            transition: transform 0.2s; 
+        }
+        .btn:active { transform: scale(0.95); background: #b713ff; }
+
+        .btn-logo {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #b713ff;
+            flex-shrink: 0;
+            box-shadow: 0 0 8px rgba(183, 19, 255, 0.4);
+        }
+
+        /* --- DESIGN DE LA SÉPARATION --- */
+        .section-separator {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            margin: 15px 0 5px 0;
+            width: 100%;
+        }
+        .section-separator::before,
+        .section-separator::after {
+            content: '';
+            flex: 1;
+            border-bottom: 1px solid #b713ff; /* Ligne violette */
+            box-shadow: 0 0 8px rgba(183, 19, 255, 0.5); /* Effet néon */
+        }
+        .section-separator::before { margin-right: 15px; }
+        .section-separator::after { margin-left: 15px; }
+        
+        .section-separator span {
+            color: #b713ff;
+            font-size: 0.9rem;
+            font-weight: bold;
+            font-family: 'Copperplate', sans-serif;
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px rgba(183, 19, 255, 0.6);
+        }
+
+        /* --- CLASSE POUR VERROUILLER UNE FRANCHISE --- */
+.locked-franchise {
+    opacity: 0.5; /* Rend le bouton mi-transparent */
+    filter: grayscale(100%); /* Passe le bouton en noir et blanc */
+    pointer-events: none; /* Désactive totalement le clic */
+    cursor: not-allowed;
+}
+    </style>
+</head>
+<body>
+
+    <div id="page-loader">
+        <div class="loader-box">
+            <img src="Logo.jpg" alt="Logo">
+            <div class="app-name">👑 TERPS HOUSE 👑</div>
+            <div class="loading-text">Connexion sécurisée...</div>
+            <div class="progress-container"><div class="progress-bar" id="hubBar"></div></div>
+        </div>
+    </div>
+
+    <img src="Logo.jpg" alt="TerpsHouse" class="main-hub-logo">
+    <h1>SÉLECTIONNEZ VOTRE BOUTIQUE</h1>
+    
+    <div class="grid">
+        <a href="app.html?franchise=72" class="btn">
+            <img src="LogoT72.png" class="btn-logo" alt="Logo 72">
+            TERPS HOUSE 7️⃣2️⃣
+        </a>
+        
+        <a href="" class="btn app.html?franchise=37">
+            <img src="LogoT37.png" class="btn-logo locked-franchise" onclick="return false;" alt="Logo 37">
+            ⚜️ TERPS HOUSE 37
+        </a>
+
+        <a href="" class="btn app.html?franchise=bxl">
+            <img src="LogoBxl.png" class="btn-logo locked-franchise" onclick="return false;" alt="Logo BXL">
+            TERPS HOUSE BXL 🇧🇪
+        </a>
+
+        <a href="" class="btn app.html?franchise=75">
+            <img src="LogoT75.jpg" class="btn-logo locked-franchise" onclick="return false;" alt="Logo 75">
+            🇫🇷 TERPS HOUSE 75
+        </a>
+
+        <div class="section-separator">
+            <span>⚡️ PRODUITS FESTIFS ⚡️</span>
+        </div>
+
+        <a href="" class="btn app.html?franchise=strong72">
+            <img src="LogoStrong.png" class="btn-logo locked-franchise" onclick="return false;" alt="Logo Strong">
+            STRONG HOUSE 7️⃣2️⃣
+        </a>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const progressBar = document.getElementById("hubBar");
+            const loader = document.getElementById("page-loader");
+            
+            // Lancement de l'animation de la barre
+            setTimeout(() => { 
+                if (progressBar) progressBar.style.width = "100%"; 
+            }, 100);
+            
+            // Disparition du loader après 1.8 secondes
+            setTimeout(() => {
+                if (loader) {
+                    loader.style.opacity = "0";
+                    setTimeout(() => { 
+                        loader.style.display = "none"; 
+                    }, 500); // Attend la fin de la transition d'opacité
+                }
+            }, 1800);
+        });
+    </script>
+</body>
+</html>
