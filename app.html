@@ -10,7 +10,7 @@
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <style>
         :root {
-            --brand-color: #ffce00; /* Jaune par défaut */
+            --brand-color: #ffcc009a; /* Jaune par défaut */
     --brand-bg: linear-gradient(90deg, #000000, #ffce00, #ed2939); /* Dégradé Belge par défaut */
     --brand-shadow: rgba(255, 206, 0, 0.3);
     --background-color: #1c1c1d;
@@ -69,7 +69,7 @@ body {
     border-radius: 40px; /* Forme pilule globale */
     border: 1px solid rgba(255,255,255,0.05);
     /* Ombre néon dynamique basée sur la franchise */
-    box-shadow: 0px 10px 30px var(--brand-shadow), 0px 0px 15px var(--brand-shadow); 
+    box-shadow: 0px 0px 30px var(--brand-shadow), 0px 0px 15px var(--brand-shadow); 
 }
 .progress-container { width: 100%; background-color: var(--tertiary-bg-color); border-radius: 10px; margin-top: 20px; height: 6px; overflow: hidden; position: relative; }
 /* La barre de progression utilise aussi la couleur de la marque */
@@ -361,6 +361,29 @@ select#farm-filter { display: block !important; width: 100%; height: 50px; font-
     text-align: center;
 }
 
+/* --- 💎 DESIGN DES BOUTONS DE COMPOSANTS DANS LES PACKS --- */
+.pack-link {
+    display: inline-block; /* Pour gérer padding et marges */
+    background-color: var(--hint-color); /* Couleur secondaire pour contraster */
+    color: var(--text-color); /* Texte clair */
+    border: 1px solid var(--border-color); /* Structure légère */
+    padding: 4px 10px; /* Taille idéale pour le pouce */
+    border-radius: 8px; /* Bords arrondis modernes */
+    font-size: 0.9rem; /* Légèrement plus petit que le texte principal */
+    font-weight: 500; /* Texte légèrement gras pour lisibilité */
+    cursor: pointer; /* Indique la cliquabilité */
+    transition: all 0.2s ease; /* Transition fluide pour le hover */
+    margin-top: 4px; /* Espace avec le bullet point */
+    margin-bottom: 2px;
+}
+
+/* Effet au survol (Feedback visuel) */
+.pack-link:hover {
+    background-color: var(--brand-color); /* Change pour la couleur de ta marque */
+    color: var(--background-color); /* Texte inversé */
+    transform: translateY(-1px); /* Léger effet de soulèvement */
+}
+
 .cart-item .item-details { flex-grow: 1; }
 .cart-item .name { font-weight: bold; font-size: 1rem; margin-bottom: 5px; }
 .cart-item .price { color: var(--brand-color); font-weight: 700; }
@@ -375,7 +398,7 @@ select#farm-filter { display: block !important; width: 100%; height: 50px; font-
 .main-action-btn { background: var(--brand-bg); color: white; padding: 15px; border-radius: 12px; border: none; font-size: 1.1rem; font-weight: 700; cursor: pointer; min-height: 50px; width: 100%; box-shadow: 0 4px 15px var(--brand-shadow); transition: transform 0.1s; text-shadow: 0px 1px 2px rgba(0,0,0,0.8); }.main-action-btn:active { transform: scale(0.98); }
 .secondary-action-btn { background: var(--secondary-bg-color); color: white; padding: 15px; border-radius: 12px; border: 1px solid var(--brand-color); font-size: 1rem; cursor: pointer; min-height: 50px; width: 100%; }
 
-#notification-toast { visibility: hidden; width: 90%; max-width: 380px; background-color: var(--brand-color); backdrop-filter: blur(5px); color: #fff; text-align: center; border-radius: 12px; padding: 16px; position: fixed; z-index: 101; left: 50%; transform: translateX(-50%); bottom: calc(80px + env(safe-area-inset-bottom, 20px)); font-size: 1rem; font-weight: 500; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); }
+#notification-toast { visibility: hidden; cursor: pointer; width: 90%; max-width: 380px; background-color: var(--brand-color); backdrop-filter: blur(5px); color: #fff; text-align: center; border-radius: 12px; padding: 16px; position: fixed; z-index: 101; left: 50%; transform: translateX(-50%); bottom: calc(80px + env(safe-area-inset-bottom, 20px)); font-size: 1rem; font-weight: 500; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); }
 #notification-toast.show { visibility: visible; animation: fadein 0.3s, fadeout 0.3s 2.7s forwards; }
 @keyframes fadein { from { bottom: 0; opacity: 0; } to { bottom: calc(80px + env(safe-area-inset-bottom, 20px)); opacity: 1; } }
 @keyframes fadeout { from { bottom: calc(80px + env(safe-area-inset-bottom, 20px)); opacity: 1; } to { bottom: 0; opacity: 0; } }

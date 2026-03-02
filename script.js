@@ -47,11 +47,11 @@ document.addEventListener('DOMContentLoaded', function () {
         },
         '37': { 
             phone: '', 
-            telegram: 'https://t.me/terpcommande37',            
+            telegram: 'https://t.me/terpcommande37',     
             name: 'TerpsHouse37',
             logo: 'LogoT37.png',
             bgImage: 'FondT37.jpg',
-            theme: { main: '#f3cb02', shadow: '#f3bb06' },
+            theme: { main: '#f3cb02bf', shadow: '#f3bb06' },
             categoryImages: { 'HASH': 'CategT37Hash.png', 'WEED': 'CategT37Weed.png', 'AUTRE': 'CategT37Autre.png' }
         },
         '75': { 
@@ -187,6 +187,40 @@ if (activeConfig.luffa) {
 
   /// Menu LE MANS (72)
   const catalog72 = [
+    {
+        id: 'PACKS', name: '🎁 PACKS TERPS HOUSE', type: 'Packs', quality: '🎁 Offres', image: 'CategT72Pack.png',
+        // 1. On utilise "products" direct au lieu de "farms" pour zapper l'étape intermédiaire
+        products: [
+            {
+                id: 'PACK_BIG_BOSS',
+                name: '👑 PACK BIG BOSS',
+                farm: '🧬 Sélection Premium',
+                strains: [],
+                // --- DESIGN NETTOYÉ SANS STYLE INLINE ---
+                description: 'Le top du top, complet et premium.\n\n <span class="pack-link" data-id="CaliH">👁️ 5g Darks farm 90u</span>\n <span class="pack-link" data-id="STATIC_US_SAHA">👁️ 2g Saha terp</span> \n <span class="pack-link" data-id="FROZEN_HWORLD">👁️ 2g Frozen Hworld</span>\n\n<span style="font-size: 0.8rem; color: var(--hint-color); font-style: italic; display: block; text-align: center; margin-top: 15px;">👆 Clique sur un produit pour voir sa fiche</span>',
+                video: '',
+                tarifs: [{ weight: '1 Pack', price: 190, oldPrice: '220€' }]
+            },
+            {
+                id: 'PACK_SIGNATURE',
+                name: '💎 PACK SIGNATURE',
+                farm: '🧬 Sélection Premium',
+                strains: [],
+                description: 'Le juste équilibre qualité / quantité, pour ceux qui veulent du solide.\n\n <span class="pack-link" data-id="DRY_90_VVS">👁️ 5g VVS 90u</span> \n <span class="pack-link" data-id="DRY_120_PIRATE">👁️ 5g 120u Pirate Del Sur</span> \n <span class="pack-link" data-id="CALI_CEREAL">👁️ 5g Cali US Cereal</span>\n\n<span style="font-size: 0.8rem; color: var(--hint-color); font-style: italic; display: block; text-align: center; margin-top: 15px;">👆 Clique sur un produit pour voir sa fiche</span>',
+                video: '',
+                tarifs: [{ weight: '1 Pack', price: 160, oldPrice: '190€' }]
+            },
+            {
+                id: 'PACK_ORIGINAL',
+                name: '🔥 PACK ORIGINAL',
+                farm: '🧬 Sélection Premium',
+                strains: [],
+                description: 'L’entrée, efficace et accessible, parfait pour le quotidien.\n\n <span class="pack-link" data-id="DRY_73_JEBLI">👁️ 5g Gelato (73u)</span>\n <span class="pack-link" data-id="SEMIDRY_JEBLI">👁️ 5g Semi-Dry</span>\n <span class="pack-link" data-id="DRY_120_DARKS">👁️ 5g 120u Darks Farm</span>\n\n<span style="font-size: 0.8rem; color: var(--hint-color); font-style: italic; display: block; text-align: center; margin-top: 15px;">👆 Clique sur un produit pour voir sa fiche</span>',
+                video: '',
+                tarifs: [{ weight: '1 Pack', price: 120, oldPrice: '140€' }]
+            }
+        ]
+    },
     {
         id: 'HASH', name: '🍫 HASH', type: 'Hash', quality: '🍫 Hashish', image: 'CategT72Hash.png',
         farms: [
@@ -467,7 +501,101 @@ if (activeConfig.luffa) {
 
     // Menu TOURS (37)
     const catalog37 = [
-        // (Même logique, tu mets les produits du 37)
+            {
+                id: 'HASH', name: '🍫 HASH', type: 'Hash', quality: '🍫 Hashish', image: 'Categ37Hash.png',
+                farms: [
+                    { id: 'STATIC_US', name: 'STATIC US 🇺🇸', products: [
+                        
+                    ]},
+                    { id: 'FROZEN_US', name: 'FROZEN US 🇺🇸', products: [
+                       
+                    ]},
+                    { id: 'FROZEN', name: 'FROZEN ❄️', products: [
+                       
+                    ]},
+                    { id: 'DRY_120', name: 'DRY 120u 🛖', products: [
+                        {
+                            id: 'Mintz',
+                            name: 'Mintz ⛩', // Nom de la souche utilisé en titre
+                            farm: 'JEBLI FARM 🧸',
+                            strains: ['Banana / RS11','Biscotti','Pink Cherry','Orange Cream'], // Plus de sélection
+                            description: '• Banana / RS11 – banane sucrée + gaz moderne, effet équilibré\n\n • Biscotti – crémeux cookie + gas, lourd en bouche 😮‍💨     \n\n • Pink Cherry – cerise sucrée, fumée douce, high clean     \n\n • Orange Cream – agrumes crémeux, très gourmand, détente progressive',
+                            image: 'ProductMintz.jpg',
+                            video: 'VideoMintz.mov',
+                            tarifs: [
+                                {weight: '5g', price: 50},
+                             {weight: '10g', price: 90}]
+                        },
+                    ]},
+                    { id: 'DRY_90', name: 'DRY 90u ⚡️', products: [
+                       
+                    ]},
+                    { id: 'DRY_73', name: 'DRY 73u', products: [
+                        
+                    ]},
+                    { id: 'SEMI_DRY', name: 'SEMI DRY', products: [
+                        {
+                            id: 'SEMIDRY_JEBLI',
+                            name: 'SEMI-DRY JEBLI 🇲🇦', // Différencié
+                            farm: 'JEBLI FARM 🧸',
+                            strains: ['🌸 Pink Crack', '🍏 Fuji OG'],
+                            description: '🧠 Pink Crack \n 👉 Parfaite pour chill, musique, soirée posée.\n\n 🍏 🧠 Fuji OG \n 👉 Gros calmant, corps détendu, tête tranquille.',
+                            image: 'ProductPink.jpg',
+                            video: 'VideoPink.mov',
+                            tarifs: [{weight: '5g', price: 30}, {weight: '10g', price: 60}, {weight: '50g', price: 230}, {weight: '100g', price: 440}]
+                        }
+                    ]},
+                    { id: 'JAUNE', name: 'JAUNE 🧽', products: [
+                        {
+                            id: 'LemonCherryGelato',
+                            name: 'LemonCherryGelato 🍒',
+                            farm: 'L.A. Mousse 🗽',
+                            strains: [],
+                            description: '👉 Daily simple et efficace, texture souple, fumée correcte — parfait pour le quotidien.',
+                            image: 'ProductLA.png',
+                            video: 'VideoLA.mp4',
+                            tarifs: [{weight: '5g', price: 30}, {weight: '10g', price: 50}, {weight: '25g', price: 110}, {weight: '50g', price: 180}, {weight: '100g', price: 350}]
+                        }
+                    ]},
+                    { id: 'STATIC', name: 'STATIC ⚡️', products: [
+                       
+                    ]},
+                    { id: 'SINGLE_SOURCE', name: 'SINGLE SOURCE 💎', products: [
+                      
+                    ]}
+                ]
+            },
+            {
+                id: 'WEED', name: '🌿 WEED', type: 'Weed', quality: '🌿 Fleurs', image: 'CategT72Weed.png',
+                farms: [
+                    { id: 'CALI_US', name: 'CALI US 🇺🇸', products: [
+                        {
+                            id: 'CALI_LEMON',
+                            name: 'LEMON CHERRY 🍋🍒',
+                            farm: '🇺🇸 Cali US',
+                            strains: [], // Plus de sélection
+                            description: '',
+                            image: 'ProductLemon.jpg',
+                            video: 'VideoLemon.mov',
+                            tarifs: [
+                                {weight: '1,2g', price: 20},
+                                {weight: '3,5g', price: 60},
+                                {weight: '5g', price: 80},
+                                {weight: '10g', price: 150},
+                                {weight: '100g', price: 850}
+                            ]
+                        },
+                    ]}
+                ]
+            },
+            {
+                id: 'AUTRE', name: '🧬 AUTRE', type: 'Autre', quality: '🧬 Divers', image: 'CategT73Autre.png',
+                farms: [
+                    { id: 'PUFF', name: 'PUFF 💨', products: [
+                       
+                    ]}
+                ]
+            }
     ];
 
     // Catalogue Strong (Arborescence à 2 niveaux - Produits directs)
@@ -568,7 +696,15 @@ const appData = menuRouter[currentFranchise] || catalog72;
             renderFarmList(currentCategoryId);
         } else if (currentView === 'products') {
             qualityFilterWrapper.style.display = 'none';
-            productListContainer.style.gridTemplateColumns = 'repeat(2, 1fr)';
+            
+            // --- LA PORTE DE PÉAGE VISUELLE ---
+            // Si on est dans les PACKS, on affiche 1 grande colonne pleine largeur
+            if (currentCategoryId === 'PACKS') {
+                productListContainer.style.gridTemplateColumns = '1fr';
+            } else {
+                // Sinon on garde le design classique à 2 colonnes
+                productListContainer.style.gridTemplateColumns = 'repeat(2, 1fr)';
+            }
 
             const category = appData.find(c => c.id === currentCategoryId);
             const backBtn = document.createElement('button');
@@ -713,10 +849,13 @@ const appData = menuRouter[currentFranchise] || catalog72;
             <div class="tarifs-title">💰 Tarifs :</div>
             <div class="tarifs-grid-container">${product.tarifs ? product.tarifs.map(tarif => `
                 <div class="tarif-item">
-                    <div class="box-tarif">
-                        <span class="tarif-wieght">${tarif.weight}</span>
-                        <span class="tarif-price">${tarif.price.toFixed(2)}€</span>
-                    </div>
+                <div class="box-tarif">
+                <span class="tarif-wieght">
+                    ${tarif.weight} 
+                    ${tarif.oldPrice ? `<s style="color:var(--hint-color); font-size:1rem; margin-left:8px;">${tarif.oldPrice}</s>` : ''}
+                </span>
+                <span class="tarif-price">${tarif.price.toFixed(2)}€</span>
+            </div>
                     <button class="add-to-cart-btn" data-product-id="${product.id}" data-weight="${tarif.weight}" data-price="${tarif.price}">
                         <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><use href="#icon-cart" /></svg>
                     </button>
@@ -739,11 +878,11 @@ const appData = menuRouter[currentFranchise] || catalog72;
             document.getElementById('cart-total-price').innerText = '0.00€';
         } else {
             container.innerHTML = cart.map(item => `
-                <div class="cart-item">
-                    <div class="item-details">
-                        <div class="name">${item.name} (${item.weight})</div>
-                        <div class="price">${item.totalPrice.toFixed(2)}€</div>
-                    </div>
+            <div class="cart-item">
+            <div class="item-details" data-product-id="${item.productId}" style="cursor: pointer;">
+                <div class="name">${item.name} (${item.weight}) <span style="font-size:0.7rem; color:var(--hint-color); border: 1px solid var(--hint-color); padding: 2px 6px; border-radius: 5px; margin-left: 5px;">👁️ Voir</span></div>
+                <div class="price">${item.totalPrice.toFixed(2)}€</div>
+            </div>
                     <div class="quantity-selector">
                         <button class="quantity-btn" data-action="decrease" data-id="${item.id}">-</button>
                         <span class="quantity">${item.quantity}</span>
@@ -783,8 +922,8 @@ const appData = menuRouter[currentFranchise] || catalog72;
       // 1. Boutons de Livraison / Sur Place (Spécifique au 72)
       // On ajoute le paramètre ?text= pour pré-remplir la discussion Telegram
       if (activeConfig.telegramLivraison) {
-          checkoutHTML += `<button class="main-action-btn send-order-btn" data-platform="telegram" data-url="${activeConfig.telegramLivraison}?text=${orderMsgEncoded}" style="${tgStyle}">TLG LIVRAISON 🚀</button>`;
-      }
+        checkoutHTML += `<button class="main-action-btn send-order-btn" data-platform="telegram" data-url="${activeConfig.telegramLivraison}?text=${orderMsgEncoded}" data-is-delivery="true" style="${tgStyle}">TLG LIVRAISON 🚀</button>`;
+    }
       if (activeConfig.telegramSurPlace) {
           checkoutHTML += `<button class="main-action-btn send-order-btn" data-platform="telegram" data-url="${activeConfig.telegramSurPlace}?text=${orderMsgEncoded}" style="${tgStyle}">TLG SUR PLACE 🤝</button>`;
       }
@@ -957,8 +1096,18 @@ const appData = menuRouter[currentFranchise] || catalog72;
         }
         renderCart();
         if(tg && tg.HapticFeedback) tg.HapticFeedback.notificationOccurred('success');
-        showNotification('🛒 Ajouté au panier');
-    }
+        showNotification('🛒 Ajouté au panier • Voir ➔');
+        }
+        // --- 🚀 ROUTAGE DIRECT VERS PRODUIT (Panier ou Liens internes) ---
+        if (target.closest('.item-details[data-product-id]')) {
+            const pId = target.closest('.item-details').dataset.productId;
+            renderProductPage(pId);
+        }
+        
+        if (target.closest('.pack-link')) {
+            const pId = target.closest('.pack-link').dataset.id;
+            renderProductPage(pId);
+        }
 
         if (target.closest('.quantity-btn')) {
             const btn = target.closest('.quantity-btn');
@@ -976,32 +1125,56 @@ const appData = menuRouter[currentFranchise] || catalog72;
             document.querySelectorAll('.payment-btn').forEach(btn => btn.classList.toggle('active', btn.dataset.method === paymentMethod));
         }
 
-        if (target.closest('#home-cart-button')) { renderCart(); showPage('page-cart'); }
+        if (target.closest('#home-cart-button') || target.closest('#notification-toast')) { 
+            renderCart(); 
+            showPage('page-cart'); 
+            // On fait disparaître la notification instantanément pour nettoyer l'écran
+            document.getElementById('notification-toast').classList.remove('show'); 
+        }
+
         if (target.closest('.close-button') || target.closest('.back-button') || target.closest('#cart-continue-shopping')) { showPage('page-home'); }
         if (target.closest('#checkout-button')) { renderConfirmation(); }
         if (target.closest('#confirmation-modify-order')) { showPage('page-cart'); }
 
-     // --- ROUTAGE INTELLIGENT DE LA COMMANDE ---
-     if (target.closest('.send-order-btn')) {
-        const btn = target.closest('.send-order-btn');
-        const platform = btn.dataset.platform;
-        const url = btn.dataset.url;
+   // --- ROUTAGE INTELLIGENT DE LA COMMANDE ---
+   if (target.closest('.send-order-btn')) {
+    const btn = target.closest('.send-order-btn');
+    const platform = btn.dataset.platform;
+    let url = btn.dataset.url; // 'let' permet de modifier l'URL en direct
+    const isDelivery = btn.dataset.isDelivery === "true";
 
-        if (tg && tg.HapticFeedback) tg.HapticFeedback.notificationOccurred('success');
-
-        // Sécurité : On copie quand même la commande dans le presse-papier en arrière-plan
-        const rawMessage = decodeURIComponent(formatOrderMessage());
-        navigator.clipboard.writeText(rawMessage).catch(e => {}); 
-
-        // Ouverture instantanée (L'URL contient déjà le texte pré-rempli)
-        if (platform === 'telegram') {
-            if (tg) tg.openTelegramLink(url);
-            else window.open(url, '_blank');
-        } else {
-            if (tg) tg.openLink(url);
-            else window.open(url, '_blank');
+    // --- LA PORTE DE PÉAGE (LIVRAISON UNIQUEMENT) ---
+    if (isDelivery) {
+        const adresseLivraison = prompt("📍 Renseigne ton adresse complète pour la livraison (Rue, Ville, Code Postal) :");
+        
+        // Sécurité absolue : on bloque si c'est vide
+        if (!adresseLivraison || adresseLivraison.trim() === "") {
+            alert("⚠️ L'adresse est obligatoire pour valider une livraison.");
+            return; // Stoppe l'exécution du code
         }
+        
+        // On injecte proprement l'adresse encodée à la fin du lien existant
+        url += encodeURIComponent(`\n\n📍 Adresse de livraison : ${adresseLivraison}`);
     }
+
+    if (tg && tg.HapticFeedback) tg.HapticFeedback.notificationOccurred('success');
+
+    // Sécurité presse-papier : on extrait le texte final de l'URL pour le copier propre
+    try {
+        const urlObj = new URL(url);
+        const rawMessage = urlObj.searchParams.get('text');
+        if (rawMessage) navigator.clipboard.writeText(rawMessage).catch(e => {}); 
+    } catch(e) {}
+
+    // Ouverture instantanée
+    if (platform === 'telegram') {
+        if (tg) tg.openTelegramLink(url);
+        else window.open(url, '_blank');
+    } else {
+        if (tg) tg.openLink(url);
+        else window.open(url, '_blank');
+    }
+}
     });
 
     // --- 10. MOTEUR D'AUTOPLAY VIDÉO AU SWIPE (INTUITION-BASED UX) ---
