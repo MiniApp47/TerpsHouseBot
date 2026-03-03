@@ -911,35 +911,52 @@ const appData = menuRouter[currentFranchise] || catalog72;
             <div class="summary-line total"><span>💰 Total final:</span><span>${subTotal.toFixed(2)}€</span></div>
         `;
        
-      // --- GÉNÉRATION DYNAMIQUE DES BOUTONS DE COMMANDE ---
-      const checkoutBtnsContainer = document.getElementById('dynamic-checkout-buttons');
-      let checkoutHTML = '';
-      const orderMsgEncoded = formatOrderMessage(); // Le message du panier pré-rempli
+  // --- GÉNÉRATION DYNAMIQUE DES BOUTONS DE COMMANDE ---
+  const checkoutBtnsContainer = document.getElementById('dynamic-checkout-buttons');
+  let checkoutHTML = '';
+  const orderMsgEncoded = formatOrderMessage(); // Le message du panier pré-rempli
 
-      const tgStyle = `background: linear-gradient(45deg, #2a67ee, #16e6d5); color: black; text-shadow: none;`;
-      const waStyle = `background: linear-gradient(45deg, #25D366, #128C7E); text-shadow: 0px 1px 2px rgba(0,0,0,0.5);`;
+  const tgStyle = `background: linear-gradient(45deg, #2a67ee, #16e6d5); color: black; text-shadow: none;`;
+  const waStyle = `background: linear-gradient(45deg, #25D366, #128C7E); text-shadow: 0px 1px 2px rgba(0,0,0,0.5);`;
 
-      // 1. Boutons de Livraison / Sur Place (Spécifique au 72)
-      // On ajoute le paramètre ?text= pour pré-remplir la discussion Telegram
-      if (activeConfig.telegramLivraison) {
-        checkoutHTML += `<button class="main-action-btn send-order-btn" data-platform="telegram" data-url="${activeConfig.telegramLivraison}?text=${orderMsgEncoded}" data-is-delivery="true" style="${tgStyle}">TLG LIVRAISON 🚀</button>`;
-    }
-      if (activeConfig.telegramSurPlace) {
-          checkoutHTML += `<button class="main-action-btn send-order-btn" data-platform="telegram" data-url="${activeConfig.telegramSurPlace}?text=${orderMsgEncoded}" style="${tgStyle}">TLG SUR PLACE 🤝</button>`;
-      }
-      
-      // 2. Bouton Telegram Unique (Pour BXL, 37, 75, etc.)
-      if (activeConfig.telegram && !activeConfig.telegramLivraison) {
-          checkoutHTML += `<button class="main-action-btn send-order-btn" data-platform="telegram" data-url="${activeConfig.telegram}?text=${orderMsgEncoded}" style="${tgStyle}">TÉLÉGRAM 💙</button>`;
-      }
+ // --- LE PÉAGE INTÉGRÉ (CHAMP D'ADRESSE) ---
+ if (activeConfig.telegramLivraison || activeConfig.phone) {
+    checkoutHTML += `
+      <div style="width: 100%; margin-bottom: 15px; text-align: left;">
+          <div style="color: var(--text-color); font-size: 0.9rem; margin-bottom: 8px; font-weight: bold;">📍 Adresse (Obligatoire pour livraison) :</div>
+          <textarea id="delivery-address" placeholder="N° Rue, Ville, Code Postal... (Laisse vide si Sur Place)" style="width: 100%; box-sizing: border-box; padding: 12px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.3); color: white; min-height: 65px; font-family: inherit; font-size: 1rem;"></textarea>
+          <div style="font-size: 0.8rem; color: var(--brand-color); margin-top: 5px; text-align: right; font-weight: bold;">⚠️ Minimum de commande pour la livraison : 50€</div>
+      </div>
+    `;
+}
 
-      // 3. Bouton WhatsApp (S'adapte à la franchise en cours)
-      if (activeConfig.phone) {
-          checkoutHTML += `<button class="main-action-btn send-order-btn" data-platform="whatsapp" data-url="https://wa.me/${activeConfig.phone}?text=${orderMsgEncoded}" style="${waStyle}">WHATSAPP LIVRAISON / SUR PLACE 📞</button>`;
-      }
+  // 1. Bouton TELEGRAM Livraison
+  if (activeConfig.telegramLivraison) {
+      checkoutHTML += `<button class="main-action-btn send-order-btn" data-platform="telegram" data-url="${activeConfig.telegramLivraison}?text=${orderMsgEncoded}" data-is-delivery="true" style="${tgStyle}; margin-bottom: 10px;">TLG LIVRAISON 🚀</button>`;
+  }
+  
+  // 2. Bouton WHATSAPP Livraison
+  if (activeConfig.phone) {
+      checkoutHTML += `<button class="main-action-btn send-order-btn" data-platform="whatsapp" data-url="https://wa.me/${activeConfig.phone}?text=${orderMsgEncoded}" data-is-delivery="true" style="${waStyle}; margin-bottom: 10px;">WHATSAPP LIVRAISON 🚀</button>`;
+  }
 
-      checkoutBtnsContainer.innerHTML = checkoutHTML;
-      showPage('page-confirmation');
+  // 3. Bouton TELEGRAM Sur Place
+  if (activeConfig.telegramSurPlace) {
+      checkoutHTML += `<button class="main-action-btn send-order-btn" data-platform="telegram" data-url="${activeConfig.telegramSurPlace}?text=${orderMsgEncoded}" style="${tgStyle}; margin-bottom: 10px;">TLG SUR PLACE 🤝</button>`;
+  }
+
+  // 4. Bouton WHATSAPP Sur Place
+  if (activeConfig.phone) {
+      checkoutHTML += `<button class="main-action-btn send-order-btn" data-platform="whatsapp" data-url="https://wa.me/${activeConfig.phone}?text=${orderMsgEncoded}" style="${waStyle}; margin-bottom: 10px;">WHATSAPP SUR PLACE 🤝</button>`;
+  }
+
+  // Bouton Telegram Unique (Fallback pour les franchises comme BXL, 37, 75)
+  if (activeConfig.telegram && !activeConfig.telegramLivraison) {
+      checkoutHTML += `<button class="main-action-btn send-order-btn" data-platform="telegram" data-url="${activeConfig.telegram}?text=${orderMsgEncoded}" style="${tgStyle}; margin-bottom: 10px;">TÉLÉGRAM 💙</button>`;
+  }
+
+  checkoutBtnsContainer.innerHTML = checkoutHTML;
+  showPage('page-confirmation');
   }
 
     function renderContactPage() {
@@ -1136,30 +1153,47 @@ const appData = menuRouter[currentFranchise] || catalog72;
         if (target.closest('#checkout-button')) { renderConfirmation(); }
         if (target.closest('#confirmation-modify-order')) { showPage('page-cart'); }
 
-   // --- ROUTAGE INTELLIGENT DE LA COMMANDE ---
-   if (target.closest('.send-order-btn')) {
+// --- ROUTAGE INTELLIGENT DE LA COMMANDE ---
+if (target.closest('.send-order-btn')) {
     const btn = target.closest('.send-order-btn');
     const platform = btn.dataset.platform;
-    let url = btn.dataset.url; // 'let' permet de modifier l'URL en direct
-    const isDelivery = btn.dataset.isDelivery === "true";
+    let url = btn.dataset.url;
+    const isDelivery = btn.dataset.isDelivery === "true"; // Vrai pour Telegram/WhatsApp Livraison
 
-    // --- LA PORTE DE PÉAGE (LIVRAISON UNIQUEMENT) ---
+    // --- CALCUL DU PANIER POUR LA RÈGLE DES 50€ ---
+    const totalOrderPrice = cart.reduce((sum, item) => sum + item.totalPrice, 0);
+
+    // --- LECTURE DU PÉAGE INTÉGRÉ ---
+    const addressInput = document.getElementById('delivery-address');
+    const adresseLivraison = addressInput ? addressInput.value : "";
+
+    // Règle 1 : Clic sur un bouton Livraison (Minimum 50€ ET Adresse Obligatoire)
     if (isDelivery) {
-        const adresseLivraison = prompt("📍 Renseigne ton adresse complète pour la livraison (Rue, Ville, Code Postal) :");
-        
-        // Sécurité absolue : on bloque si c'est vide
-        if (!adresseLivraison || adresseLivraison.trim() === "") {
-            alert("⚠️ L'adresse est obligatoire pour valider une livraison.");
-            return; // Stoppe l'exécution du code
+        // Bouclier A : Minimum d'achat
+        if (totalOrderPrice < 50) {
+            showNotification(`⚠️ Minimum 50€ pour la livraison (Ton panier : ${totalOrderPrice.toFixed(2)}€).`);
+            return; // Stoppe net l'exécution
         }
-        
-        // On injecte proprement l'adresse encodée à la fin du lien existant
+
+        // Bouclier B : Adresse
+        if (!adresseLivraison || adresseLivraison.trim() === "") {
+            if (addressInput) {
+                addressInput.style.border = "2px solid var(--red-color)";
+                setTimeout(() => addressInput.style.border = "1px solid rgba(255,255,255,0.2)", 2000);
+            }
+            showNotification("⚠️ L'adresse est obligatoire pour la livraison.");
+            return; // Stoppe net l'exécution
+        }
         url += encodeURIComponent(`\n\n📍 Adresse de livraison : ${adresseLivraison}`);
+    } 
+    // Règle 2 : Clic sur un bouton Sur Place (On transmet l'adresse si elle a été tapée, sans limite de prix)
+    else if (adresseLivraison.trim() !== "") {
+        url += encodeURIComponent(`\n\n📍 Info supp. (Adresse) : ${adresseLivraison}`);
     }
 
     if (tg && tg.HapticFeedback) tg.HapticFeedback.notificationOccurred('success');
 
-    // Sécurité presse-papier : on extrait le texte final de l'URL pour le copier propre
+    // Sécurité presse-papier
     try {
         const urlObj = new URL(url);
         const rawMessage = urlObj.searchParams.get('text');
