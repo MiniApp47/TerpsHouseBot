@@ -600,10 +600,73 @@ if (activeConfig.luffa) {
 
     // Catalogue Strong (Arborescence à 2 niveaux - Produits directs)
     const catalogStrong = [
-        { id: 'COCO', name: '❄️ COCO', type: 'Coco', quality: 'Premium', image: 'CategCoco.png', products: [] },
-        { id: 'MARRON', name: '🍫 MARRON', type: 'Marron', quality: 'Standard', image: 'CategMarron.png', products: [] },
+        { id: 'COCO', name: '❄️ COCO', type: 'Coco', quality: 'Premium', image: 'CategCoco.png', products: [
+            {
+                id: 'Coca écaille',
+                name: 'Coca écaille',
+                farm: 'StrongSelection 🏆',
+                strains: [], // Plus de sélection
+                description: '',
+                image: 'ProductEc.png',
+                video: 'VideoEc.mov',
+                tarifs: [
+                    {weight: '1g', price: 50},
+                    {weight: '5g', price: 220},
+                    {weight: '10g', price: 420}
+                ]
+            },
+            {
+                id: 'Coca en olive',
+                name: 'Coca en olive',
+                farm: 'StrongSelection 🏆',
+                strains: [], // Plus de sélection
+                description: '',
+                image: 'ProductOl.png',
+                video: 'VideoOl.mov',
+                tarifs: [
+                    {weight: '1g', price: 50},
+                    {weight: '5g', price: 220},
+                    {weight: '10g', price: 420}
+                ]
+            },
+        ] },
+        { id: 'MARRON', name: '🍫 MARRON', type: 'Marron', quality: 'Standard', image: 'CategMarron.png', products: [
+            {
+                id: 'Héroïne',
+                name: 'Héroïne Ms',
+                farm: 'StrongSelection 🏆',
+                strains: [], // Plus de sélection
+                description: '',
+                image: 'ProductMs.png',
+                video: 'VideoMs.mov',
+                tarifs: [
+                    {weight: '1g', price: 30},
+                    {weight: '3g', price: 90},
+                    {weight: '4g', price: 110},
+                    {weight: '5g', price: 130},
+                    {weight: '10g', price: 230},
+                    {weight: '25g', price: 480}
+                ]
+            },
+        ] },
         { id: 'MDMA', name: '💊 MDMA', type: 'MDMA', quality: 'Premium', image: 'CategMdma.png', products: [] },
-        { id: 'TAZ', name: '⚡️ TAZ', type: 'Taz', quality: 'Premium', image: 'CategTaz.png', products: [] },
+        { id: 'TAZ', name: '⚡️ TAZ', type: 'Taz', quality: 'Premium', image: 'CategTaz.png', products: [
+            {
+                id: 'Batman',
+                name: 'Batman rose',
+                farm: 'StrongSelection 🏆',
+                strains: [], // Plus de sélection
+                description: '',
+                image: 'ProductBat.png',
+                video: 'VideoBat.mov',
+                tarifs: [
+                    {weight: '1 🍬', price: 10},
+                    {weight: '5 🍬', price: 40},
+                    {weight: '10 🍬', price: 70},
+                    {weight: '+ privé', price: 0},
+                ]
+            },
+        ] },
         { id: 'KETAMINE', name: '🐴 KETAMINE', type: 'Ketamine', quality: 'Premium', image: 'CategKeta.png', products: [] }
     ];
 
@@ -847,20 +910,27 @@ const appData = menuRouter[currentFranchise] || catalog72;
             ${strainsHTML} <p class="product-description" style="margin-top: 15px;">${product.description || ''}</p>
             
             <div class="tarifs-title">💰 Tarifs :</div>
-            <div class="tarifs-grid-container">${product.tarifs ? product.tarifs.map(tarif => `
+            <div class="tarifs-grid-container">${product.tarifs ? product.tarifs.map(tarif => {
+                // --- DÉTECTION AUTOMATIQUE DES OFFRES VIP (PRIX = 0) ---
+                const isPrive = tarif.price === 0 || tarif.weight.includes('privé');
+                const priceDisplay = isPrive ? 'Sur demande' : tarif.price.toFixed(2) + '€';
+                const btnContent = isPrive ? '💬 VIP' : '<svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><use href="#icon-cart" /></svg>';
+
+                return `
                 <div class="tarif-item">
-                <div class="box-tarif">
-                <span class="tarif-wieght">
-                    ${tarif.weight} 
-                    ${tarif.oldPrice ? `<s style="color:var(--hint-color); font-size:1rem; margin-left:8px;">${tarif.oldPrice}</s>` : ''}
-                </span>
-                <span class="tarif-price">${tarif.price.toFixed(2)}€</span>
-            </div>
-                    <button class="add-to-cart-btn" data-product-id="${product.id}" data-weight="${tarif.weight}" data-price="${tarif.price}">
-                        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><use href="#icon-cart" /></svg>
+                    <div class="box-tarif">
+                        <span class="tarif-wieght">
+                            ${tarif.weight} 
+                            ${tarif.oldPrice ? `<s style="color:var(--hint-color); font-size:1rem; margin-left:8px;">${tarif.oldPrice}</s>` : ''}
+                        </span>
+                        <span class="tarif-price">${priceDisplay}</span>
+                    </div>
+                    <button class="add-to-cart-btn" data-product-id="${product.id}" data-weight="${tarif.weight}" data-price="${tarif.price}" ${isPrive ? 'style="font-size: 1.1rem; font-weight: bold; font-family: Impact, sans-serif;"' : ''}>
+                        ${btnContent}
                     </button>
                 </div>
-            `).join('') : ''}</div>
+                `;
+            }).join('') : ''}</div>
         `;
         
         // --- 4. INITIALISATION DU MOTEUR DE LECTURE VIDÉO ---
@@ -1080,6 +1150,21 @@ const appData = menuRouter[currentFranchise] || catalog72;
         const pId = btn.dataset.productId;
         const weight = btn.dataset.weight;
         const price = parseFloat(btn.dataset.price);
+
+        // --- 🚀 INTERCEPTEUR VIP / GROS VOLUME (PRIX À 0) ---
+        if (price === 0) {
+            const product = getProductById(pId);
+            // On récupère le bon Telegram selon la franchise en cours
+            const tgUrl = activeConfig.telegram || activeConfig.telegramLivraison;
+            // Création du message pré-rempli
+            const msg = encodeURIComponent(`Salut l'équipe, je suis intéressé par l'offre VIP/Gros pour le produit : ${product.name} 👑`);
+            const finalUrl = `${tgUrl}?text=${msg}`;
+            
+            // Ouverture instantanée sans passer par le panier
+            if (tg) tg.openTelegramLink(finalUrl);
+            else window.open(finalUrl, '_blank');
+            return; // 🛑 Stoppe le script ici, on n'ajoute rien au panier
+        }
         
         // On vérifie si un strain est sélectionné sur la page
         const activeStrainBtn = document.querySelector('.strain-btn.active');
