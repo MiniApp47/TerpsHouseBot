@@ -1028,7 +1028,7 @@ if (activeConfig.phone) {
     // Le déclencheur visuel
     checkoutHTML += `
         <div id="toggle-whatsapp-btn" style="text-align: center; margin-top: 5px; margin-bottom: 15px; cursor: pointer; padding: 10px;">
-            <span style="color: var(--hint-color); font-size: 0.9rem; text-decoration: underline; font-style: italic;">Uniquement si tu n'as pas Telegram 📞</span>
+            <span style="color: #00c759; font-size: 0.9rem; text-decoration: underline; font-style: italic;">Uniquement si tu n'as pas Telegram 📞</span>
         </div>
     `;
     
