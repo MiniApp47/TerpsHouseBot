@@ -239,6 +239,16 @@ if (activeConfig.luffa) {
             { id: 'FROZEN_US', name: 'FROZEN US 🇺🇸', products: [
                 {
                     id: 'FROZEN_CALIPLATES',
+                    name: 'FROZEN The Middle 🇺🇸', // Différencié
+                    farm: 'The Middle 🌱',
+                    strains: ['🍊 Orangina', '🍬 Zgusher'],
+                    description: '🍊 Orangina  \n Strain très fruitée avec des notes d’agrumes et d’orange sucrée. Profil terpénique frais et intense, avec un goût bien marqué et une fumée douce. Effet relaxant et agréable, parfait pour chiller.\n\n 🍬 Zgusher  \n Profil très gourmand avec des arômes sucrés type bonbons et fruits tropicaux. Très riche en terpènes, texture bien collante et goût puissant. Effet équilibré, relaxant mais qui garde l’esprit léger',
+                    image: 'ProductFrozTh.jpg',
+                    video: 'VideoFrozTh.mp4',
+                    tarifs: [{weight: '1g', price: 30}, {weight: '5g', price: 120}, {weight: '10g', price: 230}]
+                },
+                {
+                    id: 'FROZEN_CALIPLATES',
                     name: 'FROZEN CALIPLATES 🇺🇸', // Différencié
                     farm: '🧬 CALIPLATES',
                     strains: ['🔥 OMG', '🧊 Otter Pops'],
@@ -982,15 +992,16 @@ const appData = menuRouter[currentFranchise] || catalog72;
         `;
        
   // --- GÉNÉRATION DYNAMIQUE DES BOUTONS DE COMMANDE ---
-  const checkoutBtnsContainer = document.getElementById('dynamic-checkout-buttons');
-  let checkoutHTML = '';
-  const orderMsgEncoded = formatOrderMessage(); // Le message du panier pré-rempli
+// --- GÉNÉRATION DYNAMIQUE DES BOUTONS DE COMMANDE ---
+const checkoutBtnsContainer = document.getElementById('dynamic-checkout-buttons');
+let checkoutHTML = '';
+const orderMsgEncoded = formatOrderMessage(); // Le message du panier pré-rempli
 
-  const tgStyle = `background: linear-gradient(45deg, #2a67ee, #16e6d5); color: black; text-shadow: none;`;
-  const waStyle = `background: linear-gradient(45deg, #25D366, #128C7E); text-shadow: 0px 1px 2px rgba(0,0,0,0.5);`;
+const tgStyle = `background: linear-gradient(45deg, #2a67ee, #16e6d5); color: black; text-shadow: none;`;
+const waStyle = `background: linear-gradient(45deg, #25D366, #128C7E); text-shadow: 0px 1px 2px rgba(0,0,0,0.5);`;
 
- // --- LE PÉAGE INTÉGRÉ (CHAMP D'ADRESSE) ---
- if (activeConfig.telegramLivraison || activeConfig.phone) {
+// --- LE PÉAGE INTÉGRÉ (CHAMP D'ADRESSE) ---
+if (activeConfig.telegramLivraison || activeConfig.phone) {
     checkoutHTML += `
       <div style="width: 100%; margin-bottom: 15px; text-align: left;">
           <div style="color: var(--text-color); font-size: 0.9rem; margin-bottom: 8px; font-weight: bold;">📍 Adresse (Obligatoire pour livraison) :</div>
@@ -1000,33 +1011,36 @@ const appData = menuRouter[currentFranchise] || catalog72;
     `;
 }
 
-  // 1. Bouton TELEGRAM Livraison
-  if (activeConfig.telegramLivraison) {
-      checkoutHTML += `<button class="main-action-btn send-order-btn" data-platform="telegram" data-url="${activeConfig.telegramLivraison}?text=${orderMsgEncoded}" data-is-delivery="true" style="${tgStyle}; margin-bottom: 10px;">TLG LIVRAISON 🚀</button>`;
-  }
-  
-  // 2. Bouton WHATSAPP Livraison
-  if (activeConfig.phone) {
-      checkoutHTML += `<button class="main-action-btn send-order-btn" data-platform="whatsapp" data-url="https://wa.me/${activeConfig.phone}?text=${orderMsgEncoded}" data-is-delivery="true" style="${waStyle}; margin-bottom: 10px;">WHATSAPP LIVRAISON 🚀</button>`;
-  }
+// --- BLOC 1 : TELEGRAM (Priorité Absolue) ---
+if (activeConfig.telegramLivraison) {
+    checkoutHTML += `<button class="main-action-btn send-order-btn" data-platform="telegram" data-url="${activeConfig.telegramLivraison}?text=${orderMsgEncoded}" data-is-delivery="true" style="${tgStyle}; margin-bottom: 10px;">TLG LIVRAISON 🚀</button>`;
+}
+if (activeConfig.telegramSurPlace) {
+    checkoutHTML += `<button class="main-action-btn send-order-btn" data-platform="telegram" data-url="${activeConfig.telegramSurPlace}?text=${orderMsgEncoded}" style="${tgStyle}; margin-bottom: 10px;">TLG SUR PLACE 🤝</button>`;
+}
+// Fallback Telegram Unique (BXL, 37, 75)
+if (activeConfig.telegram && !activeConfig.telegramLivraison) {
+    checkoutHTML += `<button class="main-action-btn send-order-btn" data-platform="telegram" data-url="${activeConfig.telegram}?text=${orderMsgEncoded}" style="${tgStyle}; margin-bottom: 10px;">TÉLÉGRAM 💙</button>`;
+}
 
-  // 3. Bouton TELEGRAM Sur Place
-  if (activeConfig.telegramSurPlace) {
-      checkoutHTML += `<button class="main-action-btn send-order-btn" data-platform="telegram" data-url="${activeConfig.telegramSurPlace}?text=${orderMsgEncoded}" style="${tgStyle}; margin-bottom: 10px;">TLG SUR PLACE 🤝</button>`;
-  }
+// --- BLOC 2 : WHATSAPP (Porte de secours cachée) ---
+if (activeConfig.phone) {
+    // Le déclencheur visuel
+    checkoutHTML += `
+        <div id="toggle-whatsapp-btn" style="text-align: center; margin-top: 5px; margin-bottom: 15px; cursor: pointer; padding: 10px;">
+            <span style="color: var(--hint-color); font-size: 0.9rem; text-decoration: underline; font-style: italic;">Uniquement si tu n'as pas Telegram 📞</span>
+        </div>
+    `;
+    
+    // Le conteneur masqué (display: none)
+    checkoutHTML += `<div id="whatsapp-buttons-container" style="display: none; flex-direction: column; width: 100%;">`;
+    checkoutHTML += `<button class="main-action-btn send-order-btn" data-platform="whatsapp" data-url="https://wa.me/${activeConfig.phone}?text=${orderMsgEncoded}" data-is-delivery="true" style="${waStyle}; margin-bottom: 10px;">WHATSAPP LIVRAISON 🚀</button>`;
+    checkoutHTML += `<button class="main-action-btn send-order-btn" data-platform="whatsapp" data-url="https://wa.me/${activeConfig.phone}?text=${orderMsgEncoded}" style="${waStyle}; margin-bottom: 10px;">WHATSAPP SUR PLACE 🤝</button>`;
+    checkoutHTML += `</div>`;
+}
 
-  // 4. Bouton WHATSAPP Sur Place
-  if (activeConfig.phone) {
-      checkoutHTML += `<button class="main-action-btn send-order-btn" data-platform="whatsapp" data-url="https://wa.me/${activeConfig.phone}?text=${orderMsgEncoded}" style="${waStyle}; margin-bottom: 10px;">WHATSAPP SUR PLACE 🤝</button>`;
-  }
-
-  // Bouton Telegram Unique (Fallback pour les franchises comme BXL, 37, 75)
-  if (activeConfig.telegram && !activeConfig.telegramLivraison) {
-      checkoutHTML += `<button class="main-action-btn send-order-btn" data-platform="telegram" data-url="${activeConfig.telegram}?text=${orderMsgEncoded}" style="${tgStyle}; margin-bottom: 10px;">TÉLÉGRAM 💙</button>`;
-  }
-
-  checkoutBtnsContainer.innerHTML = checkoutHTML;
-  showPage('page-confirmation');
+checkoutBtnsContainer.innerHTML = checkoutHTML;
+showPage('page-confirmation');
   }
 
     function renderContactPage() {
@@ -1238,6 +1252,15 @@ const appData = menuRouter[currentFranchise] || catalog72;
         if (target.closest('#checkout-button')) { renderConfirmation(); }
         if (target.closest('#confirmation-modify-order')) { showPage('page-cart'); }
 
+// --- RÉVÉLATION DE LA PORTE DE SECOURS WHATSAPP ---
+if (target.closest('#toggle-whatsapp-btn')) {
+    const waContainer = document.getElementById('whatsapp-buttons-container');
+    const toggleBtn = target.closest('#toggle-whatsapp-btn');
+    if (waContainer) {
+        waContainer.style.display = 'flex'; // On affiche les boutons WhatsApp
+        toggleBtn.style.display = 'none'; // On désintègre le texte cliqué pour garder l'écran propre
+    }
+}
 // --- ROUTAGE INTELLIGENT DE LA COMMANDE ---
 if (target.closest('.send-order-btn')) {
     const btn = target.closest('.send-order-btn');
