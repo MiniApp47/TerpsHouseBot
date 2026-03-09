@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const franchiseConfig = {
         '72': { 
-            phone: '33621376060', // Reste utilisé pour la commande WA et le lien WA
+            phone: '', // Reste utilisé pour la commande WA et le lien WA
             telegramLivraison: 'https://t.me/volantrs3', // Commande Panier
             telegramSurPlace: 'https://t.me/LeDispensair72', // Commande Panier
             telegramInfo: 'https://t.me/terphouseoff', // NOUVEAU : Le canal pour la page Links
@@ -597,7 +597,7 @@ if (activeConfig.luffa) {
             {
                 id: 'HASH', name: '🍫 HASH', type: 'Hash', quality: '🍫 Hashish', image: 'Categ37Hash.png',
                 farms: [
-                    { id: 'STATIC_US', name: 'STATIC US 🇺🇸', products: [
+                   /*  { id: 'STATIC_US', name: 'STATIC US 🇺🇸', products: [
                         
                     ]},
                     { id: 'FROZEN_US', name: 'FROZEN US 🇺🇸', products: [
@@ -605,7 +605,7 @@ if (activeConfig.luffa) {
                     ]},
                     { id: 'FROZEN', name: 'FROZEN ❄️', products: [
                        
-                    ]},
+                    ]}, */
                     { id: 'DRY_120', name: 'DRY 120u 🛖', products: [
                         {
                             id: 'Mintz',
@@ -620,12 +620,12 @@ if (activeConfig.luffa) {
                              {weight: '10g', price: 90}]
                         },
                     ]},
-                    { id: 'DRY_90', name: 'DRY 90u ⚡️', products: [
+                   /*  { id: 'DRY_90', name: 'DRY 90u ⚡️', products: [
                        
                     ]},
                     { id: 'DRY_73', name: 'DRY 73u', products: [
                         
-                    ]},
+                    ]}, */
                     { id: 'SEMI_DRY', name: 'SEMI DRY', products: [
                         {
                             id: 'SEMIDRY_JEBLI',
@@ -650,12 +650,12 @@ if (activeConfig.luffa) {
                             tarifs: [{weight: '5g', price: 30}, {weight: '10g', price: 50}, {weight: '25g', price: 110}, {weight: '50g', price: 180}, {weight: '100g', price: 350}]
                         }
                     ]},
-                    { id: 'STATIC', name: 'STATIC ⚡️', products: [
+                   /*  { id: 'STATIC', name: 'STATIC ⚡️', products: [
                        
                     ]},
                     { id: 'SINGLE_SOURCE', name: 'SINGLE SOURCE 💎', products: [
                       
-                    ]}
+                    ]} */
                 ]
             },
             {
@@ -684,9 +684,9 @@ if (activeConfig.luffa) {
             {
                 id: 'AUTRE', name: '🧬 AUTRE', type: 'Autre', quality: '🧬 Divers', image: 'CategT73Autre.png',
                 farms: [
-                    { id: 'PUFF', name: 'PUFF 💨', products: [
+                   /*  { id: 'PUFF', name: 'PUFF 💨', products: [
                        
-                    ]}
+                    ]} */
                 ]
             }
     ];
@@ -831,6 +831,7 @@ const appData = menuRouter[currentFranchise] || catalog72;
         filterContainer.style.display = 'flex';
         const existingBackBtns = filterContainer.querySelectorAll('.back-to-categories-btn, .back-to-farms-btn');
         existingBackBtns.forEach(btn => btn.remove());
+        productListContainer.classList.remove('farm-grid-2');
 
         if (currentView === 'categories') {
             qualityFilterWrapper.style.display = 'flex';
@@ -840,12 +841,19 @@ const appData = menuRouter[currentFranchise] || catalog72;
         } else if (currentView === 'farms') {
             qualityFilterWrapper.style.display = 'none';
             farmFilterWrapper.style.display = 'none';
-            productListContainer.style.gridTemplateColumns = '1fr';
+            
+            // --- ROUTAGE INTELLIGENT DE LA GRILLE ---
+            if (currentFranchise === '72' && currentCategoryId === 'HASH') {
+                productListContainer.style.gridTemplateColumns = 'repeat(2, 1fr)'; // Passe sur 2 colonnes
+                productListContainer.classList.add('farm-grid-2'); // Active le CSS compact
+            } else {
+                productListContainer.style.gridTemplateColumns = '1fr'; // Reste sur 1 colonne pour les autres
+                productListContainer.classList.remove('farm-grid-2');
+            }
             
             const category = appData.find(c => c.id === currentCategoryId);
             const backBtn = document.createElement('button');
             backBtn.className = 'back-to-categories-btn';
-            // Les deux spans permettent d'écarter le texte à gauche et à droite
             backBtn.innerHTML = `<span>‹ Retour</span> <span>${category.name}</span>`;
             filterContainer.prepend(backBtn);
             
@@ -1076,9 +1084,22 @@ const appData = menuRouter[currentFranchise] || catalog72;
        
   // --- GÉNÉRATION DYNAMIQUE DES BOUTONS DE COMMANDE ---
 // --- GÉNÉRATION DYNAMIQUE DES BOUTONS DE COMMANDE ---
+// --- GÉNÉRATION DYNAMIQUE DES BOUTONS DE COMMANDE ---
 const checkoutBtnsContainer = document.getElementById('dynamic-checkout-buttons');
 let checkoutHTML = '';
-const orderMsgEncoded = formatOrderMessage(); // Le message du panier pré-rempli
+const orderMsgEncoded = formatOrderMessage();
+
+// --- AFFICHAGE DE LA RÉCOMPENSE LOTERIE (UNIQUEMENT 72) ---
+if (currentFranchise === '72') {
+    const ticketsEarned = calculateTickets(subTotal);
+    if (ticketsEarned > 0) {
+        checkoutHTML += `
+          <div style="background: linear-gradient(45deg, #ffcc00, #ff6600); color: black; padding: 12px; border-radius: 12px; margin-bottom: 15px; text-align: center; font-weight: bold; font-size: 1rem; box-shadow: 0 4px 15px rgba(255, 102, 0, 0.4);">
+              🎰 Tu as débloqué ${ticketsEarned} Ticket(s) loterie !
+          </div>
+        `;
+    }
+}
 
 const tgStyle = `background: linear-gradient(45deg, #2a67ee, #16e6d5); color: black; text-shadow: none;`;
 const waStyle = `background: linear-gradient(45deg, #25D366, #128C7E); text-shadow: 0px 1px 2px rgba(0,0,0,0.5);`;
@@ -1147,17 +1168,35 @@ showPage('page-confirmation');
         setTimeout(() => notif.classList.remove('show'), 3000);
     }
 
-    function formatOrderMessage() {
-        const total = cart.reduce((sum, item) => sum + item.totalPrice, 0);
-        let msg = `*🛒 COMMANDE ${activeConfig.name}*\n\n`;
-        cart.forEach((i, idx) => {
-            // Si un strain a été sélectionné, on l'ajoute proprement au texte de la commande
-            const strainText = i.strainName ? ` [${i.strainName}]` : '';
-            msg += `*${idx + 1}. ${i.rawName || i.name}${strainText}*\n• Quantité: ${i.quantity}x ${i.weight}\n• Prix: ${i.totalPrice.toFixed(2)}€\n\n`;
-        });
-        msg += `*💰 TOTAL: ${total.toFixed(2)}€*\n💳 Paiement: ${paymentMethod}`;
-        return encodeURIComponent(msg);
+  // --- MOTEUR DE CALCUL DES TICKETS (LOTERIE) ---
+  function calculateTickets(total) {
+    if (total >= 500) return 15;
+    if (total >= 300) return 6;
+    if (total >= 200) return 4;
+    if (total >= 100) return 2;
+    if (total >= 50) return 1;
+    return 0;
+}
+
+function formatOrderMessage() {
+    const total = cart.reduce((sum, item) => sum + item.totalPrice, 0);
+    let msg = `*🛒 COMMANDE ${activeConfig.name}*\n\n`;
+    cart.forEach((i, idx) => {
+        const strainText = i.strainName ? ` [${i.strainName}]` : '';
+        msg += `*${idx + 1}. ${i.rawName || i.name}${strainText}*\n• Quantité: ${i.quantity}x ${i.weight}\n• Prix: ${i.totalPrice.toFixed(2)}€\n\n`;
+    });
+    msg += `*💰 TOTAL: ${total.toFixed(2)}€*\n💳 Paiement: ${paymentMethod}`;
+
+    // --- INJECTION LOTERIE : UNIQUEMENT POUR LE 72 ---
+    if (currentFranchise === '72') {
+        const tickets = calculateTickets(total);
+        if (tickets > 0) {
+            msg += `\n\n🎰 *TICKETS LOTERIE DÉBLOQUÉS : ${tickets} 🎟*`;
+        }
     }
+
+    return encodeURIComponent(msg);
+}
 
     function populateFilters() {
         const qFilter = document.getElementById('quality-filter');
@@ -1434,11 +1473,22 @@ function initVideoAutoplayObserver() {
     });
 }
 
-    // Initialisation
-    setTimeout(() => {
-        populateFilters();
-        renderHomePage();
-        updateCartCount();
-        showPage('page-home');
-    }, 1500);
+   // Initialisation
+   setTimeout(() => {
+    populateFilters();
+    renderHomePage();
+    updateCartCount();
+    showPage('page-home');
+    
+    // --- AFFICHAGE DU POP-UP LOTERIE (1 FOIS PAR SESSION, UNIQUEMENT 72) ---
+    if (currentFranchise === '72' && !sessionStorage.getItem('lotterySeen')) {
+        const modal = document.getElementById('lottery-modal');
+        if (modal) {
+            modal.style.display = 'flex';
+            // Fermeture au clic
+            document.getElementById('close-lottery').onclick = () => { modal.style.display = 'none'; sessionStorage.setItem('lotterySeen', 'true'); };
+            document.getElementById('btn-understand-lottery').onclick = () => { modal.style.display = 'none'; sessionStorage.setItem('lotterySeen', 'true'); };
+        }
+    }
+}, 1500);
 });

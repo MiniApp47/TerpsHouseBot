@@ -478,6 +478,31 @@ select#farm-filter { display: block !important; width: 100%; height: 50px; font-
     color: white;
 }
 
+/* --- OPTIMISATION 2 COLONNES POUR SOUS-CATÉGORIES (MODE COMPACT) --- */
+.farm-grid-2 .farm-list-btn {
+    padding: 10px 5px;
+    min-height: 85px;
+    justify-content: center;
+}
+.farm-grid-2 .farm-btn-left {
+    width: 100%;
+    justify-content: center;
+}
+.farm-grid-2 .farm-btn-info {
+    align-items: center; /* Centre le texte */
+    text-align: center;
+    width: 100%;
+}
+.farm-grid-2 .farm-btn-title {
+    font-size: 0.95rem; /* Réduit la police pour éviter les coupures */
+    white-space: normal; /* Autorise le texte à passer à la ligne */
+    line-height: 1.2;
+}
+.farm-grid-2 .farm-btn-subtitle {
+    font-size: 0.75rem;
+    margin-top: 4px;
+}
+
 .farm-list-btn:active { transform: scale(0.98); }
 .farm-btn-left { display: flex; align-items: center; gap: 15px; }
 .farm-btn-info { display: flex; flex-direction: column; }
@@ -677,6 +702,22 @@ select#farm-filter { display: block !important; width: 100%; height: 50px; font-
         </button>
     </div>
 
+    <div id="lottery-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 9999; justify-content: center; align-items: center; backdrop-filter: blur(5px);">
+        <div style="background: linear-gradient(145deg, #1c1c1d, #2c2c2e); border: 2px solid var(--brand-color); border-radius: 20px; padding: 25px; width: 70%; max-width: 350px; text-align: center; box-shadow: 0 10px 30px var(--brand-shadow); position: relative;">
+            <button id="close-lottery" style="position: absolute; top: 10px; right: 15px; background: none; border: none; color: var(--hint-color); font-size: 1.8rem; cursor: pointer;">&times;</button>
+            <h2 style="margin-top: 0; font-family: impact, sans-serif; color: var(--brand-color); letter-spacing: 1px;">🎰 GRANDE LOTERIE</h2>
+            <p style="font-size: 0.95rem; line-height: 1.5; color: #fff; margin-bottom: 20px;">1000 Tickets au total ! Plus tu commandes, plus tu as de chances de gagner :</p>
+            <div style="text-align: left; background: rgba(0,0,0,0.3); padding: 15px; border-radius: 12px; margin-bottom: 20px; font-size: 0.95rem;">
+                <div style="margin-bottom: 8px;">💶 <b>50€</b> = 🎟 1 Ticket</div>
+                <div style="margin-bottom: 8px;">💶 <b>100€</b> = 🎟 2 Tickets</div>
+                <div style="margin-bottom: 8px;">💶 <b>200€</b> = 🎟 4 Tickets</div>
+                <div style="margin-bottom: 8px;">💶 <b>300€</b> = 🎟 6 Tickets</div>
+                <div style="margin-bottom: 0;">💶 <b>500€ et +</b> = 🎟 15 Tickets</div>
+            </div>
+            <button id="btn-understand-lottery" style="background: var(--brand-color); color: black; border: none; padding: 12px 20px; font-weight: bold; border-radius: 10px; width: 100%; font-size: 1.1rem; cursor: pointer; text-shadow: none;">J'AI COMPRIS</button>
+        </div>
+    </div>
+ 
     <div id="notification-toast"></div>
     <script src="script.js"></script>
 </body>
