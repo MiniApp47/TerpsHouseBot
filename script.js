@@ -173,9 +173,92 @@ if (activeConfig.luffa) {
 
     // Menu PARIS (75)
     const catalog75 = [
-        { id: 'HASH', name: '🍫 HASH 75', type: 'Hash', quality: '🍫 Hashish', image: 'CategT75Hash.png', farms: [ /* ... Produits exclusifs 75 ... */ ] },
-        { id: 'WEED', name: '🌿 WEED 75', type: 'Weed', quality: '🌿 Fleurs', image: 'CategT75Weed.png', farms: [ /* ... */ ] },
-        { id: 'AUTRE', name: '🧬 AUTRE', type: 'Autre', quality: '🧬 Divers', image: 'CategT75Autre.png', farms: [ /* ... */ ] }
+        { 
+            id: 'HASH', name: '🍫 HASH 75', type: 'Hash', quality: '🍫 Hashish', image: 'CategT75Hash.png', 
+            farms: [
+                { id: 'FROZEN_US', name: 'FROZEN US 🇺🇸', products: [
+                    {
+                        id: 'FROZEN_THE_MIDDLE_75', 
+                        name: 'FROZEN The Middle 🇺🇸',
+                        farm: 'The Middle 🌱',
+                        strains: ['🍊 Orangina', '🍬 Zgusher'],
+                        description: '🍊 Orangina  \n Strain très fruitée avec des notes d’agrumes et d’orange sucrée. Profil terpénique frais et intense, avec un goût bien marqué et une fumée douce. Effet relaxant et agréable, parfait pour chiller.\n\n 🍬 Zgusher  \n Profil très gourmand avec des arômes sucrés type bonbons et fruits tropicaux. Très riche en terpènes, texture bien collante et goût puissant. Effet équilibré, relaxant mais qui garde l’esprit léger',
+                        image: 'ProductFrozTh.jpg',
+                        video: 'VideoFrozTh.mp4',
+                        tarifs: [{weight: '1g', price: 30}, {weight: '5g', price: 120}, {weight: '10g', price: 230}]
+                    }
+                ]},
+                { id: 'FROZEN', name: 'FROZEN ❄️', products: [
+                    {
+                        id: 'FROZEN_VVS_75',
+                        name: 'FROZEN VVS ❄️',
+                        farm: '🧬 VVS',
+                        strains: ['🥇 24K', '🍊 Tanger', '🧀 Cheese Berry', '🍹 Tropicalito'],
+                        description: '🥇 24K: gas sucré + touche orangée, bien lourd.\n🍊 Tanger: agrumes frais, high clean.\n🧀 Cheese Berry: fromage doux + fruits rouges.\n🍹 Tropicalito: cocktail tropical sucré.',
+                        image: 'Produit24K.jpg',
+                        video: 'Video24K.mov',
+                        tarifs: [{weight: '1.1g', price: 20}, {weight: '5g', price: 80}, {weight: '10g', price: 140}]
+                    }
+                ]},
+                { id: 'DRY_120', name: 'DRY 120u 🛖', products: [
+                    {
+                        id: 'DRY_120_PIRATE_75',
+                        name: 'BUBBA DRY (120u) 🏴‍☠️',
+                        farm: '🧬 Pirate Del Sur',
+                        strains: [],
+                        description: 'Bubba Dry c’est un hash old school, lourd et réconfortant 😮‍💨\nArômes terreux / chocolaté / légère note café, fumée douce et bien grasse.',
+                        image: 'ProductPirate.jpg',
+                        video: 'VideoPirate.mov',
+                        tarifs: [{weight: '1.4g', price: 20}, {weight: '5g', price: 70}, {weight: '10g', price: 120}, {weight: '25g', price: 260}]
+                    }
+                ]},
+                { id: 'DRY_90', name: 'DRY 90u ⚡️', products: [
+                    {
+                        id: 'CaliH_75',
+                        name: 'CaliH 🎓', 
+                        farm: '🎩 Darks Farm',
+                        strains: ['RS11', 'Papaya', 'Sherbalto'],
+                        description: 'RS11 : Profil fruité/candy, léger gaz (effet équilibré) \n  Papaya : Tropical sucré mangue/papaye (relax corporel marqué) \n  Sherbalto : Crémeux dessert + touche gas (calmant, parfait le soir).',
+                        image: 'Product90Rs.jpg',
+                        video: 'Video90Rs.mov',
+                        tarifs: [
+                            {weight: '2.2g 📍 (Sur place)', price: 20}, 
+                            {weight: '5g', price: 60}, 
+                            {weight: '10g', price: 110}, 
+                            {weight: '25g', price: 250}, 
+                            {weight: '50g', price: 450}, 
+                            {weight: '100g', price: 660}
+                        ]
+                    }
+                ]},
+                { id: 'DRY_73', name: 'DRY 73u', products: [
+                    {
+                        id: 'DRY_73_JEBLI_75',
+                        name: 'GELATO (73u) 🍦',
+                        farm: '🧬 Jebli Farm',
+                        strains: [],
+                        description: '73u souple, bien chargé en heads, fumée grasse, goût crémeux sucré.\nDaily efficace, clean et constant 😮‍💨',
+                        image: 'ProductGG.jpg',
+                        video: 'VideoGG.mp4',
+                        tarifs: [{weight: '5g', price: 40}, {weight: '10g', price: 60}, {weight: '25g', price: 130}, {weight: '50g', price: 250}, {weight: '100g', price: 380}]
+                    }
+                ]},
+                { id: 'STATIC', name: 'STATIC ⚡️', products: [
+                    {
+                        id: 'STATIC_VVS_75',
+                        name: 'STATIC VVS 2K25 💎',
+                        farm: '🧬 VVS',
+                        strains: ['🍓 Devil Fruit', '🍪 Glue Cookies', '🌈 Rainbow Sherbet', '🍈 Guava Melon'],
+                        description: '🍓 Devil Fruit: Fruité avec une pointe gas.\n🍪 Glue Cookies: Gourmand + collant, cookies/gassy.\n🌈 Rainbow Sherbet: Profil plus terreux que sucré.\n🍈 Guava Melon: Tropical frais, melon/guava bien présent.',
+                        image: 'ProductDevil.jpg',
+                        video: 'VideoDevil.mp4',
+                        tarifs: [{weight: '1g', price: 20}, {weight: '5g', price: 100}, {weight: '10g', price: 190}, {weight: '20g', price: 360}, {weight: '25g', price: 430}]
+                    }
+                ]}
+            ] 
+        },
+        { id: 'WEED', name: '🌿 WEED 75', type: 'Weed', quality: '🌿 Fleurs', image: 'CategT75Weed.png', farms: [] },
+        { id: 'AUTRE', name: '🧬 AUTRE', type: 'Autre', quality: '🧬 Divers', image: 'CategT75Autre.png', farms: [] }
     ];
 
     // Menu BRUXELLES (BXL)
@@ -238,7 +321,7 @@ if (activeConfig.luffa) {
             ]},
             { id: 'FROZEN_US', name: 'FROZEN US 🇺🇸', products: [
                 {
-                    id: 'FROZEN_CALIPLATES',
+                    id: 'FROZEN_Midle',
                     name: 'FROZEN The Middle 🇺🇸', // Différencié
                     farm: 'The Middle 🌱',
                     strains: ['🍊 Orangina', '🍬 Zgusher'],
@@ -397,11 +480,11 @@ if (activeConfig.luffa) {
             ]},
             { id: 'JAUNE', name: 'JAUNE 🧽', products: [
                 {
-                    id: 'JAUNE_CLASSIQUE',
-                    name: 'JAUNE MOUSSEUX 🟡',
-                    farm: '🧬 Classique',
+                    id: 'OG 🎩',
+                    name: 'OG 🎩',
+                    farm: 'Cali Mousse 🦜',
                     strains: [],
-                    description: 'Daily simple et efficace, texture souple, fumée correcte — parfait pour le quotidien.',
+                    description: 'La OG est une variété de cannabis hybride Elle est connue pour ses arômes citronnés, terreux et légèrement diesel, ainsi que pour ses effets puissants mêlant euphorie mentale et relaxation du corps. Très populaire dans la culture cannabis, elle a servi de base à de nombreuses autres strains modernes. 🌿💨',
                     image: 'ProductJaune.jpg',
                     video: 'VideoJaune.mp4',
                     tarifs: [{weight: '5g', price: 30}, {weight: '10g', price: 50}, {weight: '25g', price: 110}, {weight: '50g', price: 180}, {weight: '100g', price: 350}]
