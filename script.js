@@ -61,6 +61,10 @@ document.addEventListener('DOMContentLoaded', function () {
             instagram: '',
             luffa: '',
             name: 'TerpsHouse75',
+            marquee: [
+                '📆 OUVERT TOUS LES JOURS DE 11H À 22H ⏰',
+                '🚨 SERVICE CONTINU 11H - 22H 🚨'
+            ],
             logo: 'LogoT75.jpg',
             bgImage: 'Fondecran.jpg',
             theme: { 
@@ -112,6 +116,27 @@ if (activeConfig.theme) {
     
 
     document.querySelectorAll('.dynamic-app-name').forEach(el => el.innerText = `👑 ${activeConfig.name.toUpperCase()} 👑`);
+
+    // --- INJECTION DYNAMIQUE DU BANDEAU DÉFILANT (MARQUEE) ---
+    const marqueeContent = document.querySelector('.marquee-content');
+    if (marqueeContent) {
+        // Horaires par défaut (72, BXL, etc.)
+        const defaultMarquee = [
+            '📆 OUVERT DU LUNDI AU SAMEDI DE 12H30 À 00H ⏰',
+            '🚨 DIMANCHE OUVERTURE À 13H30 🚨'
+        ];
+        
+        // On prend les horaires spécifiques si la franchise en a, sinon on met par défaut
+        const msgs = activeConfig.marquee || defaultMarquee;
+        
+        // On injecte le texte 4 fois pour faire la boucle infinie sans coupure
+        marqueeContent.innerHTML = `
+            <span>${msgs[0]}</span>
+            <span>${msgs[1] ? msgs[1] : msgs[0]}</span>
+            <span>${msgs[0]}</span>
+            <span>${msgs[1] ? msgs[1] : msgs[0]}</span>
+        `;
+    }
     
     const dynamicLogos = document.querySelectorAll('#page-loader img, .home-logo, .contact-logo');
     dynamicLogos.forEach(img => { img.src = activeConfig.logo || ''; });
@@ -222,7 +247,6 @@ if (activeConfig.luffa) {
                         image: 'Product90Rs.jpg',
                         video: 'Video90Rs.mov',
                         tarifs: [
-                            {weight: '2.2g 📍 (Sur place)', price: 20}, 
                             {weight: '5g', price: 60}, 
                             {weight: '10g', price: 110}, 
                             {weight: '25g', price: 250}, 
