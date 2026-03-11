@@ -1,4 +1,12 @@
 document.addEventListener('DOMContentLoaded', function () {
+
+    // --- MOTEUR DE FERMETURE AUTOMATIQUE (23h - 12h) ---
+    function isShopOpen() {
+        const now = new Date();
+        const hour = now.getHours();
+        // Fermé si heure >= 23 OU heure < 12
+        return !(hour >= 23 || hour < 12);
+    }
     // 1. ISOLATION TELEGRAM / WEB CLASSIC
     const isTelegram = window.Telegram && window.Telegram.WebApp && window.Telegram.WebApp.initData !== "";
     const tg = isTelegram ? window.Telegram.WebApp : null;
@@ -785,7 +793,23 @@ if (activeConfig.luffa) {
                 ]
             },
         ] },
-        { id: 'KETAMINE', name: '🐴 KETAMINE', type: 'Ketamine', quality: 'Premium', image: 'CategKeta.png', products: [] }
+        { id: 'KETAMINE', name: '🐴 KETAMINE', type: 'Ketamine', quality: 'Premium', image: 'CategKeta.png', products: [
+            {
+                id: 'KETA',
+                name: 'Keta White',
+                farm: 'StrongSelection 🏆',
+                strains: [], // Plus de sélection
+                description: '',
+                image: 'ProductKet.jpg',
+                video: 'VideoKet.mp4',
+                tarifs: [
+                    {weight: '1g', price: 30},
+                    {weight: '2g', price: 50},
+                    {weight: '5g', price: 100},
+                    {weight: '10g', price: 180},
+                ]
+            },
+        ] }
     ];
 
 // Dictionnaire d'attribution des menus
@@ -1110,59 +1134,74 @@ const appData = menuRouter[currentFranchise] || catalog72;
 // --- GÉNÉRATION DYNAMIQUE DES BOUTONS DE COMMANDE ---
 const checkoutBtnsContainer = document.getElementById('dynamic-checkout-buttons');
 let checkoutHTML = '';
-const orderMsgEncoded = formatOrderMessage();
 
-const tgStyle = `background: linear-gradient(45deg, #2a67ee, #16e6d5); color: black; text-shadow: none;`;
-const waStyle = `background: linear-gradient(45deg, #25D366, #128C7E); text-shadow: 0px 1px 2px rgba(0,0,0,0.5);`;
-
-// --- NOUVEAU SYSTÈME 72 : SÉLECTEUR + BOT UNIQUE ---
-if (currentFranchise === '72') {
-    checkoutHTML += `
-      <div style="margin-bottom: 15px;">
-          <div style="color: var(--text-color); font-size: 0.9rem; margin-bottom: 8px; font-weight: bold;">📦 Mode de retrait :</div>
-          <select id="order-mode-select" style="width: 100%; padding: 12px; border-radius: 12px; border: 1px solid var(--brand-color); background: rgba(0,0,0,0.5); color: white; font-size: 1rem; outline: none;">
-              <option value="Livraison">🚀 Livraison (Min. 50€)</option>
-              <option value="MeetUp">🤝 MeetUp (Sur place)</option>
-          </select>
-      </div>
-      <div style="width: 100%; margin-bottom: 15px; text-align: left;">
-          <div style="color: var(--text-color); font-size: 0.9rem; margin-bottom: 8px; font-weight: bold;">📍 Adresse (Obligatoire pour livraison) :</div>
-          <textarea id="delivery-address" placeholder="N° Rue, Ville, Code Postal... (Laisse vide si MeetUp)" style="width: 100%; box-sizing: border-box; padding: 12px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.3); color: white; min-height: 65px; font-family: inherit; font-size: 1rem;"></textarea>
-      </div>
-      <button class="main-action-btn send-order-btn" data-platform="telegram" data-url="${activeConfig.telegram}?text=${orderMsgEncoded}" data-is-bot="true" style="${tgStyle}; margin-bottom: 10px;">ENVOYER AU BOT 🤖</button>
+// 1. VÉRIFICATION DE L'HORAIRE (Désactive la commande entre 23h et 12h)
+if (!isShopOpen()) {
+    checkoutHTML = `
+        <div style="background: rgba(255, 59, 48, 0.2); border: 2px solid #ff3b30; color: #ff3b30; padding: 20px; border-radius: 15px; text-align: center; font-weight: bold; margin-bottom: 20px;">
+            <div style="font-size: 1.5rem; margin-bottom: 10px;">🌙 FERMÉ</div>
+            Nous sommes actuellement fermés. <br> Reviens demain à partir de 12H ! 🌿
+        </div>
     `;
+    // Cache le bouton de validation du panier pour éviter toute confusion
+    const checkoutBtn = document.getElementById('checkout-button');
+    if (checkoutBtn) checkoutBtn.style.display = 'none';
 } 
-// --- SYSTÈME CLASSIQUE POUR LES AUTRES FRANCHISES ---
 else {
-    if (activeConfig.telegramLivraison || activeConfig.phone) {
+    // LE MAGASIN EST OUVERT -> ON GÉNÈRE LES BOUTONS
+    const orderMsgEncoded = formatOrderMessage();
+    const tgStyle = `background: linear-gradient(45deg, #2a67ee, #16e6d5); color: black; text-shadow: none;`;
+    const waStyle = `background: linear-gradient(45deg, #25D366, #128C7E); text-shadow: 0px 1px 2px rgba(0,0,0,0.5);`;
+
+    // --- SYSTÈME SPÉCIFIQUE FRANCHISE 72 (BOT + SÉLECTEUR MODE) ---
+    if (currentFranchise === '72') {
         checkoutHTML += `
+          <div style="margin-bottom: 15px;">
+              <div style="color: var(--text-color); font-size: 0.9rem; margin-bottom: 8px; font-weight: bold;">📦 Mode de retrait :</div>
+              <select id="order-mode-select" style="width: 100%; padding: 12px; border-radius: 12px; border: 1px solid var(--brand-color); background: rgba(0,0,0,0.5); color: white; font-size: 1rem; outline: none;">
+                  <option value="Livraison">🚀 Livraison (Min. 50€)</option>
+                  <option value="MeetUp">🤝 MeetUp (Sur place)</option>
+              </select>
+          </div>
           <div style="width: 100%; margin-bottom: 15px; text-align: left;">
               <div style="color: var(--text-color); font-size: 0.9rem; margin-bottom: 8px; font-weight: bold;">📍 Adresse (Obligatoire pour livraison) :</div>
-              <textarea id="delivery-address" placeholder="N° Rue, Ville, Code Postal... (Laisse vide si Sur Place)" style="width: 100%; box-sizing: border-box; padding: 12px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.3); color: white; min-height: 65px; font-family: inherit; font-size: 1rem;"></textarea>
-              <div style="font-size: 0.8rem; color: var(--brand-color); margin-top: 5px; text-align: right; font-weight: bold;">⚠️ Minimum de commande pour la livraison : 50€</div>
+              <textarea id="delivery-address" placeholder="N° Rue, Ville, Code Postal... (Laisse vide si MeetUp)" style="width: 100%; box-sizing: border-box; padding: 12px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.3); color: white; min-height: 65px; font-family: inherit; font-size: 1rem;"></textarea>
           </div>
+          <button class="main-action-btn send-order-btn" data-platform="telegram" data-url="${activeConfig.telegram}?text=${orderMsgEncoded}" data-is-bot="true" style="${tgStyle}; margin-bottom: 10px;">ENVOYER AU BOT 🤖</button>
         `;
-    }
+    } 
+    // --- SYSTÈME CLASSIQUE (AUTRES FRANCHISES) ---
+    else {
+        if (activeConfig.telegramLivraison || activeConfig.phone) {
+            checkoutHTML += `
+              <div style="width: 100%; margin-bottom: 15px; text-align: left;">
+                  <div style="color: var(--text-color); font-size: 0.9rem; margin-bottom: 8px; font-weight: bold;">📍 Adresse (Obligatoire pour livraison) :</div>
+                  <textarea id="delivery-address" placeholder="N° Rue, Ville, Code Postal... (Laisse vide si Sur Place)" style="width: 100%; box-sizing: border-box; padding: 12px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.3); color: white; min-height: 65px; font-family: inherit; font-size: 1rem;"></textarea>
+                  <div style="font-size: 0.8rem; color: var(--brand-color); margin-top: 5px; text-align: right; font-weight: bold;">⚠️ Minimum de commande pour la livraison : 50€</div>
+              </div>
+            `;
+        }
 
-    if (activeConfig.telegramLivraison) checkoutHTML += `<button class="main-action-btn send-order-btn" data-platform="telegram" data-url="${activeConfig.telegramLivraison}?text=${orderMsgEncoded}" data-is-delivery="true" style="${tgStyle}; margin-bottom: 10px;">TLG LIVRAISON 🚀</button>`;
-    if (activeConfig.telegramSurPlace) checkoutHTML += `<button class="main-action-btn send-order-btn" data-platform="telegram" data-url="${activeConfig.telegramSurPlace}?text=${orderMsgEncoded}" style="${tgStyle}; margin-bottom: 10px;">TLG SUR PLACE 🤝</button>`;
-    if (activeConfig.telegram && !activeConfig.telegramLivraison) checkoutHTML += `<button class="main-action-btn send-order-btn" data-platform="telegram" data-url="${activeConfig.telegram}?text=${orderMsgEncoded}" style="${tgStyle}; margin-bottom: 10px;">TÉLÉGRAM 💙</button>`;
+        if (activeConfig.telegramLivraison) checkoutHTML += `<button class="main-action-btn send-order-btn" data-platform="telegram" data-url="${activeConfig.telegramLivraison}?text=${orderMsgEncoded}" data-is-delivery="true" style="${tgStyle}; margin-bottom: 10px;">TLG LIVRAISON 🚀</button>`;
+        if (activeConfig.telegramSurPlace) checkoutHTML += `<button class="main-action-btn send-order-btn" data-platform="telegram" data-url="${activeConfig.telegramSurPlace}?text=${orderMsgEncoded}" style="${tgStyle}; margin-bottom: 10px;">TLG SUR PLACE 🤝</button>`;
+        if (activeConfig.telegram && !activeConfig.telegramLivraison) checkoutHTML += `<button class="main-action-btn send-order-btn" data-platform="telegram" data-url="${activeConfig.telegram}?text=${orderMsgEncoded}" style="${tgStyle}; margin-bottom: 10px;">TÉLÉGRAM 💙</button>`;
 
-    if (activeConfig.phone) {
-        checkoutHTML += `
-            <div id="toggle-whatsapp-btn" style="text-align: center; margin-top: 5px; margin-bottom: 15px; cursor: pointer; padding: 10px;">
-                <span style="color: var(--hint-color); font-size: 0.9rem; text-decoration: underline; font-style: italic;">Uniquement si tu n'as pas Telegram 📞</span>
-            </div>
-            <div id="whatsapp-buttons-container" style="display: none; flex-direction: column; width: 100%;">
-                <button class="main-action-btn send-order-btn" data-platform="whatsapp" data-url="https://wa.me/${activeConfig.phone}?text=${orderMsgEncoded}" data-is-delivery="true" style="${waStyle}; margin-bottom: 10px;">WHATSAPP LIVRAISON 🚀</button>
-                <button class="main-action-btn send-order-btn" data-platform="whatsapp" data-url="https://wa.me/${activeConfig.phone}?text=${orderMsgEncoded}" style="${waStyle}; margin-bottom: 10px;">WHATSAPP SUR PLACE 🤝</button>
-            </div>
-        `;
+        if (activeConfig.phone) {
+            checkoutHTML += `
+                <div id="toggle-whatsapp-btn" style="text-align: center; margin-top: 5px; margin-bottom: 15px; cursor: pointer; padding: 10px;">
+                    <span style="color: var(--hint-color); font-size: 0.9rem; text-decoration: underline; font-style: italic;">Uniquement si tu n'as pas Telegram 📞</span>
+                </div>
+                <div id="whatsapp-buttons-container" style="display: none; flex-direction: column; width: 100%;">
+                    <button class="main-action-btn send-order-btn" data-platform="whatsapp" data-url="https://wa.me/${activeConfig.phone}?text=${orderMsgEncoded}" data-is-delivery="true" style="${waStyle}; margin-bottom: 10px;">WHATSAPP LIVRAISON 🚀</button>
+                    <button class="main-action-btn send-order-btn" data-platform="whatsapp" data-url="https://wa.me/${activeConfig.phone}?text=${orderMsgEncoded}" style="${waStyle}; margin-bottom: 10px;">WHATSAPP SUR PLACE 🤝</button>
+                </div>
+            `;
+        }
     }
 }
 
-// --- AFFICHAGE DE LA RÉCOMPENSE LOTERIE (UNIQUEMENT 72) ---
-if (currentFranchise === '72') {
+// --- RÉCOMPENSE LOTERIE (Affiche au-dessus des boutons si > 50€ sur le 72) ---
+if (currentFranchise === '72' && isShopOpen()) {
     const ticketsEarned = calculateTickets(subTotal);
     if (ticketsEarned > 0) {
         checkoutHTML = `
