@@ -1167,7 +1167,7 @@ else {
               <div style="color: var(--text-color); font-size: 0.9rem; margin-bottom: 8px; font-weight: bold;">📍 Adresse (Obligatoire pour livraison) :</div>
               <textarea id="delivery-address" placeholder="N° Rue, Ville, Code Postal... (Laisse vide si MeetUp)" style="width: 100%; box-sizing: border-box; padding: 12px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.3); color: white; min-height: 65px; font-family: inherit; font-size: 1rem;"></textarea>
           </div>
-          <button class="main-action-btn send-order-btn" data-platform="telegram" data-url="${activeConfig.telegram}?text=${orderMsgEncoded}" data-is-bot="true" style="${tgStyle}; margin-bottom: 10px;">ENVOYER AU BOT 🤖</button>
+          <button class="main-action-btn send-order-btn" data-platform="telegram" data-url="${activeConfig.telegram}?text=${orderMsgEncoded}" data-is-bot="true" style="${tgStyle}; margin-bottom: 10px;">ENVOYER LA COMMANDE 📩</button>
         `;
     } 
     // --- SYSTÈME CLASSIQUE (AUTRES FRANCHISES) ---
