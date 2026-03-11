@@ -425,7 +425,7 @@ if (activeConfig.luffa) {
                     description: 'Du 120u propre, pas sec, bien chargé en heads.\nProduit typé dessert strain : gourmand, aromatique, efficace.\nEffet : relaxant profond + mental clean. Idéal fin de journée.',
                     image: 'ProductTira.jpg',
                     video: 'VideoTira.mov',
-                    tarifs: [{weight: '1 olive', price: 130}, {weight: '5 olives', price: 500}, {weight: '10 olives', price: 850}]
+                    tarifs: [{weight: '1 olive', price: 100}, {weight: '5 olives', price: 450}, {weight: '10 olives', price: 780}]
                 },
                 {
                     id: 'DRY_120_PIRATE',
