@@ -243,7 +243,7 @@ if (activeConfig.luffa) {
                         description: 'Bubba Dry c’est un hash old school, lourd et réconfortant 😮‍💨\nArômes terreux / chocolaté / légère note café, fumée douce et bien grasse.',
                         image: 'ProductPirate.jpg',
                         video: 'VideoPirate.mov',
-                        tarifs: [{weight: '1.4g', price: 20}, {weight: '5g', price: 70}, {weight: '10g', price: 120}, {weight: '25g', price: 260}]
+                        tarifs: [{weight: '1.6g', price: 20}, {weight: '5g', price: 60}, {weight: '10g', price: 100}, {weight: '25g', price: 240}]
                     }
                 ]},
                 { id: 'DRY_90', name: 'DRY 90u ⚡️', products: [
@@ -425,7 +425,7 @@ if (activeConfig.luffa) {
                     description: 'Du 120u propre, pas sec, bien chargé en heads.\nProduit typé dessert strain : gourmand, aromatique, efficace.\nEffet : relaxant profond + mental clean. Idéal fin de journée.',
                     image: 'ProductTira.jpg',
                     video: 'VideoTira.mov',
-                    tarifs: [{weight: '1 olive', price: 100}, {weight: '5 olives', price: 450}, {weight: '10 olives', price: 780}]
+                    tarifs: [{weight: '1 olive', price: 90}, {weight: '5 olives', price: 450}, {weight: '10 olives', price: 780}]
                 },
                 {
                     id: 'DRY_120_PIRATE',
@@ -459,11 +459,11 @@ if (activeConfig.luffa) {
                     video: 'Video90Rs.mov',
                     tarifs: [
                         {weight: '2.2g 📍 (Sur place)', price: 20}, 
-                        {weight: '5g', price: 60}, 
-                        {weight: '10g', price: 110}, 
-                        {weight: '25g', price: 250}, 
-                        {weight: '50g', price: 450}, 
-                        {weight: '100g', price: 660}
+                        {weight: '5g', price: 50}, 
+                        {weight: '10g', price: 90}, 
+                        {weight: '25g', price: 220}, 
+                        {weight: '50g', price: 400}, 
+                        {weight: '100g', price: 700}
                     ]
                 },
                 {
@@ -474,7 +474,11 @@ if (activeConfig.luffa) {
                     description: 'Sélection Dry 90u VVS, qualité premium, nombreux strains disponibles (à choisir).',
                     image: 'Product90.jpg',
                     video: 'Video90.mp4',
-                    tarifs: [{weight: '5g', price: 50}, {weight: '10g', price: 90}, {weight: '50g', price: 360}, {weight: '100g', price: 600}]
+                    tarifs: [
+                        {weight: '5g', price: 40},
+                         {weight: '10g', price: 80},
+                          {weight: '50g', price: 340},
+                           {weight: '100g', price: 640}]
                 },
                 {
                     id: 'DRY_90_GAZFRUIT',
@@ -484,7 +488,9 @@ if (activeConfig.luffa) {
                     description: 'Profil fromagé / gaz / fruit mûr, bien marqué dès l’ouverture.\nFumée grasse, goût qui reste en bouche 😮‍💨\n90u bien chargé en heads, texture souple, aromatique et efficace.',
                     image: 'ProductMilo.jpg',
                     video: 'VideoMilo.mov',
-                    tarifs: [{weight: '5g', price: 70}, {weight: '10g', price: 130}]
+                    tarifs: [
+                    {weight: '5g', price: 50},
+                     {weight: '10g', price: 90}]
                 }
             ]},
             { id: 'DRY_73', name: 'DRY 73u', products: [
@@ -496,7 +502,12 @@ if (activeConfig.luffa) {
                     description: '73u souple, bien chargé en heads, fumée grasse, goût crémeux sucré.\nDaily efficace, clean et constant 😮‍💨',
                     image: 'ProductGG.jpg',
                     video: 'VideoGG.mp4',
-                    tarifs: [{weight: '5g', price: 40}, {weight: '10g', price: 60}, {weight: '25g', price: 130}, {weight: '50g', price: 250}, {weight: '100g', price: 380}]
+                    tarifs: [
+                        {weight: '5g', price: 40},
+                         {weight: '10g', price: 60},
+                          {weight: '25g', price: 120},
+                           {weight: '50g', price: 220},
+                            {weight: '100g', price: 350}]
                 }
             ]},
             { id: 'SEMI_DRY', name: 'SEMI DRY', products: [
@@ -1153,23 +1164,28 @@ else {
     const tgStyle = `background: linear-gradient(45deg, #2a67ee, #16e6d5); color: black; text-shadow: none;`;
     const waStyle = `background: linear-gradient(45deg, #25D366, #128C7E); text-shadow: 0px 1px 2px rgba(0,0,0,0.5);`;
 
-    // --- SYSTÈME SPÉCIFIQUE FRANCHISE 72 (BOT + SÉLECTEUR MODE) ---
+    // --- NOUVEAU SYSTÈME 72 : SÉLECTEUR + ZONES DE LIVRAISON ---
     if (currentFranchise === '72') {
         checkoutHTML += `
           <div style="margin-bottom: 15px;">
               <div style="color: var(--text-color); font-size: 0.9rem; margin-bottom: 8px; font-weight: bold;">📦 Mode de retrait :</div>
               <select id="order-mode-select" style="width: 100%; padding: 12px; border-radius: 12px; border: 1px solid var(--brand-color); background: rgba(0,0,0,0.5); color: white; font-size: 1rem; outline: none;">
-                  <option value="Livraison">🚀 Livraison (Min. 50€)</option>
                   <option value="MeetUp">🤝 MeetUp (Sur place)</option>
+                  <option value="Zone0">🚀 Zone Le Mans (Min 50€)</option>
+                  <option value="Zone1">🚀 Zone 15km (Min 100€ + 10€ frais)</option>
+                  <option value="Zone2">🚀 Zone 25km (Min 200€ + 20€ frais)</option>
+                  <option value="Zone3">🚀 Zone 35km (Min 250€ + 30€ frais)</option>
+                  <option value="Zone4">🚀 Zone 40km (Min 300€ + 40€ frais)</option>
+                  <option value="Zone+">🚀 +40km (À voir avec livreur)</option>
               </select>
           </div>
           <div style="width: 100%; margin-bottom: 15px; text-align: left;">
-              <div style="color: var(--text-color); font-size: 0.9rem; margin-bottom: 8px; font-weight: bold;">📍 Adresse (Obligatoire pour livraison) :</div>
-              <textarea id="delivery-address" placeholder="N° Rue, Ville, Code Postal... (Laisse vide si MeetUp)" style="width: 100%; box-sizing: border-box; padding: 12px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.3); color: white; min-height: 65px; font-family: inherit; font-size: 1rem;"></textarea>
+              <div style="color: var(--text-color); font-size: 0.9rem; margin-bottom: 8px; font-weight: bold;">📍 Adresse précise :</div>
+              <textarea id="delivery-address" placeholder="Rue, Ville, Code Postal..." style="width: 100%; box-sizing: border-box; padding: 12px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.3); color: white; min-height: 65px; font-family: inherit; font-size: 1rem;"></textarea>
           </div>
-          <button class="main-action-btn send-order-btn" data-platform="telegram" data-url="${activeConfig.telegram}?text=${orderMsgEncoded}" data-is-bot="true" style="${tgStyle}; margin-bottom: 10px;">ENVOYER LA COMMANDE 📩</button>
+          <button class="main-action-btn send-order-btn" data-platform="telegram" data-url="${activeConfig.telegram}?text=${orderMsgEncoded}" data-is-bot="true" style="${tgStyle}; margin-bottom: 10px;">ENVOYER AU BOT 🤖</button>
         `;
-    } 
+    }
     // --- SYSTÈME CLASSIQUE (AUTRES FRANCHISES) ---
     else {
         if (activeConfig.telegramLivraison || activeConfig.phone) {
@@ -1470,30 +1486,38 @@ if (target.closest('.send-order-btn')) {
     const modeSelect = document.getElementById('order-mode-select');
     const selectedMode = modeSelect ? modeSelect.value : null;
 
-    // --- RÈGLE 72 : BOT UNIQUE AVEC SÉLECTEUR ---
-    if (isBot && selectedMode) {
-        // Boucliers si le client a choisi Livraison
-        if (selectedMode === 'Livraison') {
-            if (totalOrderPrice < 50) {
-                showNotification(`⚠️ Minimum 50€ pour la livraison (Ton panier : ${totalOrderPrice.toFixed(2)}€).`);
-                return; 
-            }
-            if (!adresseLivraison || adresseLivraison.trim() === "") {
-                if (addressInput) {
-                    addressInput.style.border = "2px solid var(--red-color)";
-                    setTimeout(() => addressInput.style.border = "1px solid rgba(255,255,255,0.2)", 2000);
-                }
-                showNotification("⚠️ L'adresse est obligatoire pour la livraison.");
-                return;
-            }
-            url += encodeURIComponent(`\n\n📦 Mode : 🚀 LIVRAISON\n📍 Adresse : ${adresseLivraison}`);
-        } 
-        // Règle si le client a choisi MeetUp
-        else if (selectedMode === 'MeetUp') {
-            let infoSupp = adresseLivraison.trim() !== "" ? `\n📍 Info supp : ${adresseLivraison}` : "";
-            url += encodeURIComponent(`\n\n📦 Mode : 🤝 MEETUP (Sur Place)${infoSupp}`);
+   // --- RÈGLE 72 : LOGISTIQUE ZONÉE ---
+   if (isBot && selectedMode) {
+    const zones = {
+        'Zone0': { min: 50, frais: 0, label: 'Zone Le Mans' },
+        'Zone1': { min: 100, frais: 10, label: 'Zone 15km' },
+        'Zone2': { min: 200, frais: 20, label: 'Zone 25km' },
+        'Zone3': { min: 250, frais: 30, label: 'Zone 35km' },
+        'Zone4': { min: 300, frais: 40, label: 'Zone 40km' },
+        'Zone+': { min: 0, frais: 'À voir', label: '+40km' }
+    };
+
+    if (selectedMode !== 'MeetUp') {
+        const zoneInfo = zones[selectedMode];
+        
+        // Vérification du Minimum
+        if (totalOrderPrice < zoneInfo.min) {
+            showNotification(`⚠️ Minimum ${zoneInfo.min}€ pour la ${zoneInfo.label}.`);
+            return;
         }
-    } 
+
+        // Vérification de l'Adresse
+        if (!adresseLivraison || adresseLivraison.trim() === "") {
+            showNotification("⚠️ Précise ton adresse pour la livraison.");
+            return;
+        }
+
+        const totalFinal = typeof zoneInfo.frais === 'number' ? (totalOrderPrice + zoneInfo.frais).toFixed(2) : totalOrderPrice.toFixed(2);
+        url += encodeURIComponent(`\n\n📦 Mode : 🚀 LIVRAISON (${zoneInfo.label})\n📍 Adresse : ${adresseLivraison}\n💸 Frais : ${zoneInfo.frais}€\n💰 TOTAL FINAL : ${totalFinal}€`);
+    } else {
+        url += encodeURIComponent(`\n\n📦 Mode : 🤝 MEETUP (Sur Place)\n📍 Info : ${adresseLivraison || 'Aucune'}`);
+    }
+}
     // --- RÈGLES CLASSIQUES POUR LES AUTRES FRANCHISES ---
     else {
         if (isDelivery) {
