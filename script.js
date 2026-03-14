@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', function () {
             categoryImages: { 'HASH': 'CategT37Hash.png', 'WEED': 'CategT37Weed.png', 'AUTRE': 'CategT37Autre.png' }
         },
         '75': { 
-            phone: '33753638658', 
+            phone: '33605824054', 
             telegram: 'https://t.me/terphouse75', 
             snapchat: '',
             instagram: '',
