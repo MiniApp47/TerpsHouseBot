@@ -927,7 +927,14 @@ const appData = menuRouter[currentFranchise] || catalog72;
         if (currentView === 'categories') {
             qualityFilterWrapper.style.display = 'flex';
             farmFilterWrapper.style.display = 'none';
-            productListContainer.style.gridTemplateColumns = 'repeat(1, 1fr)';
+            
+            // --- ROUTAGE INTELLIGENT DE LA GRILLE CATÉGORIES ---
+            if (currentFranchise === 'strong72') {
+                productListContainer.style.gridTemplateColumns = 'repeat(2, 1fr)'; // 2 colonnes pour Strong
+            } else {
+                productListContainer.style.gridTemplateColumns = 'repeat(1, 1fr)'; // 1 colonne pour le reste
+            }
+            
             renderCategoryList();
         } else if (currentView === 'farms') {
             qualityFilterWrapper.style.display = 'none';
@@ -1223,12 +1230,18 @@ const appData = menuRouter[currentFranchise] || catalog72;
                   <div style="margin-bottom: 15px;">
                       <div style="color: var(--text-color); font-size: 0.9rem; margin-bottom: 8px; font-weight: bold;">📦 Mode de retrait :</div>
                       <select id="order-mode-select" style="width: 100%; padding: 12px; border-radius: 12px; border: 1px solid var(--brand-color); background: rgba(0,0,0,0.5); color: white; font-size: 1rem; outline: none;">
-                          <option value="Livraison">🚀 Livraison (Min. 50€)</option>
                           <option value="MeetUp">🤝 MeetUp (Sur place)</option>
+                          <option value="Zone0">🚀 Paris & Proche (Min 50€)</option>
+                          <option value="Zone1">🚀 Zone 15km (Min 100€ + 10€ frais)</option>
+                          <option value="Zone2">🚀 Zone 25km (Min 200€ + 20€ frais)</option>
+                          <option value="Zone3">🚀 Zone 35km (Min 300€ + 30€ frais)</option>
+                          <option value="Zone4">🚀 Zone 45km (Min 400€ + 40€ frais)</option>
+                          <option value="Zone5">🚀 Zone 55km (Min 500€ + 50€ frais)</option>
+                          <option value="Zone+">🚀 +55km (À voir avec livreur)</option>
                       </select>
                   </div>
                   <div style="width: 100%; margin-bottom: 15px; text-align: left;">
-                      <div style="color: var(--text-color); font-size: 0.9rem; margin-bottom: 8px; font-weight: bold;">📍 Adresse (Obligatoire pour livraison) :</div>
+                      <div style="color: var(--text-color); font-size: 0.9rem; margin-bottom: 8px; font-weight: bold;">📍 Adresse précise :</div>
                       <textarea id="delivery-address" placeholder="N° Rue, Ville, Code Postal... (Laisse vide si MeetUp)" style="width: 100%; box-sizing: border-box; padding: 12px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.3); color: white; min-height: 65px; font-family: inherit; font-size: 1rem;"></textarea>
                   </div>
                   <button class="main-action-btn send-order-btn" data-platform="telegram" data-url="${activeConfig.telegram}?text=${orderMsgEncoded}" data-is-paris="true" style="${tgStyle}; margin-bottom: 10px;">COMMANDER SUR TÉLÉGRAM 💙</button>
@@ -1568,13 +1581,28 @@ if (target.closest('.send-order-btn')) {
     }
 }
 
-// --- RÈGLE 75 : SÉLECTEUR + TG/WA ---
+// --- RÈGLE 75 : SÉLECTEUR ZONÉ + TG/WA ---
 else if (isParis && selectedMode) {
-    if (selectedMode === 'Livraison') {
-        if (totalOrderPrice < 50) {
-            showNotification(`⚠️ Minimum 50€ pour la livraison (Ton panier : ${totalOrderPrice.toFixed(2)}€).`);
+    const zones75 = {
+        'Zone0': { min: 50, frais: 0, label: 'Paris & Proche' },
+        'Zone1': { min: 100, frais: 10, label: 'Zone 15km' },
+        'Zone2': { min: 200, frais: 20, label: 'Zone 25km' },
+        'Zone3': { min: 300, frais: 30, label: 'Zone 35km' },
+        'Zone4': { min: 400, frais: 40, label: 'Zone 45km' },
+        'Zone5': { min: 500, frais: 50, label: 'Zone 55km' },
+        'Zone+': { min: 0, frais: 'À voir', label: '+55km' }
+    };
+
+    if (selectedMode !== 'MeetUp') {
+        const zoneInfo = zones75[selectedMode];
+        
+        // Bouclier Anti-Pertes (Vérification du minimum syndical)
+        if (totalOrderPrice < zoneInfo.min) {
+            showNotification(`⚠️ Minimum ${zoneInfo.min}€ pour la ${zoneInfo.label} (Ton panier : ${totalOrderPrice.toFixed(2)}€).`);
             return; 
         }
+        
+        // Bouclier Logistique (Adresse obligatoire)
         if (!adresseLivraison || adresseLivraison.trim() === "") {
             const addrInput = document.getElementById('delivery-address');
             if (addrInput) {
@@ -1584,7 +1612,10 @@ else if (isParis && selectedMode) {
             showNotification("⚠️ L'adresse est obligatoire pour la livraison.");
             return;
         }
-        url += encodeURIComponent(`\n\n📦 Mode : 🚀 LIVRAISON\n📍 Adresse : ${adresseLivraison}`);
+        
+        // Calcul et injection des frais dans le message final
+        const totalFinal = typeof zoneInfo.frais === 'number' ? (totalOrderPrice + zoneInfo.frais).toFixed(2) : totalOrderPrice.toFixed(2);
+        url += encodeURIComponent(`\n\n📦 Mode : 🚀 LIVRAISON (${zoneInfo.label})\n📍 Adresse : ${adresseLivraison}\n💸 Frais : ${zoneInfo.frais}€\n💰 TOTAL FINAL : ${totalFinal}€`);
     } 
     else if (selectedMode === 'MeetUp') {
         let infoSupp = adresseLivraison.trim() !== "" ? `\n📍 Info supp : ${adresseLivraison}` : "";

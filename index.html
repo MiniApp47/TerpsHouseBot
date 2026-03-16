@@ -74,30 +74,47 @@
         }
 
         h1 { margin-top: 0; margin-bottom: 40px; font-size: 2rem; letter-spacing: 2px; text-shadow: 0px 0px 10px #b713ff; text-align: center; }
-        .grid { display: grid; grid-template-columns: 1fr; gap: 15px; width: 90%; }
+/* --- NOUVEAU SYSTÈME DE GRILLES DYNAMIQUES --- */
+.grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; width: 90%; }
+        .grid-1 { display: grid; grid-template-columns: 1fr; gap: 15px; width: 90%; margin-top: 5px; }
 
         .btn { 
-            background: linear-gradient(90deg, #2c2c2e, #3a1c42); 
-            padding: 12px 15px; 
+            background: linear-gradient(145deg, #2c2c2e, #3a1c42); 
             text-decoration: none; 
             color: white; 
-            border-radius: 12px; 
+            border-radius: 15px; 
             font-weight: bold; 
-            font-size: 1.1rem; 
             border: 1px solid #b713ff; 
             box-shadow: 0 4px 15px rgba(183, 19, 255, 0.2); 
-            min-height: 60px; 
             display: flex; 
             align-items: center; 
-            justify-content: flex-start;
-            gap: 20px; 
             transition: transform 0.2s; 
         }
         .btn:active { transform: scale(0.95); background: #b713ff; }
 
+        /* Style spécifique pour la grille de 2 (Carrés verticaux) */
+        .grid-2 .btn {
+            flex-direction: column;
+            justify-content: center;
+            padding: 20px 5px;
+            gap: 12px;
+            font-size: 0.85rem;
+            text-align: center;
+        }
+
+        /* Style spécifique pour la grille de 1 (Rectangle horizontal) */
+        .grid-1 .btn {
+            flex-direction: row;
+            justify-content: flex-start;
+            padding: 12px 20px;
+            gap: 20px;
+            font-size: 1.1rem;
+            min-height: 70px;
+        }
+
         .btn-logo {
-            width: 45px;
-            height: 45px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             object-fit: cover;
             border: 2px solid #b713ff;
@@ -110,9 +127,9 @@
             display: flex;
             align-items: center;
             text-align: center;
-            margin: 15px 0 5px 0;
-            width: 100%;
-        }
+            margin: 25px 0 10px 0;
+            width: 90%;
+        }        
         .section-separator::before,
         .section-separator::after {
             content: '';
@@ -155,7 +172,7 @@
     <img src="Logo.jpg" alt="TerpsHouse" class="main-hub-logo">
     <h1>SÉLECTIONNEZ VOTRE BOUTIQUE</h1>
     
-    <div class="grid">
+    <div class="grid-2">
         <a href="app.html?franchise=72" class="btn">
             <img src="LogoT72.png" class="btn-logo" alt="Logo 72">
             TERPS HOUSE 7️⃣2️⃣
@@ -171,16 +188,17 @@
             🇫🇷 TERPS HOUSE 75
         </a>
 
-        <a href="" class="btn">
-            <img src="LogoBxl.png" class="btn-logo locked-franchise" onclick="return false;" alt="Logo BXL">
+        <a href="" class="btn locked-franchise">
+            <img src="LogoBxl.png" class="btn-logo" onclick="return false;" alt="Logo BXL">
             TERPS HOUSE BXL 🇧🇪
         </a>
+    </div>
 
+    <div class="section-separator">
+        <span>⚡️ PRODUITS FESTIFS ⚡️</span>
+    </div>
 
-        <div class="section-separator">
-            <span>⚡️ PRODUITS FESTIFS ⚡️</span>
-        </div>
-
+    <div class="grid-1">
         <a href="app.html?franchise=strong72" class="btn">
             <img src="LogoStrong.png" class="btn-logo"  alt="Logo Strong">
             STRONG HOUSE 7️⃣2️⃣
