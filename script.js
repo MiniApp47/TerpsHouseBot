@@ -929,7 +929,7 @@ const appData = menuRouter[currentFranchise] || catalog72;
             farmFilterWrapper.style.display = 'none';
             
             // --- ROUTAGE INTELLIGENT DE LA GRILLE CATÉGORIES ---
-            if (currentFranchise === 'strong72') {
+            if (currentFranchise === 'strong72' || currentFranchise === '72') {
                 productListContainer.style.gridTemplateColumns = 'repeat(2, 1fr)'; // 2 colonnes pour Strong
             } else {
                 productListContainer.style.gridTemplateColumns = 'repeat(1, 1fr)'; // 1 colonne pour le reste
