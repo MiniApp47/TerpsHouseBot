@@ -345,6 +345,21 @@ if (activeConfig.luffa) {
                     id: 'STATIC_ANNONYMOUS',
                     name: 'STATIC ANNONYMOUS ', // Différencié
                     farm: '🧬 FARM ANONYMOUS',
+                    strains: ['Gelato 41 🍪','Spritzer 🍸', 'Ice cream cake 🧁','Wedding cake 🍰'],
+                    description: '',
+                    image: 'ProductSta.jpg',
+                    video: 'VideoSta.mov',
+                    tarifs: [
+                        { weight: '2.5g', price: 80 },
+                        { weight: '5g', price: 130 }, 
+                        { weight: '10g', price: 250 }, 
+                        { weight: '25g', price: 550 }
+                    ]
+                }
+               /*  {
+                    id: 'STATIC_ANNONYMOUS',
+                    name: 'STATIC ANNONYMOUS ', // Différencié
+                    farm: '🧬 FARM ANONYMOUS',
                     strains: ['Gelato 41 🍪', 'Ice cream cake 🧁', 'Wedding cake 🍰'],
                     description: '',
                     image: 'ProductStaticAno.png',
@@ -355,7 +370,7 @@ if (activeConfig.luffa) {
                         { weight: '10g', price: 250 }, 
                         { weight: '50g', price: 800 }
                     ]
-                }
+                } */
             ]},
             { id: 'STATIC_US', name: 'STATIC US 🇺🇸', products: [
                 {
@@ -640,9 +655,15 @@ if (activeConfig.luffa) {
                     farm: '🇪🇦 Weed Espagnol',
                     strains: [], // Plus de sélection
                     description: '',
-                    image: 'ProductAmne.png',
-                    video: 'VideoAmne.mov',
-                    tarifs: [{weight: '5g (Sur Place)', price: 40}, {weight: '10g (Sur Place)', price: 70}]
+                    image: 'ProductAmne.jpg',
+                    video: 'VideoAmne.mp4',
+                    tarifs: [
+                        {weight: '5g', price: 40}, 
+                        {weight: '10g', price: 70},
+                        {weight: '25g', price: 160}, 
+                        {weight: '50g', price: 280}, 
+                        {weight: '100g', price: 520}
+                    ]
                 }
             ]
         }
