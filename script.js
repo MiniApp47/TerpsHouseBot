@@ -340,38 +340,6 @@ if (activeConfig.luffa) {
     {
         id: 'HASH', name: '🍫 HASH', type: 'Hash', quality: '🍫 Hashish', image: 'CategT72Hash.png',
         farms: [
-            { id: 'STATIC_ANNONYMOUS', name: 'STATIC ANNONYMOUS 😶‍🌫', products: [
-                {
-                    id: 'STATIC_ANNONYMOUS',
-                    name: 'STATIC ANNONYMOUS ', // Différencié
-                    farm: '🧬 FARM ANONYMOUS',
-                    strains: ['Gelato 41 🍪','Spritzer 🍸', 'Ice cream cake 🧁','Wedding cake 🍰'],
-                    description: '',
-                    image: 'ProductSta.jpg',
-                    video: 'VideoSta.mov',
-                    tarifs: [
-                        { weight: '2.5g', price: 80 },
-                        { weight: '5g', price: 130 }, 
-                        { weight: '10g', price: 250 }, 
-                        { weight: '25g', price: 550 }
-                    ]
-                }
-               /*  {
-                    id: 'STATIC_ANNONYMOUS',
-                    name: 'STATIC ANNONYMOUS ', // Différencié
-                    farm: '🧬 FARM ANONYMOUS',
-                    strains: ['Gelato 41 🍪', 'Ice cream cake 🧁', 'Wedding cake 🍰'],
-                    description: '',
-                    image: 'ProductStaticAno.png',
-                    video: 'VideoStaticAno.mov',
-                    tarifs: [
-                        { weight: '2.5g', price: 80 },
-                        { weight: '5g', price: 130 }, 
-                        { weight: '10g', price: 250 }, 
-                        { weight: '50g', price: 800 }
-                    ]
-                } */
-            ]},
             { id: 'STATIC_US', name: 'STATIC US 🇺🇸', products: [
                 {
                     id: 'STATIC_US_SAHA',
@@ -576,6 +544,21 @@ if (activeConfig.luffa) {
                     image: 'ProductDevil.jpg',
                     video: 'VideoDevil.mp4',
                     tarifs: [{weight: '1g', price: 20}, {weight: '5g', price: 100}, {weight: '10g', price: 190}, {weight: '20g', price: 360}, {weight: '25g', price: 430}]
+                },
+                {
+                    id: 'STATIC_ANNONYMOUS',
+                    name: 'STATIC ANNONYMOUS ', // Différencié
+                    farm: '🧬 FARM ANONYMOUS',
+                    strains: ['Gelato 41 🍪','Spritzer 🍸', 'Ice cream cake 🧁','Wedding cake 🍰'],
+                    description: '',
+                    image: 'ProductSta.jpg',
+                    video: 'VideoSta.mov',
+                    tarifs: [
+                        { weight: '2.5g', price: 80 },
+                        { weight: '5g', price: 130 }, 
+                        { weight: '10g', price: 250 }, 
+                        { weight: '25g', price: 550 }
+                    ]
                 }
             ]},
             { id: 'SINGLE_SOURCE', name: 'SINGLE SOURCE 💎', products: [
