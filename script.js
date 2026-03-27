@@ -352,7 +352,71 @@ if (activeConfig.luffa) {
                     tarifs: [{ weight: '1g', price: 50 }, { weight: '5g', price: 180 }, { weight: '10g', price: 300 }, { weight: '20g', price: 560 }]
                 }
             ]},
+            { id: 'STATIC', name: 'STATIC ⚡️', products: [
+                {
+                    id: '😮‍💨 Rainbow',
+                    name: '😮‍💨 Rainbow',
+                    farm: '🧬 PIRATE DEL SUR',
+                    strains: [],
+                    description: 'EXCLUSIVITÉ ( préparer vos papilles gustatives pour un goût d arc en ciel 🌈)',
+                    image: 'ProductRain.jpg',
+                    video: 'VideoRain.mp4',
+                    tarifs: [
+                        {weight: '2.5g', price: 60}, 
+                        {weight: '5g', price: 110}, 
+                        {weight: '10g', price: 200}, 
+                        {weight: '25g', price: 470}
+                    ]
+                },
+                {
+                    id: 'STATIC_VVS',
+                    name: 'STATIC VVS 2K25 💎',
+                    farm: '🧬 VVS',
+                    strains: ['🍓 Devil Fruit', '🍪 Glue Cookies', '🌈 Rainbow Sherbet', '🍈 Guava Melon'],
+                    description: '🍓 Devil Fruit: Fruité avec une pointe gas.\n🍪 Glue Cookies: Gourmand + collant, cookies/gassy.\n🌈 Rainbow Sherbet: Profil plus terreux que sucré.\n🍈 Guava Melon: Tropical frais, melon/guava bien présent.',
+                    image: 'ProductDevil.jpg',
+                    video: 'VideoDevil.mp4',
+                    tarifs: [{weight: '1g', price: 20}, {weight: '5g', price: 100}, {weight: '10g', price: 190}, {weight: '20g', price: 360}, {weight: '25g', price: 430}]
+                },
+                {
+                    id: 'STATIC_ANNONYMOUS',
+                    name: 'STATIC ANNONYMOUS ', // Différencié
+                    farm: '🧬 FARM ANONYMOUS',
+                    strains: ['Gelato 41 🍪','Spritzer 🍸', 'Ice cream cake 🧁','Wedding cake 🍰'],
+                    description: '',
+                    image: 'ProductSta.jpg',
+                    video: 'VideoSta.mov',
+                    tarifs: [
+                        { weight: '2.5g', price: 80 },
+                        { weight: '5g', price: 130 }, 
+                        { weight: '10g', price: 250 }, 
+                        { weight: '25g', price: 550 }
+                    ]
+                }
+            ]},
+            { id: 'SINGLE_SOURCE', name: 'SINGLE SOURCE 💎', products: [
+                {
+                    id: 'SINGLE_CALIPLATE',
+                    name: 'SINGLE SOURCE CALIPLATES 💎', // Différencié
+                    farm: '🧬 Cali Plate',
+                    strains: ['🏀 Gary Payton', '🍬 Gumbo', '🍇 Grappe Gas', '🍭 Jolly Rancher', '🌿 Bushmints'],
+                    description: '🏀 Gary Payton: gas crémeux, effet lourd.\n🍬 Gumbo: sucré épicé, détente profonde.\n🍇 Grappe Gas: raisin + gaz, très aromatique.\n🍭 Jolly Rancher: candy fruité.\n🌿 Bushmints: mentholé/gas, corps posé.',
+                    image: 'ProductGary.jpg',
+                    video: 'VideoGary.mp4',
+                    tarifs: [{weight: '2.5g', price: 80}, {weight: '5g', price: 150}, {weight: '10g', price: 280}, {weight: '20g', price: 540}]
+                }
+            ]},
             { id: 'FROZEN_US', name: 'FROZEN US 🇺🇸', products: [
+                {
+                    id: 'natchos',
+                    name: 'Natchos 🌵', // Différencié
+                    farm: '💃 Sheeshe 💃',
+                    strains: [],
+                    description: '',
+                    image: 'ProductNat.jpg',
+                    video: 'VideoNat.mp4',
+                    tarifs: [{weight: '1g', price: 30}, {weight: '5g', price: 120}, {weight: '10g', price: 230}]
+                },
                 {
                     id: 'FROZEN_Midle',
                     name: 'FROZEN The Middle 🇺🇸', // Différencié
@@ -534,45 +598,7 @@ if (activeConfig.luffa) {
                     tarifs: [{weight: '5g', price: 30}, {weight: '10g', price: 50}, {weight: '25g', price: 110}, {weight: '50g', price: 180}, {weight: '100g', price: 350}]
                 }
             ]},
-            { id: 'STATIC', name: 'STATIC ⚡️', products: [
-                {
-                    id: 'STATIC_VVS',
-                    name: 'STATIC VVS 2K25 💎',
-                    farm: '🧬 VVS',
-                    strains: ['🍓 Devil Fruit', '🍪 Glue Cookies', '🌈 Rainbow Sherbet', '🍈 Guava Melon'],
-                    description: '🍓 Devil Fruit: Fruité avec une pointe gas.\n🍪 Glue Cookies: Gourmand + collant, cookies/gassy.\n🌈 Rainbow Sherbet: Profil plus terreux que sucré.\n🍈 Guava Melon: Tropical frais, melon/guava bien présent.',
-                    image: 'ProductDevil.jpg',
-                    video: 'VideoDevil.mp4',
-                    tarifs: [{weight: '1g', price: 20}, {weight: '5g', price: 100}, {weight: '10g', price: 190}, {weight: '20g', price: 360}, {weight: '25g', price: 430}]
-                },
-                {
-                    id: 'STATIC_ANNONYMOUS',
-                    name: 'STATIC ANNONYMOUS ', // Différencié
-                    farm: '🧬 FARM ANONYMOUS',
-                    strains: ['Gelato 41 🍪','Spritzer 🍸', 'Ice cream cake 🧁','Wedding cake 🍰'],
-                    description: '',
-                    image: 'ProductSta.jpg',
-                    video: 'VideoSta.mov',
-                    tarifs: [
-                        { weight: '2.5g', price: 80 },
-                        { weight: '5g', price: 130 }, 
-                        { weight: '10g', price: 250 }, 
-                        { weight: '25g', price: 550 }
-                    ]
-                }
-            ]},
-            { id: 'SINGLE_SOURCE', name: 'SINGLE SOURCE 💎', products: [
-                {
-                    id: 'SINGLE_CALIPLATE',
-                    name: 'SINGLE SOURCE CALIPLATES 💎', // Différencié
-                    farm: '🧬 Cali Plate',
-                    strains: ['🏀 Gary Payton', '🍬 Gumbo', '🍇 Grappe Gas', '🍭 Jolly Rancher', '🌿 Bushmints'],
-                    description: '🏀 Gary Payton: gas crémeux, effet lourd.\n🍬 Gumbo: sucré épicé, détente profonde.\n🍇 Grappe Gas: raisin + gaz, très aromatique.\n🍭 Jolly Rancher: candy fruité.\n🌿 Bushmints: mentholé/gas, corps posé.',
-                    image: 'ProductGary.jpg',
-                    video: 'VideoGary.mp4',
-                    tarifs: [{weight: '2.5g', price: 80}, {weight: '5g', price: 150}, {weight: '10g', price: 280}, {weight: '20g', price: 540}]
-                }
-            ]}
+          
         ]
     },
     {
