@@ -376,7 +376,7 @@ if (activeConfig.luffa) {
                     description: '🍓 Devil Fruit: Fruité avec une pointe gas.\n🍪 Glue Cookies: Gourmand + collant, cookies/gassy.\n🌈 Rainbow Sherbet: Profil plus terreux que sucré.\n🍈 Guava Melon: Tropical frais, melon/guava bien présent.',
                     image: 'ProductDevil.jpg',
                     video: 'VideoDevil.mp4',
-                    tarifs: [{weight: '1g', price: 20}, {weight: '5g', price: 100}, {weight: '10g', price: 190}, {weight: '20g', price: 360}, {weight: '25g', price: 430}]
+                    tarifs: [{weight: '1g (Sur Place)', price: 20}, {weight: '5g', price: 100}, {weight: '10g', price: 190}, {weight: '20g', price: 360}, {weight: '25g', price: 430}]
                 },
                 {
                     id: 'STATIC_ANNONYMOUS',
@@ -447,7 +447,7 @@ if (activeConfig.luffa) {
                     description: '🍊 Orangina: Profil fruité / agrumes avec une touche sucrée et fraîche. Fumée douce, effet clean.\n⛽️ GMO Kosher: Profil gas / terreux très prononcé avec fond crémeux. Effet puissant, lourd.',
                     image: 'ProductHworld.jpg',
                     video: 'VideoHworld.mov',
-                    tarifs: [{weight: '1.1g', price: 20}, {weight: '5g', price: 80}, {weight: '10g', price: 150}, {weight: '25g', price: 360}]
+                    tarifs: [{weight: '1.1g (Sur Place)', price: 20}, {weight: '5g', price: 80}, {weight: '10g', price: 150}, {weight: '25g', price: 360}]
                 },
                 {
                     id: 'FROZEN_ANONYMOUS',
@@ -467,7 +467,7 @@ if (activeConfig.luffa) {
                     description: '🥇 24K: gas sucré + touche orangée, bien lourd.\n🍊 Tanger: agrumes frais, high clean.\n🧀 Cheese Berry: fromage doux + fruits rouges.\n🍹 Tropicalito: cocktail tropical sucré.',
                     image: 'Produit24K.jpg',
                     video: 'Video24K.mov',
-                    tarifs: [{weight: '1.1g', price: 20}, {weight: '5g', price: 80}, {weight: '10g', price: 140}]
+                    tarifs: [{weight: '1.1g (Sur Place)', price: 20}, {weight: '5g', price: 80}, {weight: '10g', price: 140}]
                 },
                 {
                     id: 'FROZEN_PIRATE',
@@ -477,7 +477,7 @@ if (activeConfig.luffa) {
                     description: '🆕 Sherbanger: Profil moderne crémeux + gaz léger. Terps bien présents.\n♻️ Panacotta: Gourmande et douce, notes dessert / vanille. Valeur sûre.',
                     image: 'ProductSher.jpg',
                     video: 'VideoSher.mp4',
-                    tarifs: [{weight: '1.1g', price: 20}, {weight: '2.5g', price: 50}, {weight: '5g', price: 90}, {weight: '10g', price: 160}]
+                    tarifs: [{weight: '1.1g (Sur Place)', price: 20}, {weight: '2.5g', price: 50}, {weight: '5g', price: 90}, {weight: '10g', price: 160}]
                 }
             ]},
             { id: 'DRY_120', name: 'DRY 120u 🛖', products: [
@@ -499,9 +499,9 @@ if (activeConfig.luffa) {
                     description: 'Bubba Dry c’est un hash old school, lourd et réconfortant 😮‍💨\nArômes terreux / chocolaté / légère note café, fumée douce et bien grasse.',
                     image: 'ProductPirate.jpg',
                     video: 'VideoPirate.mov',
-                    tarifs: [{weight: '1.4g', price: 20}, {weight: '5g', price: 70}, {weight: '10g', price: 120}, {weight: '25g', price: 260}]
+                    tarifs: [{weight: '1.4g (Sur Place)', price: 20}, {weight: '5g', price: 70}, {weight: '10g', price: 120}, {weight: '25g', price: 260}]
                 },
-                {
+               /*  {
                     id: 'DRY_120_JEBLI',
                     name: 'DRY 120u JEBLI 🇲🇦', // Différencié
                     farm: '🧬 Jebli Farm',
@@ -510,7 +510,7 @@ if (activeConfig.luffa) {
                     image: 'Product120p.jpg',
                     video: 'Video120p.mov',
                     tarifs: [{weight: '5g', price: 50}, {weight: '10g', price: 90}]
-                }
+                } */
             ]},
             { id: 'DRY_90', name: 'DRY 90u ⚡️', products: [
                 {
@@ -623,7 +623,7 @@ if (activeConfig.luffa) {
                     description: 'Profil crémeux sucré + fruité, avec des notes dessert type gelato et une légère touche gazeuse en fond.\nFumée douce, épaisse et très parfumée 😮‍💨\nEffet : montée progressive, high euphorique au début puis détente profonde.',
                     image: 'ProductMochi.jpg',
                     video: 'VideoMochi.mov',
-                    tarifs: [{weight: '1.2g', price: 20}, {weight: '3.5g', price: 60}, {weight: '5g', price: 80}, {weight: '10g', price: 150}, {weight: '100g', price: 850}]
+                    tarifs: [{weight: '1.2g (Sur Place)', price: 20}, {weight: '3.5g', price: 60}, {weight: '5g', price: 80}, {weight: '10g', price: 150}, {weight: '100g', price: 850}]
                 },
                 {
                     id: 'CALI_GELATO33',
@@ -633,7 +633,7 @@ if (activeConfig.luffa) {
                     description: 'Profil crémeux sucré + légèrement terreux, avec des notes vanille, dessert et une touche gazeuse typique des Gelato.\nFumée dense, grasse et très parfumée 😮‍💨\nUne Cali très équilibrée, puissante mais smooth.',
                     image: 'ProductGelato.jpg',
                     video: 'VideoGelato.mov',
-                    tarifs: [{weight: '1.2g', price: 20}, {weight: '3.5g', price: 60}, {weight: '5g', price: 80}, {weight: '10g', price: 150}, {weight: '100g', price: 850}]
+                    tarifs: [{weight: '1.2g (Sur Place)', price: 20}, {weight: '3.5g', price: 60}, {weight: '5g', price: 80}, {weight: '10g', price: 150}, {weight: '100g', price: 850}]
                 },
                /*  {
                     id: 'CALI_LEMON',
