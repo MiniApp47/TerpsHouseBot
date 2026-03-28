@@ -424,7 +424,7 @@ if (activeConfig.luffa) {
                     strains: ['🍊 Orangina', '🍬 Zgusher'],
                     description: '🍊 Orangina  \n Strain très fruitée avec des notes d’agrumes et d’orange sucrée. Profil terpénique frais et intense, avec un goût bien marqué et une fumée douce. Effet relaxant et agréable, parfait pour chiller.\n\n 🍬 Zgusher  \n Profil très gourmand avec des arômes sucrés type bonbons et fruits tropicaux. Très riche en terpènes, texture bien collante et goût puissant. Effet équilibré, relaxant mais qui garde l’esprit léger',
                     image: 'ProductFrozTh.jpg',
-                    video: 'VideoFrozTh.mp4',
+                    videos: ['VideoFrozTh.mov','VideoFrozTh2.mov'],
                     tarifs: [{weight: '1g', price: 30}, {weight: '5g', price: 120}, {weight: '10g', price: 230}]
                 },
                 {
@@ -439,6 +439,26 @@ if (activeConfig.luffa) {
                 },
             ]},
             { id: 'FROZEN', name: 'FROZEN ❄️', products: [
+                {
+                    id: 'GMO',
+                    name: '🍊 GMO', // Différencié
+                    farm: '🧬 Pirate Del Sur',
+                    strains: [],
+                    description: 'Une véritable frappe signée Pirate Del Sur 🏴‍☠️\nProfil terpénique ultra-puissant : une grosse base gassy / terreuse (typique du GMO) accompagnée d’une note d’agrumes piquante 🍊.\nTexture extrêmement grasse et fumée épaisse 😮‍💨\nEffet : Très lourd, sédatif et profondément relaxant. Parfait pour déconnecter le soir.',
+                    image: 'ProductGmo.jpg',
+                    video: 'VideoGmo.mp4',
+                    tarifs: [{weight: '1.1g (Sur Place)', price: 20}, {weight: '2.5g', price: 50}, {weight: '5g', price: 90}, {weight: '10g', price: 160}]
+                },
+                {
+                    id: 'FROZEN_PIRATE',
+                    name: '🆕 Sherbanger', // Différencié
+                    farm: '🧬 Pirate Del Sur',
+                    strains: [],
+                    description: '🆕 Sherbanger: Profil moderne crémeux + gaz léger. Terps bien présents.',
+                    image: 'ProductSher.jpg',
+                    video: 'VideoSher.mp4',
+                    tarifs: [{weight: '1.1g (Sur Place)', price: 20}, {weight: '2.5g', price: 50}, {weight: '5g', price: 90}, {weight: '10g', price: 160}]
+                },
                 {
                     id: 'FROZEN_HWORLD',
                     name: 'FROZEN HWORLD ❄️', // Différencié
@@ -468,16 +488,6 @@ if (activeConfig.luffa) {
                     image: 'Produit24K.jpg',
                     video: 'Video24K.mov',
                     tarifs: [{weight: '1.1g (Sur Place)', price: 20}, {weight: '5g', price: 80}, {weight: '10g', price: 140}]
-                },
-                {
-                    id: 'FROZEN_PIRATE',
-                    name: 'FROZEN PIRATE 🏴‍☠️', // Différencié
-                    farm: '🧬 Pirate Del Sur',
-                    strains: ['🆕 Sherbanger', '♻️ Panacotta'],
-                    description: '🆕 Sherbanger: Profil moderne crémeux + gaz léger. Terps bien présents.\n♻️ Panacotta: Gourmande et douce, notes dessert / vanille. Valeur sûre.',
-                    image: 'ProductSher.jpg',
-                    video: 'VideoSher.mp4',
-                    tarifs: [{weight: '1.1g (Sur Place)', price: 20}, {weight: '2.5g', price: 50}, {weight: '5g', price: 90}, {weight: '10g', price: 160}]
                 }
             ]},
             { id: 'DRY_120', name: 'DRY 120u 🛖', products: [
@@ -1103,15 +1113,20 @@ const appData = menuRouter[currentFranchise] || catalog72;
                 ${product.image ? `<img src="${product.image}" alt="Photo ${product.name}">` : ''}
             </div>
         `;
-        if (product.video) {
+        
+        // Moteur de détection : supporte le nouveau format "videos" (tableau) et l'ancien "video" (texte)
+        const videoList = product.videos || (product.video ? [product.video] : []);
+        
+        // Boucle d'injection des vidéos
+        videoList.forEach(vidSrc => {
             mediaHTML += `
                 <div class="media-item">
-                    <video class="product-video" src="${product.video}" muted loop playsinline controls preload="metadata"></video>
+                    <video class="product-video" src="${vidSrc}" muted loop playsinline controls preload="metadata"></video>
                 </div>
             `;
-        }
+        });
 
-        // --- 2. GÉNÉRATION DU SÉLECTEUR DE STRAINS (Corrigé) ---
+        // --- 2. GÉNÉRATION DU SÉLECTEUR DE STRAINS ---
         let strainsHTML = '';
         if (product.strains && product.strains.length > 0) {
             strainsHTML = `
@@ -1131,7 +1146,7 @@ const appData = menuRouter[currentFranchise] || catalog72;
             <div class="product-media-slider">
                 ${mediaHTML}
             </div>
-            ${product.video ? `<div class="swipe-text" style="text-align:center; color:var(--hint-color); font-size:0.8rem; margin-top:8px;">Swipe ➡️ pour la vidéo</div>` : ''}
+            ${videoList.length > 0 ? `<div class="swipe-text" style="text-align:center; color:var(--hint-color); font-size:0.8rem; margin-top:8px;">Swipe ➡️ pour voir les médias</div>` : ''}
             
             <div class="name" style="font-size: 1.6rem; margin-top: 15px; text-align: center; font-family: impact, sans-serif;">${product.name}</div>
             ${product.farm ? `<div style="color: var(--hint-color); margin-bottom: 15px; font-style: italic; text-align: center;">🧪 ${product.farm}</div>` : ''}
@@ -1163,7 +1178,7 @@ const appData = menuRouter[currentFranchise] || catalog72;
         `;
         
         // --- 4. INITIALISATION DU MOTEUR DE LECTURE VIDÉO ---
-        if (product.video) {
+        if (videoList.length > 0) {
             initVideoAutoplayObserver();
         }
 
