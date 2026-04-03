@@ -677,6 +677,7 @@ if (activeConfig.luffa) {
                     image: 'ProductAmne.jpg',
                     video: 'VideoAmne.mp4',
                     tarifs: [
+                        {weight: '2g', price: 20}, 
                         {weight: '5g', price: 40}, 
                         {weight: '10g', price: 70},
                         {weight: '25g', price: 160}, 
