@@ -290,7 +290,21 @@ if (activeConfig.luffa) {
                 ]}
             ] 
         },
-        { id: 'WEED', name: '🌿 WEED 75', type: 'Weed', quality: '🌿 Fleurs', image: 'CategT75Weed.png', farms: [] },
+        { id: 'WEED', name: '🌿 WEED 75', type: 'Weed', quality: '🌿 Fleurs', image: 'CategT75Weed.png', farms: [
+            { id: 'CALI_US', name: 'CALI US 🇺🇸', products: [
+                {
+                    id: 'CALI_MOCHI',
+                    name: 'MOCHI GELATO 🍧',
+                    farm: '🇺🇸 Cali US',
+                    strains: [], // Plus de sélection
+                    description: 'Profil crémeux sucré + fruité, avec des notes dessert type gelato et une légère touche gazeuse en fond.\nFumée douce, épaisse et très parfumée 😮‍💨\nEffet : montée progressive, high euphorique au début puis détente profonde.',
+                    image: 'ProductMochi1.jpg',
+                    video: 'VideoMochi1.mp4',
+                    tarifs: [{weight: '1.2g (Sur Place)', price: 20}, {weight: '3.5g', price: 60}, {weight: '5g', price: 80}, {weight: '10g', price: 150}, {weight: '100g', price: 850}]
+                },
+            ]
+        },
+        ] },
         { id: 'AUTRE', name: '🧬 AUTRE', type: 'Autre', quality: '🧬 Divers', image: 'CategT75Autre.png', farms: [] }
     ];
 
