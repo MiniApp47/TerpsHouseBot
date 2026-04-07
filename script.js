@@ -255,7 +255,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         type: '💎 Fresh Frozen 💎',
                         image: 'ProductFrozen2.png',
                         video: 'VideoFrozen2.mov',
-                        description: '',
+                        description: '💎 QUALITÉ FRESH FROZEN 💎\n\nPRODUIT SEC ET CASSANT ⭐️⭐️⭐️⭐️⭐️\n\nUne texture cristalline et des arômes préservés à la perfection. Des notes épicées et umami avec un fond gaz lourd et persistant.',
                         tarifs: [
                             { weight: '10g', price: 90.00},
                             { weight: '25g', price: 180.00 },
@@ -272,7 +272,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         type: '💎 Fresh Frozen 💎',
                         image: 'ProductMo.png',
                         video: 'VideoMo.mov',
-                        description: '',
+                        description: '💎 QUALITÉ FRESH FROZEN 💎\n\nPRODUIT SEC ET CASSANT ⭐️⭐️⭐️⭐️⭐️\n\nUne texture cristalline et des arômes préservés à la perfection. Le mariage parfait entre la douceur d\'une pêche juteuse et des notes épicées traditionnelles.',
                         tarifs: [
                             { weight: '10g', price: 90.00},
                             { weight: '25g', price: 180.00 },
