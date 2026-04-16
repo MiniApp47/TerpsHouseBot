@@ -1713,13 +1713,19 @@ else if (isParis && selectedMode) {
         if (rawMessage) navigator.clipboard.writeText(rawMessage).catch(e => {}); 
     } catch(e) {}
 
-    // Ouverture instantanée
+   // Ouverture instantanée (Optimisation Anti-Blocage Mobile)
     if (platform === 'telegram') {
-        if (tg) tg.openTelegramLink(url);
-        else window.open(url, '_blank');
+        if (tg) {
+            tg.openTelegramLink(url);
+        } else {
+            window.location.href = url; // Force l'ouverture native au lieu du pop-up
+        }
     } else {
-        if (tg) tg.openLink(url);
-        else window.open(url, '_blank');
+        if (tg) {
+            tg.openLink(url);
+        } else {
+            window.location.href = url; // Force l'ouverture native au lieu du pop-up
+        }
     }
 }
     });
