@@ -454,6 +454,20 @@ if (activeConfig.luffa) {
             ]},
             { id: 'FROZEN', name: 'FROZEN ❄️', products: [
                 {
+                    id: 'Olive 🫒',
+                    name: 'Olive 🫒', // Différencié
+                    farm: '👨🏻‍🌾 Jebli farm',
+                    strains: [],
+                    description: '',
+                    image: 'ProductOl.jpg',
+                    video: 'VideoOl.mp4',
+                    tarifs: [
+                        {weight: '1 olive', price: 150},
+                        {weight: '5 olive', price: 700},
+                        {weight: '10 olive', price: 1000},
+                    ]
+                },
+                {
                     id: 'GMO',
                     name: '🍊 GMO', // Différencié
                     farm: '🧬 Pirate Del Sur',
@@ -612,11 +626,11 @@ if (activeConfig.luffa) {
             ]},
             { id: 'JAUNE', name: 'JAUNE 🧽', products: [
                 {
-                    id: 'OG 🎩',
-                    name: 'OG 🎩',
-                    farm: 'Cali Mousse 🦜',
+                    id: 'Grappe Fruit 🍇',
+                    name: 'Grappe Fruit 🍇',
+                    farm: '👨🏻‍🌾 Jebli farm',
                     strains: [],
-                    description: 'La OG est une variété de cannabis hybride Elle est connue pour ses arômes citronnés, terreux et légèrement diesel, ainsi que pour ses effets puissants mêlant euphorie mentale et relaxation du corps. Très populaire dans la culture cannabis, elle a servi de base à de nombreuses autres strains modernes. 🌿💨',
+                    description: 'La Grappe Fruit est une variété de cannabis hybride Elle est connue pour ses arômes citronnés, terreux et légèrement diesel, ainsi que pour ses effets puissants mêlant euphorie mentale et relaxation du corps. Très populaire dans la culture cannabis, elle a servi de base à de nombreuses autres strains modernes. 🌿💨',
                     image: 'ProductJaune.jpg',
                     video: 'VideoJaune.mp4',
                     tarifs: [{weight: '5g', price: 30}, {weight: '10g', price: 50}, {weight: '25g', price: 110}, {weight: '50g', price: 180}, {weight: '100g', price: 350}]
