@@ -519,7 +519,7 @@ if (activeConfig.luffa) {
                 }
             ]},
             { id: 'DRY_120', name: 'DRY 120u 🛖', products: [
-                {
+              /*   {
                     id: 'DRY_120_DARKS',
                     name: 'TIRAMISU (120u) ☕️', // Nom de la souche utilisé en titre
                     farm: '🧬 Darks Farm',
@@ -528,7 +528,7 @@ if (activeConfig.luffa) {
                     image: 'ProductTira.jpg',
                     video: 'VideoTira.mov',
                     tarifs: [{weight: '1 olive', price: 90}, {weight: '5 olives', price: 450}, {weight: '10 olives', price: 780}]
-                },
+                }, */
                 {
                     id: 'DRY_120_PIRATE',
                     name: 'BUBBA DRY (120u) 🏴‍☠️', // Nom de la souche utilisé en titre
