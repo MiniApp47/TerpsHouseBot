@@ -1276,21 +1276,31 @@ const appData = menuRouter[currentFranchise] || catalog72;
             const tgStyle = `background: linear-gradient(45deg, #2a67ee, #16e6d5); color: black; text-shadow: none;`;
             const waStyle = `background: linear-gradient(45deg, #25D366, #128C7E); text-shadow: 0px 1px 2px rgba(0,0,0,0.5);`;
 
-            // --- SYSTÈME SPÉCIFIQUE 72 : SÉLECTEUR + ZONES DE LIVRAISON ---
+          // --- SYSTÈME SPÉCIFIQUE 72 : DOUBLE BOUTON + ZONES DE LIVRAISON ---
             if (currentFranchise === '72') {
                 checkoutHTML += `
                   <div style="margin-bottom: 15px;">
                       <div style="color: var(--text-color); font-size: 0.9rem; margin-bottom: 8px; font-weight: bold;">📦 Mode de retrait :</div>
-                      <select id="order-mode-select" style="width: 100%; padding: 12px; border-radius: 12px; border: 1px solid var(--brand-color); background: rgba(0,0,0,0.5); color: white; font-size: 1rem; outline: none;">
-                          <option value="MeetUp">🤝 MeetUp (Sur place)</option>
-                          <option value="Zone0">🚀 Zone Le Mans (Min 50€)</option>
-                          <option value="Zone1">🚀 Zone 15km (Min 100€ + 10€ frais)</option>
-                          <option value="Zone2">🚀 Zone 25km (Min 200€ + 20€ frais)</option>
-                          <option value="Zone3">🚀 Zone 35km (Min 250€ + 30€ frais)</option>
-                          <option value="Zone4">🚀 Zone 40km (Min 300€ + 40€ frais)</option>
-                          <option value="Zone+">🚀 +40km (À voir avec livreur)</option>
-                      </select>
+                      
+                      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px;">
+                          <div class="mode-btn active" data-val="MeetUp" style="background: var(--brand-color); color: black; padding: 12px; border-radius: 12px; text-align: center; font-weight: bold; cursor: pointer; border: 2px solid var(--brand-color); transition: all 0.2s;">🤝 Sur place</div>
+                          <div class="mode-btn" data-val="Livraison" style="background: rgba(0,0,0,0.5); color: white; padding: 12px; border-radius: 12px; text-align: center; font-weight: bold; cursor: pointer; border: 2px solid rgba(255,255,255,0.2); transition: all 0.2s;">🚀 Livraison</div>
+                      </div>
+
+                      <div id="zone-selector-container" style="display: none; margin-bottom: 10px;">
+                          <select id="order-zone-select" onchange="document.getElementById('order-mode-select').value = this.value" style="width: 100%; padding: 12px; border-radius: 12px; border: 1px solid var(--brand-color); background: rgba(0,0,0,0.5); color: white; font-size: 1rem; outline: none;">
+                              <option value="Zone0">🚀 Zone Le Mans (Min 50€)</option>
+                              <option value="Zone1">🚀 Zone 15km (Min 100€ + 10€ frais)</option>
+                              <option value="Zone2">🚀 Zone 25km (Min 200€ + 20€ frais)</option>
+                              <option value="Zone3">🚀 Zone 35km (Min 250€ + 30€ frais)</option>
+                              <option value="Zone4">🚀 Zone 40km (Min 300€ + 40€ frais)</option>
+                              <option value="Zone+">🚀 +40km (À voir avec livreur)</option>
+                          </select>
+                      </div>
+                      
+                      <input type="hidden" id="order-mode-select" value="MeetUp">
                   </div>
+                  
                   <div style="width: 100%; margin-bottom: 15px; text-align: left;">
                       <div style="color: var(--text-color); font-size: 0.9rem; margin-bottom: 8px; font-weight: bold;">📍 Adresse précise :</div>
                       <textarea id="delivery-address" placeholder="Rue, Ville, Code Postal..." style="width: 100%; box-sizing: border-box; padding: 12px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.3); color: white; min-height: 65px; font-family: inherit; font-size: 1rem;"></textarea>
@@ -1446,6 +1456,39 @@ function formatOrderMessage() {
             document.querySelectorAll('.strain-btn').forEach(b => b.classList.remove('active'));
             // Ajoute la classe active au bouton cliqué
             btn.classList.add('active');
+        }
+
+        // --- GESTION DU TOGGLE BOUTONS MEETUP / LIVRAISON ---
+        if (target.closest('.mode-btn')) {
+            const btn = target.closest('.mode-btn');
+            
+            // 1. Reset visuel de tous les boutons
+            document.querySelectorAll('.mode-btn').forEach(b => {
+                b.classList.remove('active');
+                b.style.background = 'rgba(0,0,0,0.5)';
+                b.style.color = 'white';
+                b.style.border = '2px solid rgba(255,255,255,0.2)';
+            });
+            
+            // 2. Activation du bouton cliqué
+            btn.classList.add('active');
+            btn.style.background = 'var(--brand-color)';
+            btn.style.color = 'black';
+            btn.style.border = '2px solid var(--brand-color)';
+
+            // 3. Logique d'affichage (Révélation des zones)
+            const mode = btn.dataset.val;
+            const zoneContainer = document.getElementById('zone-selector-container');
+            const zoneSelect = document.getElementById('order-zone-select');
+            const hiddenInput = document.getElementById('order-mode-select');
+
+            if (mode === 'MeetUp') {
+                if (zoneContainer) zoneContainer.style.display = 'none';
+                if (hiddenInput) hiddenInput.value = 'MeetUp';
+            } else {
+                if (zoneContainer) zoneContainer.style.display = 'block';
+                if (hiddenInput && zoneSelect) hiddenInput.value = zoneSelect.value;
+            }
         }
 
         // Toggle Accordéon Page Info
