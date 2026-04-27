@@ -131,8 +131,8 @@ if (activeConfig.theme) {
     if (marqueeContent) {
         // Horaires par défaut (72, BXL, etc.)
         const defaultMarquee = [
-            '📆 OUVERT DU LUNDI AU SAMEDI DE 12H30 À 00H ⏰',
-            '🚨 DIMANCHE OUVERTURE À 13H30 🚨'
+            '📆 OUVERT DU LUNDI AU LUNDI DE 12H30 À 00H ⏰'
+            /* '🚨 DIMANCHE OUVERTURE À 13H30 🚨' */
         ];
         
         // On prend les horaires spécifiques si la franchise en a, sinon on met par défaut
@@ -721,7 +721,7 @@ if (activeConfig.luffa) {
         id: 'AUTRE', name: '🧬 AUTRE', type: 'Autre', quality: '🧬 Divers', image: 'CategT73Autre.png',
         farms: [
             { id: 'PUFF', name: 'PUFF 💨', products: [
-                {
+               /*  {
                     id: 'PUFF_PREMIUM',
                     name: 'PUFF PREMIUM 💨', // Différencié
                     farm: '🧬 Vape',
@@ -730,7 +730,7 @@ if (activeConfig.luffa) {
                     image: 'ProductPuff.jpg',
                     video: 'VideoPuff.mp4',
                     tarifs: [{weight: '1 unité', price: 60}]
-                }
+                } */
             ]}
         ]
     }
