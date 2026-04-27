@@ -643,7 +643,7 @@ if (activeConfig.luffa) {
         id: 'WEED', name: '🌿 WEED', type: 'Weed', quality: '🌿 Fleurs', image: 'CategT72Weed.png',
         farms: [
             { id: 'CALI_US', name: 'CALI US 🇺🇸', products: [
-                {
+               /*  {
                     id: 'CALI_CEREAL',
                     name: 'CEREAL MILK 🥣🥛', // Déjà unique, on retire juste les strains
                     farm: '🇺🇸 Cali US',
@@ -672,7 +672,7 @@ if (activeConfig.luffa) {
                     image: 'ProductGelato.jpg',
                     video: 'VideoGelato.mov',
                     tarifs: [{weight: '1.2g (Sur Place)', price: 20}, {weight: '3.5g', price: 60}, {weight: '5g', price: 80}, {weight: '10g', price: 150}, {weight: '100g', price: 850}]
-                },
+                }, */
                /*  {
                     id: 'CALI_LEMON',
                     name: 'LEMON CHERRY 🍋🍒',
@@ -683,7 +683,7 @@ if (activeConfig.luffa) {
                     video: 'VideoLemon.mov',
                     tarifs: [{weight: '1.6g', price: 20}]
                 }, */
-                {
+               /*  {
                     id: 'CALI_IRON',
                     name: 'IRON MAIDEN PINK 🎸',
                     farm: '🇺🇸 Cali US',
@@ -692,7 +692,7 @@ if (activeConfig.luffa) {
                     image: 'ProductIron.jpg',
                     video: 'VideoIron.mov',
                     tarifs: [{weight: '1.2g', price: 20}, {weight: '3.5g', price: 60}, {weight: '5g', price: 80}, {weight: '10g', price: 150}, {weight: '100g', price: 850}]
-                }
+                } */
             ]
         },
             { id: 'CALI_ESP', name: 'WEED ESPAGNOL 🇪🇦', products: [
