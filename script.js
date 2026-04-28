@@ -497,7 +497,7 @@ if (activeConfig.luffa) {
                     video: 'VideoHworld.mov',
                     tarifs: [{weight: '1.1g (Sur Place)', price: 20}, {weight: '5g', price: 80}, {weight: '10g', price: 150}, {weight: '25g', price: 360}]
                 },
-                {
+               /*  {
                     id: 'FROZEN_ANONYMOUS',
                     name: 'FROZEN ANONYMOUS ❄️', // Différencié
                     farm: '🧬 FARM ANONYMOUS',
@@ -506,7 +506,7 @@ if (activeConfig.luffa) {
                     image: 'ProductAnon.jpg',
                     video: 'VideoAnon.mov',
                     tarifs: [{weight: '2.5g', price: 70}, {weight: '5g', price: 120}, {weight: '10g', price: 230}, {weight: '25g', price: 500}, {weight: '50g', price: 900}, {weight: '100g', price: 1450}]
-                },
+                }, */
                 {
                     id: 'FROZEN_VVS',
                     name: 'FROZEN VVS ❄️', // Différencié
@@ -1363,7 +1363,7 @@ const appData = menuRouter[currentFranchise] || catalog72;
         }
 
         // --- RÉCOMPENSE LOTERIE (Affiche au-dessus des boutons si > 50€ sur le 72) ---
-        if (currentFranchise === '72' && isShopOpen()) {
+        /* if (currentFranchise === '72' && isShopOpen()) {
             const ticketsEarned = calculateTickets(subTotal);
             if (ticketsEarned > 0) {
                 checkoutHTML = `
@@ -1372,7 +1372,7 @@ const appData = menuRouter[currentFranchise] || catalog72;
                   </div>
                 ` + checkoutHTML;
             }
-        }
+        } */
 
         checkoutBtnsContainer.innerHTML = checkoutHTML;
         showPage('page-confirmation');
@@ -1400,14 +1400,14 @@ const appData = menuRouter[currentFranchise] || catalog72;
     }
 
   // --- MOTEUR DE CALCUL DES TICKETS (LOTERIE) ---
-  function calculateTickets(total) {
+ /*  function calculateTickets(total) {
     if (total >= 500) return 15;
     if (total >= 300) return 6;
     if (total >= 200) return 4;
     if (total >= 100) return 2;
     if (total >= 50) return 1;
     return 0;
-}
+} */
 
 function formatOrderMessage() {
     const total = cart.reduce((sum, item) => sum + item.totalPrice, 0);
@@ -1419,12 +1419,12 @@ function formatOrderMessage() {
     msg += `*💰 TOTAL: ${total.toFixed(2)}€*\n💳 Paiement: ${paymentMethod}`;
 
     // --- INJECTION LOTERIE : UNIQUEMENT POUR LE 72 ---
-    if (currentFranchise === '72') {
+   /*  if (currentFranchise === '72') {
         const tickets = calculateTickets(total);
         if (tickets > 0) {
             msg += `\n\n🎰 *TICKETS LOTERIE DÉBLOQUÉS : ${tickets} 🎟*`;
         }
-    }
+    } */
 
     return encodeURIComponent(msg);
 }
@@ -1827,7 +1827,7 @@ function initVideoAutoplayObserver() {
     showPage('page-home');
     
     // --- AFFICHAGE DU POP-UP LOTERIE (1 FOIS PAR SESSION, UNIQUEMENT 72) ---
-    if (currentFranchise === '72' && !sessionStorage.getItem('lotterySeen')) {
+   /*  if (currentFranchise === '72' && !sessionStorage.getItem('lotterySeen')) {
         const modal = document.getElementById('lottery-modal');
         if (modal) {
             modal.style.display = 'flex';
@@ -1835,6 +1835,6 @@ function initVideoAutoplayObserver() {
             document.getElementById('close-lottery').onclick = () => { modal.style.display = 'none'; sessionStorage.setItem('lotterySeen', 'true'); };
             document.getElementById('btn-understand-lottery').onclick = () => { modal.style.display = 'none'; sessionStorage.setItem('lotterySeen', 'true'); };
         }
-    }
+    } */
 }, 1500);
 });
