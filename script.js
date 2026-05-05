@@ -454,6 +454,18 @@ if (activeConfig.luffa) {
             ]},
             { id: 'FROZEN', name: 'FROZEN ❄️', products: [
                 {
+                    id: 'Static Olive 🫒',
+                    name: 'Static Olive 🍈', // Différencié
+                    farm: '👨🏻‍🌾 Jebli farm',
+                    strains: [],
+                    description: '',
+                    image: 'ProductOl1.jpg',
+                    video: 'VideoOl1.mp4',
+                    tarifs: [
+                        {weight: '1 olive', price: 180},
+                    ]
+                },
+                {
                     id: 'Olive 🫒',
                     name: 'Olive 🫒', // Différencié
                     farm: '👨🏻‍🌾 Jebli farm',
@@ -477,7 +489,7 @@ if (activeConfig.luffa) {
                     video: 'VideoGmo.mp4',
                     tarifs: [{weight: '1.1g (Sur Place)', price: 20}, {weight: '2.5g', price: 50}, {weight: '5g', price: 90}, {weight: '10g', price: 160}]
                 },
-                {
+              /*   {
                     id: 'FROZEN_PIRATE',
                     name: '🆕 Sherbanger', // Différencié
                     farm: '🧬 Pirate Del Sur',
@@ -486,7 +498,7 @@ if (activeConfig.luffa) {
                     image: 'ProductSher.jpg',
                     video: 'VideoSher.mp4',
                     tarifs: [{weight: '1.1g (Sur Place)', price: 20}, {weight: '2.5g', price: 50}, {weight: '5g', price: 90}, {weight: '10g', price: 160}]
-                },
+                }, */
                 {
                     id: 'FROZEN_HWORLD',
                     name: 'FROZEN HWORLD ❄️', // Différencié
@@ -582,7 +594,7 @@ if (activeConfig.luffa) {
                           {weight: '50g', price: 340},
                            {weight: '100g', price: 640}]
                 },
-                {
+               /*  {
                     id: 'DRY_90_GAZFRUIT',
                     name: 'MILO CHEESE (90u) 🧀', // Nom de la souche utilisé en titre
                     farm: '🧬 Gaz Fruit',
@@ -593,7 +605,7 @@ if (activeConfig.luffa) {
                     tarifs: [
                     {weight: '5g', price: 50},
                      {weight: '10g', price: 90}]
-                }
+                } */
             ]},
             { id: 'DRY_73', name: 'DRY 73u', products: [
                 {
@@ -605,15 +617,11 @@ if (activeConfig.luffa) {
                     image: 'ProductGG.jpg',
                     video: 'VideoGG.mp4',
                     tarifs: [
-                        {weight: '5g', price: 40},
-                         {weight: '10g', price: 60},
-                          {weight: '25g', price: 120},
-                           {weight: '50g', price: 220},
-                            {weight: '100g', price: 350}]
+                            {weight: '100g', price: 400}]
                 }
             ]},
             { id: 'SEMI_DRY', name: 'SEMI DRY', products: [
-                {
+              /*   {
                     id: 'SEMIDRY_JEBLI',
                     name: 'SEMI-DRY JEBLI 🇲🇦', // Différencié
                     farm: '🧬 Jebli Farm',
@@ -622,7 +630,7 @@ if (activeConfig.luffa) {
                     image: 'ProductPink.jpg',
                     video: 'VideoPink.mov',
                     tarifs: [{weight: '5g', price: 30}, {weight: '10g', price: 60}, {weight: '50g', price: 230}, {weight: '100g', price: 440}]
-                }
+                } */
             ]},
             { id: 'JAUNE', name: 'JAUNE 🧽', products: [
                 {
@@ -643,7 +651,37 @@ if (activeConfig.luffa) {
         id: 'WEED', name: '🌿 WEED', type: 'Weed', quality: '🌿 Fleurs', image: 'CategT72Weed.png',
         farms: [
             { id: 'CALI_US', name: 'CALI US 🇺🇸', products: [
-               /*  {
+                {
+                    id: 'Pinyati',
+                    name: 'Pinyati 🍭', // Déjà unique, on retire juste les strains
+                    farm: '🇺🇸 Cali US',
+                    strains: [], // Plus de sélection
+                    description: '',
+                    image: 'ProductPin.jpg',
+                    video: 'VideoPin.mp4',
+                    tarifs: [{weight: '1.2g', price: 20}, {weight: '5g', price: 80}, {weight: '10g', price: 150}]
+                },
+                {
+                    id: 'CALI_CEREAL',
+                    name: 'CEREAL MILK 🥣🥛', // Déjà unique, on retire juste les strains
+                    farm: '🇺🇸 Cali US',
+                    strains: [], // Plus de sélection
+                    description: 'Strain très connue aux US, Cereal Milk a un goût sucré / crémeux avec des notes de lait et de céréales.\nEffet propre, relaxant mais pas trop lourd.\nProduit bien travaillé, texture propre, bonne odeur dès l’ouverture.',
+                    image: 'ProductCereal.jpg',
+                    video: 'VideoCereal.mp4',
+                    tarifs: [{weight: '1.2g', price: 20}, {weight: '5g', price: 80}, {weight: '10g', price: 150}]
+                },
+               {
+                    id: 'skittlez',
+                    name: 'Skittlez 🌈', // Déjà unique, on retire juste les strains
+                    farm: '🇺🇸 Cali US',
+                    strains: [], // Plus de sélection
+                    description: '',
+                    image: 'ProductSkit.jpg',
+                    video: 'VideoSkit.mp4',
+                    tarifs: [{weight: '1.2g', price: 20}, {weight: '5g', price: 80}, {weight: '10g', price: 150}]
+                },
+                 /*  {
                     id: 'CALI_CEREAL',
                     name: 'CEREAL MILK 🥣🥛', // Déjà unique, on retire juste les strains
                     farm: '🇺🇸 Cali US',
