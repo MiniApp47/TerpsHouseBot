@@ -367,6 +367,18 @@ if (activeConfig.luffa) {
                 }
             ]},
             { id: 'STATIC', name: 'STATIC ⚡️', products: [
+                 {
+                    id: 'Static Olive 🫒',
+                    name: 'Static Olive 🍈', // Différencié
+                    farm: '👨🏻‍🌾 Jebli farm',
+                    strains: [],
+                    description: '',
+                    image: 'ProductOl1.jpg',
+                    video: 'VideoOl1.mp4',
+                    tarifs: [
+                        {weight: '1 olive', price: 180},
+                    ]
+                },
                 {
                     id: '😮‍💨 Rainbow',
                     name: '😮‍💨 Rainbow',
@@ -453,18 +465,7 @@ if (activeConfig.luffa) {
                 },
             ]},
             { id: 'FROZEN', name: 'FROZEN ❄️', products: [
-                {
-                    id: 'Static Olive 🫒',
-                    name: 'Static Olive 🍈', // Différencié
-                    farm: '👨🏻‍🌾 Jebli farm',
-                    strains: [],
-                    description: '',
-                    image: 'ProductOl1.jpg',
-                    video: 'VideoOl1.mp4',
-                    tarifs: [
-                        {weight: '1 olive', price: 180},
-                    ]
-                },
+               
                 {
                     id: 'Olive 🫒',
                     name: 'Olive 🫒', // Différencié
@@ -758,17 +759,17 @@ if (activeConfig.luffa) {
     {
         id: 'AUTRE', name: '🧬 AUTRE', type: 'Autre', quality: '🧬 Divers', image: 'CategT73Autre.png',
         farms: [
-            { id: 'PUFF', name: 'PUFF 💨', products: [
-               /*  {
-                    id: 'PUFF_PREMIUM',
-                    name: 'PUFF PREMIUM 💨', // Différencié
+            { id: 'Cigarettes', name: 'Cigarettes 💨', products: [
+                {
+                    id: 'Cigarettes',
+                    name: 'Cigarettes 💨',
                     farm: '🧬 Vape',
-                    strains: ['Sherbanger', 'Melonade', 'Cherry', 'Blue Gotti'],
-                    description: 'Puff premium. Plusieurs saveurs disponibles.',
+                    strains: [],
+                    description: '',
                     image: 'ProductPuff.jpg',
-                    video: 'VideoPuff.mp4',
-                    tarifs: [{weight: '1 unité', price: 60}]
-                } */
+                    video: '',
+                    tarifs: [{weight: '1 unité', price: 10},{weight: '3 unité', price: 20},{weight: '10 unité', price: 45}]
+                }
             ]}
         ]
     }
@@ -913,14 +914,14 @@ if (activeConfig.luffa) {
                 strains: [], // Plus de sélection
                 description: '',
                 image: 'ProductMs.png',
-                video: 'VideoMs.mov',
+                video: 'VideoMs.mp4',
                 tarifs: [
                     {weight: '1g', price: 30},
                     {weight: '3g', price: 90},
                     {weight: '4g', price: 110},
                     {weight: '5g', price: 130},
-                    {weight: '10g', price: 230},
-                    {weight: '25g', price: 480}
+                    {weight: '10g', price: 240},
+                    {weight: '25g', price: 500}
                 ]
             },
         ] },
@@ -949,8 +950,8 @@ if (activeConfig.luffa) {
                 farm: 'StrongSelection 🏆',
                 strains: [], // Plus de sélection
                 description: '',
-                image: 'ProductKet.jpg',
-                video: 'VideoKet.mp4',
+                image: 'ProductKet1.jpg',
+                video: 'VideoKet1.mp4',
                 tarifs: [
                     {weight: '1g', price: 30},
                     {weight: '2g', price: 50},
