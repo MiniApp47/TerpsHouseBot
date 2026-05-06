@@ -373,7 +373,7 @@ if (activeConfig.luffa) {
                     farm: '👨🏻‍🌾 Jebli farm',
                     strains: [],
                     description: '',
-                    image: 'ProductOl1.jpg',
+                    image: 'ProductOlo1.jpg',
                     video: 'VideoOl1.mp4',
                     tarifs: [
                         {weight: '1 olive', price: 180},
