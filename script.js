@@ -433,7 +433,7 @@ if (activeConfig.luffa) {
                 }
             ]},
             { id: 'FROZEN_US', name: 'FROZEN US 🇺🇸', products: [
-                {
+             /*    {
                     id: 'natchos',
                     name: 'Natchos 🌵', // Différencié
                     farm: '💃 Sheeshe 💃',
@@ -452,7 +452,7 @@ if (activeConfig.luffa) {
                     image: 'ProductFrozTh.jpg',
                     videos: ['VideoFrozTh.mov','VideoFrozTh2.mov'],
                     tarifs: [{weight: '1g', price: 30}, {weight: '5g', price: 120}, {weight: '10g', price: 230}]
-                },
+                }, */
                 {
                     id: 'FROZEN_CALIPLATES',
                     name: 'FROZEN CALIPLATES 🇺🇸', // Différencié
@@ -652,6 +652,16 @@ if (activeConfig.luffa) {
         id: 'WEED', name: '🌿 WEED', type: 'Weed', quality: '🌿 Fleurs', image: 'CategT72Weed.png',
         farms: [
             { id: 'CALI_US', name: 'CALI US 🇺🇸', products: [
+                {
+                    id: 'gelato berries',
+                    name: 'Gelato Berries 🫐', // Déjà unique, on retire juste les strains
+                    farm: '🇺🇸 Cali US',
+                    strains: [], // Plus de sélection
+                    description: '',
+                    image: 'ProductGB.jpg',
+                    video: 'VideoGB.mp4',
+                    tarifs: [{weight: '1.2g', price: 20}, {weight: '5g', price: 80}, {weight: '10g', price: 150}]
+                },
                 {
                     id: 'Pinyati',
                     name: 'Pinyati 🍭', // Déjà unique, on retire juste les strains
