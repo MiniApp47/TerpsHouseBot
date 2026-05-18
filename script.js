@@ -1340,22 +1340,31 @@ const appData = menuRouter[currentFranchise] || catalog72;
             const tgStyle = `background: linear-gradient(45deg, #2a67ee, #16e6d5); color: black; text-shadow: none;`;
             const waStyle = `background: linear-gradient(45deg, #25D366, #128C7E); text-shadow: 0px 1px 2px rgba(0,0,0,0.5);`;
 
-          // --- SYSTÈME SPÉCIFIQUE 72 : DOUBLE BOUTON + ZONES DE LIVRAISON ---
+         // --- SYSTÈME SPÉCIFIQUE 72 : PANIER INTELLIGENT (SANS BOUTONS) ---
             if (currentFranchise === '72') {
                 const isMeetUp = globalDeliveryMode === 'MeetUp';
 
-                checkoutHTML += `
-                  <div style="margin-bottom: 15px;">
-                      <div style="color: var(--text-color); font-size: 0.9rem; margin-bottom: 8px; font-weight: bold;">📦 Mode de retrait :</div>
-                      
-                      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px;">
-                          <div class="mode-btn ${isMeetUp ? 'active' : ''}" data-val="MeetUp" style="background: ${isMeetUp ? 'var(--brand-color)' : 'rgba(0,0,0,0.5)'}; color: ${isMeetUp ? 'black' : 'white'}; padding: 12px; border-radius: 12px; text-align: center; font-weight: bold; cursor: pointer; border: 2px solid ${isMeetUp ? 'var(--brand-color)' : 'rgba(255,255,255,0.2)'}; transition: all 0.2s;">🤝 Sur place</div>
-                          
-                          <div class="mode-btn ${!isMeetUp ? 'active' : ''}" data-val="Livraison" style="background: ${!isMeetUp ? 'var(--brand-color)' : 'rgba(0,0,0,0.5)'}; color: ${!isMeetUp ? 'black' : 'white'}; padding: 12px; border-radius: 12px; text-align: center; font-weight: bold; cursor: pointer; border: 2px solid ${!isMeetUp ? 'var(--brand-color)' : 'rgba(255,255,255,0.2)'}; transition: all 0.2s;">🚀 Livraison</div>
+                if (isMeetUp) {
+                    // 1. INTERFACE "SUR PLACE"
+                    checkoutHTML += `
+                      <div style="margin-bottom: 15px;">
+                          <div style="color: var(--brand-color); font-size: 1.1rem; margin-bottom: 8px; font-weight: bold; text-align: center;">🤝 Mode choisi : Sur Place</div>
+                          <input type="hidden" id="order-mode-select" value="MeetUp">
                       </div>
-
-                      <div id="zone-selector-container" style="display: ${!isMeetUp ? 'block' : 'none'}; margin-bottom: 10px;">
-                          <select id="order-zone-select" onchange="document.getElementById('order-mode-select').value = this.value" style="width: 100%; padding: 12px; border-radius: 12px; border: 1px solid var(--brand-color); background: rgba(0,0,0,0.5); color: white; font-size: 1rem; outline: none;">
+                      <div style="width: 100%; margin-bottom: 15px; text-align: left;">
+                          <div style="color: var(--text-color); font-size: 0.9rem; margin-bottom: 8px; font-weight: bold;">📍 Informations supplémentaires (Optionnel) :</div>
+                          <textarea id="delivery-address" placeholder="Heure d'arrivée, détail véhicule..." style="width: 100%; box-sizing: border-box; padding: 12px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.3); color: white; min-height: 65px; font-family: inherit; font-size: 1rem;"></textarea>
+                      </div>
+                      <button class="main-action-btn send-order-btn" data-platform="telegram" data-url="${activeConfig.telegram}?text=${orderMsgEncoded}" data-is-bot="true" style="${tgStyle}; margin-bottom: 10px;">ENVOYER AU BOT 🤖</button>
+                    `;
+                } else {
+                    // 2. INTERFACE "LIVRAISON" (Demande de la zone)
+                    checkoutHTML += `
+                      <div style="margin-bottom: 15px;">
+                          <div style="color: var(--brand-color); font-size: 1.1rem; margin-bottom: 8px; font-weight: bold; text-align: center;">🚀 Mode choisi : Livraison</div>
+                          
+                          <div style="color: var(--text-color); font-size: 0.9rem; margin-bottom: 8px; font-weight: bold; margin-top: 15px;">📍 Sélectionne ta zone de livraison :</div>
+                          <select id="order-mode-select" style="width: 100%; padding: 12px; border-radius: 12px; border: 1px solid var(--brand-color); background: rgba(0,0,0,0.5); color: white; font-size: 1rem; outline: none;">
                               <option value="Zone0">🚀 Zone Le Mans (Min 50€)</option>
                               <option value="Zone1">🚀 Zone 15km (Min 100€ + 10€ frais)</option>
                               <option value="Zone2">🚀 Zone 25km (Min 200€ + 20€ frais)</option>
@@ -1364,33 +1373,40 @@ const appData = menuRouter[currentFranchise] || catalog72;
                               <option value="Zone+">🚀 +40km (À voir avec livreur)</option>
                           </select>
                       </div>
-                      
-                      <input type="hidden" id="order-mode-select" value="${globalDeliveryMode}">
-                  </div>
-                  
-                  <div style="width: 100%; margin-bottom: 15px; text-align: left;">
-                      <div style="color: var(--text-color); font-size: 0.9rem; margin-bottom: 8px; font-weight: bold;">📍 Adresse précise :</div>
-                      <textarea id="delivery-address" placeholder="Rue, Ville, Code Postal..." style="width: 100%; box-sizing: border-box; padding: 12px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.3); color: white; min-height: 65px; font-family: inherit; font-size: 1rem;"></textarea>
-                  </div>
-                  <button class="main-action-btn send-order-btn" data-platform="telegram" data-url="${activeConfig.telegram}?text=${orderMsgEncoded}" data-is-bot="true" style="${tgStyle}; margin-bottom: 10px;">ENVOYER AU BOT 🤖</button>
-                `;
+                      <div style="width: 100%; margin-bottom: 15px; text-align: left;">
+                          <div style="color: var(--text-color); font-size: 0.9rem; margin-bottom: 8px; font-weight: bold;">📍 Adresse précise (Obligatoire) :</div>
+                          <textarea id="delivery-address" placeholder="N° Rue, Ville, Code Postal..." style="width: 100%; box-sizing: border-box; padding: 12px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.3); color: white; min-height: 65px; font-family: inherit; font-size: 1rem;"></textarea>
+                      </div>
+                      <button class="main-action-btn send-order-btn" data-platform="telegram" data-url="${activeConfig.telegram}?text=${orderMsgEncoded}" data-is-bot="true" style="${tgStyle}; margin-bottom: 10px;">ENVOYER AU BOT 🤖</button>
+                    `;
+                }
             }
-            // --- SYSTÈME SPÉCIFIQUE 75 : SÉLECTEUR + DOUBLE BOUTON DIRECT (TG & WA) ---
+          // --- SYSTÈME SPÉCIFIQUE 75 : DOUBLE BOUTON DIRECT (TG & WA) DANS LE PANIER ---
             else if (currentFranchise === '75') {
                 checkoutHTML += `
                   <div style="margin-bottom: 15px;">
                       <div style="color: var(--text-color); font-size: 0.9rem; margin-bottom: 8px; font-weight: bold;">📦 Mode de retrait :</div>
-                      <select id="order-mode-select" style="width: 100%; padding: 12px; border-radius: 12px; border: 1px solid var(--brand-color); background: rgba(0,0,0,0.5); color: white; font-size: 1rem; outline: none;">
-                          <option value="MeetUp">🤝 MeetUp (Sur place)</option>
-                          <option value="Zone0">🚀 Paris & Proche (Min 50€)</option>
-                          <option value="Zone1">🚀 Zone 15km (Min 100€ + 10€ frais)</option>
-                          <option value="Zone2">🚀 Zone 25km (Min 200€ + 20€ frais)</option>
-                          <option value="Zone3">🚀 Zone 35km (Min 300€ + 30€ frais)</option>
-                          <option value="Zone4">🚀 Zone 45km (Min 400€ + 40€ frais)</option>
-                          <option value="Zone5">🚀 Zone 55km (Min 500€ + 50€ frais)</option>
-                          <option value="Zone+">🚀 +55km (À voir avec livreur)</option>
-                      </select>
+                      
+                      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px;">
+                          <div class="mode-btn active" data-val="MeetUp" style="background: var(--brand-color); color: black; padding: 12px; border-radius: 12px; text-align: center; font-weight: bold; cursor: pointer; border: 2px solid var(--brand-color); transition: all 0.2s;">🤝 Sur place</div>
+                          <div class="mode-btn" data-val="Livraison" style="background: rgba(0,0,0,0.5); color: white; padding: 12px; border-radius: 12px; text-align: center; font-weight: bold; cursor: pointer; border: 2px solid rgba(255,255,255,0.2); transition: all 0.2s;">🚀 Livraison</div>
+                      </div>
+
+                      <div id="zone-selector-container" style="display: none; margin-bottom: 10px;">
+                          <select id="order-zone-select" onchange="document.getElementById('order-mode-select').value = this.value" style="width: 100%; padding: 12px; border-radius: 12px; border: 1px solid var(--brand-color); background: rgba(0,0,0,0.5); color: white; font-size: 1rem; outline: none;">
+                              <option value="Zone0">🚀 Paris & Proche (Min 50€)</option>
+                              <option value="Zone1">🚀 Zone 15km (Min 100€ + 10€ frais)</option>
+                              <option value="Zone2">🚀 Zone 25km (Min 200€ + 20€ frais)</option>
+                              <option value="Zone3">🚀 Zone 35km (Min 300€ + 30€ frais)</option>
+                              <option value="Zone4">🚀 Zone 45km (Min 400€ + 40€ frais)</option>
+                              <option value="Zone5">🚀 Zone 55km (Min 500€ + 50€ frais)</option>
+                              <option value="Zone+">🚀 +55km (À voir avec livreur)</option>
+                          </select>
+                      </div>
+                      
+                      <input type="hidden" id="order-mode-select" value="MeetUp">
                   </div>
+                  
                   <div style="width: 100%; margin-bottom: 15px; text-align: left;">
                       <div style="color: var(--text-color); font-size: 0.9rem; margin-bottom: 8px; font-weight: bold;">📍 Adresse précise :</div>
                       <textarea id="delivery-address" placeholder="N° Rue, Ville, Code Postal... (Laisse vide si MeetUp)" style="width: 100%; box-sizing: border-box; padding: 12px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.3); color: white; min-height: 65px; font-family: inherit; font-size: 1rem;"></textarea>
@@ -1399,6 +1415,7 @@ const appData = menuRouter[currentFranchise] || catalog72;
                   <button class="main-action-btn send-order-btn" data-platform="whatsapp" data-url="https://wa.me/${activeConfig.phone}?text=${orderMsgEncoded}" data-is-paris="true" style="${waStyle}; margin-bottom: 10px;">COMMANDER SUR WHATSAPP 📞</button>
                 `;
             }
+
             // --- SYSTÈME CLASSIQUE (AUTRES FRANCHISES) ---
             else {
                 if (activeConfig.telegramLivraison || activeConfig.phone) {
@@ -1532,7 +1549,7 @@ function formatOrderMessage() {
             btn.classList.add('active');
         }
 
-        // --- GESTION DU TOGGLE BOUTONS MEETUP / LIVRAISON ---
+     // --- GESTION DU TOGGLE BOUTONS MEETUP / LIVRAISON (POUR LE 75) ---
         if (target.closest('.mode-btn')) {
             const btn = target.closest('.mode-btn');
             
@@ -1552,7 +1569,6 @@ function formatOrderMessage() {
 
             // 3. Logique d'affichage (Révélation des zones)
             const mode = btn.dataset.val;
-            globalDeliveryMode = mode; 
             const zoneContainer = document.getElementById('zone-selector-container');
             const zoneSelect = document.getElementById('order-zone-select');
             const hiddenInput = document.getElementById('order-mode-select');
@@ -1565,7 +1581,6 @@ function formatOrderMessage() {
                 if (hiddenInput && zoneSelect) hiddenInput.value = zoneSelect.value;
             }
         }
-
         // Toggle Accordéon Page Info
         if (target.closest('.accordion-header')) {
             const currentItem = target.closest('.accordion-item');
