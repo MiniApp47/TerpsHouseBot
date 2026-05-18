@@ -718,6 +718,25 @@ select#farm-filter { display: block !important; width: 100%; height: 50px; font-
         </div>
     </div>
   -->
+
+  <div id="mode-gateway-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--background-color); z-index: 9999; flex-direction: column; justify-content: center; align-items: center; padding: 20px; box-sizing: border-box; backdrop-filter: blur(10px);">
+        <img src="LogoT72.png" style="width: 120px; height: 120px; border-radius: 20px; margin-bottom: 20px; border: 2px solid var(--brand-color); box-shadow: 0 0 20px var(--brand-shadow); object-fit: cover;">
+        <h2 style="font-family: impact, sans-serif; color: white; letter-spacing: 1px; text-align: center; margin-bottom: 15px; font-size: 1.8rem;">MODE DE RETRAIT</h2>
+        <p style="color: var(--hint-color); text-align: center; font-size: 0.95rem; line-height: 1.5; margin-bottom: 30px; background: rgba(255,255,255,0.05); padding: 15px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.1);">
+            Peu importe votre choix, <b>la carte et la qualité des produits sont 100% identiques</b>.<br><br>
+            Seuls les <b>petits conditionnements</b> (détail) diffèrent et sont réservés exclusivement au Sur Place.
+        </p>
+        <div style="width: 100%; max-width: 350px; display: flex; flex-direction: column; gap: 15px;">
+            <button class="gateway-btn" data-mode="MeetUp" style="background: var(--brand-color); color: black; font-weight: bold; font-size: 1.1rem; padding: 18px; border-radius: 12px; border: none; cursor: pointer; box-shadow: 0 4px 15px var(--brand-shadow); display: flex; justify-content: center; align-items: center; gap: 10px;">
+                🤝 SUR PLACE (Détail & Gros)
+            </button>
+            <button class="gateway-btn" data-mode="Livraison" style="background: rgba(44,44,46,0.9); color: white; font-weight: bold; font-size: 1.1rem; padding: 18px; border-radius: 12px; border: 1px solid var(--brand-color); cursor: pointer; display: flex; justify-content: center; align-items: center; gap: 10px;">
+                🚀 LIVRAISON (Dès 50€)
+            </button>
+        </div>
+    </div>
+
+    
     <div id="notification-toast"></div>
     <script src="script.js"></script>
 </body>

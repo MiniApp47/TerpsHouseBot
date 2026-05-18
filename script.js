@@ -105,6 +105,11 @@ document.addEventListener('DOMContentLoaded', function () {
     const activeConfig = franchiseConfig[currentFranchise] || franchiseConfig['72'];
 
     // --- MOTEUR D'INJECTION DYNAMIQUE ---
+    // NOUVEAU : INJECTION DU FOND D'ÉCRAN DYNAMIQUE
+    if (activeConfig.bgImage) {
+        document.body.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('${activeConfig.bgImage}')`;
+    }
+
 if (activeConfig.theme) {
     document.documentElement.style.setProperty('--brand-color', activeConfig.theme.main);
     document.documentElement.style.setProperty('--brand-shadow', activeConfig.theme.shadow);
@@ -999,6 +1004,7 @@ const appData = menuRouter[currentFranchise] || catalog72;
     let currentCategoryId = null;
     let currentFarmId = null;
     let paymentMethod = 'Espèce';
+    let globalDeliveryMode = 'MeetUp'; // Choix par défaut
 
     // 4. MOTEUR D'AFFICHAGE INTELLIGENT
     const pages = document.querySelectorAll('.page');
@@ -1231,8 +1237,17 @@ const appData = menuRouter[currentFranchise] || catalog72;
             
             ${strainsHTML} <p class="product-description" style="margin-top: 15px;">${product.description || ''}</p>
             
-            <div class="tarifs-title">💰 Tarifs :</div>
-            <div class="tarifs-grid-container">${product.tarifs ? product.tarifs.map(tarif => {
+           <div class="tarifs-title">💰 Tarifs :</div>
+            <div class="tarifs-grid-container">${product.tarifs ? product.tarifs.filter(tarif => {
+                // FILTRE DYNAMIQUE : On masque le détail si mode Livraison
+                if (currentFranchise === '72' && globalDeliveryMode === 'Livraison') {
+                    // Si le poids contient "sur place", on ne l'affiche pas
+                    if (tarif.weight.toLowerCase().includes('sur place')) {
+                        return false; 
+                    }
+                }
+                return true; // Affiche les autres
+            }).map(tarif => {
                 // --- DÉTECTION AUTOMATIQUE DES OFFRES VIP (PRIX = 0) ---
                 const isPrive = tarif.price === 0 || tarif.weight.includes('privé');
                 const priceDisplay = isPrive ? 'Sur demande' : tarif.price.toFixed(2) + '€';
@@ -1327,16 +1342,19 @@ const appData = menuRouter[currentFranchise] || catalog72;
 
           // --- SYSTÈME SPÉCIFIQUE 72 : DOUBLE BOUTON + ZONES DE LIVRAISON ---
             if (currentFranchise === '72') {
+                const isMeetUp = globalDeliveryMode === 'MeetUp';
+
                 checkoutHTML += `
                   <div style="margin-bottom: 15px;">
                       <div style="color: var(--text-color); font-size: 0.9rem; margin-bottom: 8px; font-weight: bold;">📦 Mode de retrait :</div>
                       
                       <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px;">
-                          <div class="mode-btn active" data-val="MeetUp" style="background: var(--brand-color); color: black; padding: 12px; border-radius: 12px; text-align: center; font-weight: bold; cursor: pointer; border: 2px solid var(--brand-color); transition: all 0.2s;">🤝 Sur place</div>
-                          <div class="mode-btn" data-val="Livraison" style="background: rgba(0,0,0,0.5); color: white; padding: 12px; border-radius: 12px; text-align: center; font-weight: bold; cursor: pointer; border: 2px solid rgba(255,255,255,0.2); transition: all 0.2s;">🚀 Livraison</div>
+                          <div class="mode-btn ${isMeetUp ? 'active' : ''}" data-val="MeetUp" style="background: ${isMeetUp ? 'var(--brand-color)' : 'rgba(0,0,0,0.5)'}; color: ${isMeetUp ? 'black' : 'white'}; padding: 12px; border-radius: 12px; text-align: center; font-weight: bold; cursor: pointer; border: 2px solid ${isMeetUp ? 'var(--brand-color)' : 'rgba(255,255,255,0.2)'}; transition: all 0.2s;">🤝 Sur place</div>
+                          
+                          <div class="mode-btn ${!isMeetUp ? 'active' : ''}" data-val="Livraison" style="background: ${!isMeetUp ? 'var(--brand-color)' : 'rgba(0,0,0,0.5)'}; color: ${!isMeetUp ? 'black' : 'white'}; padding: 12px; border-radius: 12px; text-align: center; font-weight: bold; cursor: pointer; border: 2px solid ${!isMeetUp ? 'var(--brand-color)' : 'rgba(255,255,255,0.2)'}; transition: all 0.2s;">🚀 Livraison</div>
                       </div>
 
-                      <div id="zone-selector-container" style="display: none; margin-bottom: 10px;">
+                      <div id="zone-selector-container" style="display: ${!isMeetUp ? 'block' : 'none'}; margin-bottom: 10px;">
                           <select id="order-zone-select" onchange="document.getElementById('order-mode-select').value = this.value" style="width: 100%; padding: 12px; border-radius: 12px; border: 1px solid var(--brand-color); background: rgba(0,0,0,0.5); color: white; font-size: 1rem; outline: none;">
                               <option value="Zone0">🚀 Zone Le Mans (Min 50€)</option>
                               <option value="Zone1">🚀 Zone 15km (Min 100€ + 10€ frais)</option>
@@ -1347,7 +1365,7 @@ const appData = menuRouter[currentFranchise] || catalog72;
                           </select>
                       </div>
                       
-                      <input type="hidden" id="order-mode-select" value="MeetUp">
+                      <input type="hidden" id="order-mode-select" value="${globalDeliveryMode}">
                   </div>
                   
                   <div style="width: 100%; margin-bottom: 15px; text-align: left;">
@@ -1498,6 +1516,13 @@ function formatOrderMessage() {
     document.body.addEventListener('click', function(e) {
         const target = e.target;
 
+        // Validation du portail d'entrée (Le choix de la méthode)
+        if (target.closest('.gateway-btn')) {
+            globalDeliveryMode = target.closest('.gateway-btn').dataset.mode;
+            document.getElementById('mode-gateway-modal').style.display = 'none';
+            showPage('page-home');
+        }
+
         // Sélection d'un Strain
         if (target.closest('.strain-btn')) {
             const btn = target.closest('.strain-btn');
@@ -1527,6 +1552,7 @@ function formatOrderMessage() {
 
             // 3. Logique d'affichage (Révélation des zones)
             const mode = btn.dataset.val;
+            globalDeliveryMode = mode; 
             const zoneContainer = document.getElementById('zone-selector-container');
             const zoneSelect = document.getElementById('order-zone-select');
             const hiddenInput = document.getElementById('order-mode-select');
@@ -1868,22 +1894,29 @@ function initVideoAutoplayObserver() {
     });
 }
 
-   // Initialisation
+  // Initialisation
    setTimeout(() => {
     populateFilters();
     renderHomePage();
     updateCartCount();
-    showPage('page-home');
     
-    // --- AFFICHAGE DU POP-UP LOTERIE (1 FOIS PAR SESSION, UNIQUEMENT 72) ---
-   /*  if (currentFranchise === '72' && !sessionStorage.getItem('lotterySeen')) {
-        const modal = document.getElementById('lottery-modal');
-        if (modal) {
-            modal.style.display = 'flex';
-            // Fermeture au clic
-            document.getElementById('close-lottery').onclick = () => { modal.style.display = 'none'; sessionStorage.setItem('lotterySeen', 'true'); };
-            document.getElementById('btn-understand-lottery').onclick = () => { modal.style.display = 'none'; sessionStorage.setItem('lotterySeen', 'true'); };
-        }
-    } */
+    // --- INTERCEPTEUR 72 (PORTAIL D'ENTRÉE) ---
+    if (currentFranchise === '72') {
+        const loader = document.getElementById("page-loader");
+        if (loader) loader.style.display = "none";
+        document.getElementById('mode-gateway-modal').style.display = 'flex';
+    } else {
+        showPage('page-home');
+    }
 }, 1500);
 });
+// --- AFFICHAGE DU POP-UP LOTERIE (1 FOIS PAR SESSION, UNIQUEMENT 72) ---
+/*  if (currentFranchise === '72' && !sessionStorage.getItem('lotterySeen')) {
+    const modal = document.getElementById('lottery-modal');
+    if (modal) {
+        modal.style.display = 'flex';
+        // Fermeture au clic
+        document.getElementById('close-lottery').onclick = () => { modal.style.display = 'none'; sessionStorage.setItem('lotterySeen', 'true'); };
+        document.getElementById('btn-understand-lottery').onclick = () => { modal.style.display = 'none'; sessionStorage.setItem('lotterySeen', 'true'); };
+    }
+} */
