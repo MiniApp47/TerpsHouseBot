@@ -34,8 +34,8 @@ document.addEventListener('DOMContentLoaded', function () {
             luffa: 'https://callup.luffa.im/c/2hQvSV5uoon',
             tiktok: 'https://www.tiktok.com/@terphouse0?_r=1&_t=ZN-94IxTeNWpTK',
             name: 'TerpsHouse72',
-            logo: 'LogoT72.png',
-            bgImage: 'FondT72.jpg',
+            logo: 'LogoT72.jpg',
+            bgImage: 'Fondecran2.jpg',
             theme: { main: '#2a78c4b3', shadow: '#2ac4c4e3' },
             categoryImages: { 'HASH': 'CategT72Hash.png', 'WEED': 'CategT72Weed.png', 'AUTRE': 'CategT73Autre.png' }
         },
@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', function () {
             telegram: 'https://t.me/terphousebxl',
             name: 'TerpsHouseBxl',
             logo: 'LogoBxl.png',
-            bgImage: 'FondBXL.jpg',
+            bgImage: 'Fondecran2.jpg',
             theme: { 
                 main: '#ffce00', 
                 bg: 'linear-gradient(90deg, #000000 0%, #ffce00 50%, #ed2939 100%)',
@@ -58,8 +58,8 @@ document.addEventListener('DOMContentLoaded', function () {
             phone: '', 
             telegram: 'https://t.me/terpcommande37',     
             name: 'TerpsHouse37',
-            logo: 'LogoT37.png',
-            bgImage: 'FondT37.jpg',
+            logo: 'LogoT37.jpg',
+            bgImage: 'Fondecran2.jpg',
             theme: { main: '#f3cb02bf', shadow: '#f3bb06' },
             categoryImages: { 'HASH': 'CategT37Hash.png', 'WEED': 'CategT37Weed.png', 'AUTRE': 'CategT37Autre.png' }
         },
@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 '🚨 SERVICE CONTINU 11H - 22H 🚨'
             ],
             logo: 'LogoT75.jpg',
-            bgImage: 'Fondecran.jpg',
+            bgImage: 'Fondecran2.jpg',
             theme: { 
                 main: '#0055A4', /* Bleu France */
                 bg: 'linear-gradient(90deg, #002654 0%, rgba(255,255,255,0.15) 50%, #ed2939 100%)', /* Dégradé FR assombri pour lisibilité texte blanc */
