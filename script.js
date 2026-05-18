@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 farmBg: 'linear-gradient(90deg, rgba(0,0,0,0.9) 0%, rgba(255,206,0,0.5) 50%, rgba(237,41,57,0.7) 100%)',
                 shadow: 'rgb(255 206 0 / 70%)' 
             },
-            categoryImages: { 'HASH': 'CategBxlHash.png', 'WEED': 'CategBxlWeed.png', 'AUTRE': 'CategBxlAutre.png' }
+            categoryImages: { 'HASH': 'CategT72Hash.png', 'WEED': 'CategT72Weed.png', 'AUTRE': 'CategT73Autre.png' }
         },
         '37': { 
             phone: '', 
@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', function () {
             logo: 'LogoT37.jpg',
             bgImage: 'Fondecran2.jpg',
             theme: { main: '#f3cb02bf', shadow: '#f3bb06' },
-            categoryImages: { 'HASH': 'CategT37Hash.png', 'WEED': 'CategT37Weed.png', 'AUTRE': 'CategT37Autre.png' }
+            categoryImages: { 'HASH': 'CategT72Hash.png', 'WEED': 'CategT72Weed.png', 'AUTRE': 'CategT73Autre.png' }
         },
         '75': { 
             phone: '33605824054', 
@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 farmBg: 'linear-gradient(90deg, rgba(0,38,84,0.9) 0%, rgba(255,255,255,0.1) 50%, rgba(237,41,57,0.7) 100%)',
                 shadow: 'rgba(0, 85, 164, 0.4)' 
             },
-            categoryImages: { 'HASH': 'CategT75Hash.png', 'WEED': 'CategT75Weed.png', 'AUTRE': 'CategT75Autre.png' }
+            categoryImages: { 'HASH': 'CategT72Hash.png', 'WEED': 'CategT72Weed.png', 'AUTRE': 'CategT73Autre.png' }
         },
         'strong72': { 
             phone: '', // Laissé vide = Pas de bouton WhatsApp
