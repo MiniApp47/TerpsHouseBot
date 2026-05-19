@@ -381,7 +381,7 @@ if (activeConfig.luffa) {
                     image: 'ProductOlo1.jpg',
                     video: 'VideoOl1.mp4',
                     tarifs: [
-                        {weight: '1 olive', price: 180},
+                        {weight: '1 olive', price: 160},
                     ]
                 },
                 {
@@ -480,7 +480,7 @@ if (activeConfig.luffa) {
                     image: 'ProductOl.jpg',
                     video: 'VideoOl.mp4',
                     tarifs: [
-                        {weight: '1 olive', price: 150},
+                        {weight: '1 olive', price: 140},
                         {weight: '5 olive', price: 700},
                         {weight: '10 olive', price: 1000},
                     ]
@@ -623,6 +623,7 @@ if (activeConfig.luffa) {
                     image: 'ProductGG.jpg',
                     video: 'VideoGG.mp4',
                     tarifs: [
+                        {weight: '10g', price: 60},
                             {weight: '100g', price: 400}]
                 }
             ]},
