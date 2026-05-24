@@ -497,9 +497,8 @@ if (activeConfig.luffa) {
                    tarifs: [
                         { weight: '1.5g (Sur Place)', price: 20 },
                         { weight: '5g', price: 70 }, 
-                        { weight: '10g', price: 250 }, 
-                        { weight: '25g', price: 550 }
-                    ]
+                        { weight: '10g', price: 130 }
+                                        ]
                 },
                 {
                     id: 'Olive 🫒',
