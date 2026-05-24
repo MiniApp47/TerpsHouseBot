@@ -372,6 +372,20 @@ if (activeConfig.luffa) {
                 }
             ]},
             { id: 'STATIC', name: 'STATIC ⚡️', products: [
+                {
+                    id: '🏝️ oasis tropical',
+                    name: '🏝️ Oasis Tropical',
+                    farm: '🧬 PIRATE DEL SUR',
+                    strains: [],
+                    description: '☀️ DOUBLE STATIC ☀️',
+                    image: 'ProductOa.jpg',
+                    video: 'VideoOa.mp4',
+                    tarifs: [
+                        {weight: '1g (Sur Place) ', price: 30}, 
+                        {weight: '5g', price: 100}, 
+                        {weight: '10g', price: 190}
+                    ]
+                },
                  {
                     id: 'Static Olive 🫒',
                     name: 'Static Olive 🍈', // Différencié
@@ -385,7 +399,7 @@ if (activeConfig.luffa) {
                         {weight: '1 olive (10g)', price: 160},
                     ]
                 },
-                {
+               /*  {
                     id: '😮‍💨 Rainbow',
                     name: '😮‍💨 Rainbow',
                     farm: '🧬 PIRATE DEL SUR',
@@ -399,7 +413,7 @@ if (activeConfig.luffa) {
                         {weight: '10g', price: 200}, 
                         {weight: '25g', price: 470}
                     ]
-                },
+                }, */
                 {
                     id: 'STATIC_VVS',
                     name: 'STATIC VVS 2K25 💎',
@@ -473,6 +487,21 @@ if (activeConfig.luffa) {
             { id: 'FROZEN', name: 'FROZEN ❄️', products: [
                
                 {
+                    id: 'Frozen 🧊',
+                    name: 'Frozen 🧊', // Différencié
+                    farm: '🧬 VVS',
+                    strains: ['Clémentine 🍊' ,'Super Mimosa 🌼' , 'Hb x Tc 🔄'],
+                    description: '',
+                    image: 'ProductSM.jpg',
+                    video: 'VideoSM.mp4',
+                   tarifs: [
+                        { weight: '1.5g (Sur Place)', price: 20 },
+                        { weight: '5g', price: 70 }, 
+                        { weight: '10g', price: 250 }, 
+                        { weight: '25g', price: 550 }
+                    ]
+                },
+                {
                     id: 'Olive 🫒',
                     name: 'Olive 🫒', // Différencié
                     farm: '👨🏻‍🌾 Jebli farm',
@@ -527,7 +556,7 @@ if (activeConfig.luffa) {
                     video: 'VideoAnon.mov',
                     tarifs: [{weight: '2.5g', price: 70}, {weight: '5g', price: 120}, {weight: '10g', price: 230}, {weight: '25g', price: 500}, {weight: '50g', price: 900}, {weight: '100g', price: 1450}]
                 }, */
-                {
+             /*    {
                     id: 'FROZEN_VVS',
                     name: 'FROZEN VVS ❄️', // Différencié
                     farm: '🧬 VVS',
@@ -536,7 +565,7 @@ if (activeConfig.luffa) {
                     image: 'Produit24K.jpg',
                     video: 'Video24K.mov',
                     tarifs: [{weight: '1.1g (Sur Place)', price: 20}, {weight: '5g', price: 80}, {weight: '10g', price: 140}]
-                }
+                } */
             ]},
             { id: 'DRY_120', name: 'DRY 120u 🛖', products: [
               /*   {
