@@ -1382,10 +1382,6 @@ const appData = menuRouter[currentFranchise] || catalog72;
                           <div style="color: var(--brand-color); font-size: 1.1rem; margin-bottom: 8px; font-weight: bold; text-align: center;">🤝 Mode choisi : Sur Place</div>
                           <input type="hidden" id="order-mode-select" value="MeetUp">
                       </div>
-                      <div style="width: 100%; margin-bottom: 15px; text-align: left;">
-                          <div style="color: var(--text-color); font-size: 0.9rem; margin-bottom: 8px; font-weight: bold;">📍 Informations supplémentaires (Optionnel) :</div>
-                          <textarea id="delivery-address" placeholder="Heure d'arrivée, détail véhicule..." style="width: 100%; box-sizing: border-box; padding: 12px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.3); color: white; min-height: 65px; font-family: inherit; font-size: 1rem;"></textarea>
-                      </div>
                       <button class="main-action-btn send-order-btn" data-platform="telegram" data-url="${activeConfig.telegram}?text=${orderMsgEncoded}" data-is-bot="true" style="${tgStyle}; margin-bottom: 10px;">ENVOYER AU BOT 🤖</button>
                     `;
                 } else {
