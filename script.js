@@ -805,11 +805,23 @@ if (activeConfig.luffa) {
     {
         id: 'AUTRE', name: '🧬 AUTRE', type: 'Autre', quality: '🧬 Divers', image: 'CategT73Autre.png',
         farms: [
-            { id: 'Cigarettes', name: 'Cigarettes 💨', products: [
+            { id: 'Puff', name: 'Puff 💨', products: [
+                {
+                    id: 'puffthc',
+                    name: 'Puff THC 💭',
+                    farm: '🧬 Vape',
+                    strains: [],
+                    description: '',
+                    image: 'ProductPuf.jpg',
+                    video: 'VideoPuf.mov',
+                    tarifs: [{weight: '1 puff', price: 60}]
+                }
+            ]},
+            { id: 'Cigarettes', name: 'Cigarettes 🚬', products: [
                 {
                     id: 'Cigarettes',
-                    name: 'Cigarettes 💨',
-                    farm: '🧬 Vape',
+                    name: 'Cigarettes 🚬',
+                    farm: '🧬 Malboro',
                     strains: [],
                     description: '',
                     image: 'ProductPuff.jpg',
