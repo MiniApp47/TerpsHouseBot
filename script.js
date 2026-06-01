@@ -535,7 +535,7 @@ if (activeConfig.luffa) {
                     video: 'VideoSher.mp4',
                     tarifs: [{weight: '1.1g (Sur Place)', price: 20}, {weight: '2.5g', price: 50}, {weight: '5g', price: 90}, {weight: '10g', price: 160}]
                 }, */
-                {
+               /*  {
                     id: 'FROZEN_HWORLD',
                     name: 'FROZEN HWORLD ❄️', // Différencié
                     farm: '🧬 HWORLD',
@@ -544,7 +544,7 @@ if (activeConfig.luffa) {
                     image: 'ProductHworld.jpg',
                     video: 'VideoHworld.mov',
                     tarifs: [{weight: '1.1g (Sur Place)', price: 20}, {weight: '5g', price: 80}, {weight: '10g', price: 150}, {weight: '25g', price: 360}]
-                },
+                }, */
                /*  {
                     id: 'FROZEN_ANONYMOUS',
                     name: 'FROZEN ANONYMOUS ❄️', // Différencié
