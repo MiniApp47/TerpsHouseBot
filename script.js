@@ -25,9 +25,9 @@ document.addEventListener('DOMContentLoaded', function () {
     const franchiseConfig = {
         '72': { 
             phone: '', // Reste utilisé pour la commande WA et le lien WA
-            telegram: 'https://t.me/THPRISE2COMMANDE_bot', // 🤖 TON NOUVEAU BOT UNIQUE
-            //telegramLivraison: 'https://t.me/volantrs3', // Commande Panier
-           // telegramSurPlace: 'https://t.me/LeDispensair72', // Commande Panier
+            // telegram: 'https://t.me/THPRISE2COMMANDE_bot', // 🤖 TON NOUVEAU BOT UNIQUE
+            telegramLivraison: 'https://t.me/volantrs3', // Commande Panier
+            telegramSurPlace: 'https://t.me/LeDispensair72', // Commande Panier
             telegramInfo: 'https://t.me/terphouseoff', // NOUVEAU : Le canal pour la page Links
             snapchat: 'https://snapchat.com/t/WV38isH8',
             instagram: 'https://www.instagram.com/terphouse.officiel?igsh=dHlud2NoOXo5NDhz&utm_source=qr',
@@ -1369,21 +1369,21 @@ const appData = menuRouter[currentFranchise] || catalog72;
         const tgStyle = `background: linear-gradient(45deg, #2a67ee, #16e6d5); color: black; text-shadow: none;`;
         const waStyle = `background: linear-gradient(45deg, #25D366, #128C7E); text-shadow: 0px 1px 2px rgba(0,0,0,0.5);`;
 
-        // --- SYSTÈME SPÉCIFIQUE 72 : PANIER INTELLIGENT (SANS BOUTONS) ---
+       // --- SYSTÈME SPÉCIFIQUE 72 : PANIER INTELLIGENT (SANS BOUTONS) ---
         if (currentFranchise === '72') {
             const isMeetUp = globalDeliveryMode === 'MeetUp';
 
             if (isMeetUp) {
-                // 1. INTERFACE "SUR PLACE"
+                // 1. INTERFACE "SUR PLACE" -> Envoi à @LeDispensair72
                 checkoutHTML += `
                   <div style="margin-bottom: 15px;">
                       <div style="color: var(--brand-color); font-size: 1.1rem; margin-bottom: 8px; font-weight: bold; text-align: center;">🤝 Mode choisi : Sur Place</div>
                       <input type="hidden" id="order-mode-select" value="MeetUp">
                   </div>
-                  <button class="main-action-btn send-order-btn" data-platform="telegram" data-url="${activeConfig.telegram}?text=${orderMsgEncoded}" data-is-bot="true" style="${tgStyle}; margin-bottom: 10px;">ENVOYER AU BOT 🤖</button>
+                  <button class="main-action-btn send-order-btn" data-platform="telegram" data-url="${activeConfig.telegramSurPlace}?text=${orderMsgEncoded}" data-is-bot="true" style="${tgStyle}; margin-bottom: 10px;">COMMANDER EN SUR PLACE 🤝</button>
                 `;
             } else {
-                // 2. INTERFACE "LIVRAISON" (Demande de la zone)
+                // 2. INTERFACE "LIVRAISON" -> Envoi à @volantrs3
                 checkoutHTML += `
                   <div style="margin-bottom: 15px;">
                       <div style="color: var(--brand-color); font-size: 1.1rem; margin-bottom: 8px; font-weight: bold; text-align: center;">🚀 Mode choisi : Livraison</div>
@@ -1402,7 +1402,7 @@ const appData = menuRouter[currentFranchise] || catalog72;
                       <div style="color: var(--text-color); font-size: 0.9rem; margin-bottom: 8px; font-weight: bold;">📍 Adresse précise (Obligatoire) :</div>
                       <textarea id="delivery-address" placeholder="N° Rue, Ville, Code Postal..." style="width: 100%; box-sizing: border-box; padding: 12px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.3); color: white; min-height: 65px; font-family: inherit; font-size: 1rem;"></textarea>
                   </div>
-                  <button class="main-action-btn send-order-btn" data-platform="telegram" data-url="${activeConfig.telegram}?text=${orderMsgEncoded}" data-is-bot="true" style="${tgStyle}; margin-bottom: 10px;">ENVOYER AU BOT 🤖</button>
+                  <button class="main-action-btn send-order-btn" data-platform="telegram" data-url="${activeConfig.telegramLivraison}?text=${orderMsgEncoded}" data-is-bot="true" style="${tgStyle}; margin-bottom: 10px;">COMMANDER EN LIVRAISON 🚀</button>
                 `;
             }
         }
