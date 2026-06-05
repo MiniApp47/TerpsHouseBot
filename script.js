@@ -654,7 +654,8 @@ if (activeConfig.luffa) {
                     video: 'VideoGG.mp4',
                     tarifs: [
                         {weight: '10g', price: 60},
-                            {weight: '100g', price: 400}]
+                        {weight: '100g', price: 400}
+                    ]
                 }
             ]},
             { id: 'SEMI_DRY', name: 'SEMI DRY', products: [
@@ -696,7 +697,7 @@ if (activeConfig.luffa) {
                     description: '',
                     image: 'ProductGB.jpg',
                     video: 'VideoGB.mp4',
-                    tarifs: [{weight: '1.2g', price: 20}, {weight: '5g', price: 80}, {weight: '10g', price: 150}]
+                    tarifs: [{weight: '1.2g', price: 20}, {weight: '5g', price: 80}, {weight: '10g', price: 150}, {weight: '100g', price: 750}]
                 },
                 {
                     id: 'Pinyati',
@@ -706,7 +707,7 @@ if (activeConfig.luffa) {
                     description: '',
                     image: 'ProductPin.jpg',
                     video: 'VideoPin.mp4',
-                    tarifs: [{weight: '1.2g', price: 20}, {weight: '5g', price: 80}, {weight: '10g', price: 150}]
+                    tarifs: [{weight: '1.2g', price: 20}, {weight: '5g', price: 80}, {weight: '10g', price: 150}, {weight: '100g', price: 750}]
                 },
                 {
                     id: 'CALI_CEREAL',
@@ -716,7 +717,7 @@ if (activeConfig.luffa) {
                     description: 'Strain très connue aux US, Cereal Milk a un goût sucré / crémeux avec des notes de lait et de céréales.\nEffet propre, relaxant mais pas trop lourd.\nProduit bien travaillé, texture propre, bonne odeur dès l’ouverture.',
                     image: 'ProductCereal.jpg',
                     video: 'VideoCereal.mp4',
-                    tarifs: [{weight: '1.2g', price: 20}, {weight: '5g', price: 80}, {weight: '10g', price: 150}]
+                    tarifs: [{weight: '1.2g', price: 20}, {weight: '5g', price: 80}, {weight: '10g', price: 150}, {weight: '100g', price: 750}]
                 },
                {
                     id: 'skittlez',
@@ -726,7 +727,7 @@ if (activeConfig.luffa) {
                     description: '',
                     image: 'ProductSkit.jpg',
                     video: 'VideoSkit.mp4',
-                    tarifs: [{weight: '1.2g', price: 20}, {weight: '5g', price: 80}, {weight: '10g', price: 150}]
+                    tarifs: [{weight: '1.2g', price: 20}, {weight: '5g', price: 80}, {weight: '10g', price: 150}, {weight: '100g', price: 750}]
                 },
                  /*  {
                     id: 'CALI_CEREAL',
@@ -1216,16 +1217,33 @@ const appData = menuRouter[currentFranchise] || catalog72;
             productsToRender = productsToRender.filter(p => p.farm === currentFilters.farm);
         }
 
-        productListContainer.innerHTML = productsToRender.map(product => `
+        productListContainer.innerHTML = productsToRender.map(product => {
+            // NOUVEAU : Calcul dynamique du prix d'appel selon le mode (Sur Place / Livraison)
+            let displayPrice = 'N/A';
+            if (product.tarifs && product.tarifs.length > 0) {
+                let activeTarifs = product.tarifs;
+                
+                // Si on est sur le 72 en Livraison, on ignore les tarifs "Sur Place" pour le prix de la vignette
+                if (currentFranchise === '72' && globalDeliveryMode === 'Livraison') {
+                    activeTarifs = product.tarifs.filter(t => !t.weight.toLowerCase().includes('sur place'));
+                }
+                
+                if (activeTarifs.length > 0) {
+                    displayPrice = activeTarifs[0].price.toFixed(2) + '€';
+                }
+            }
+
+            return `
             <div class="product-card product-item-card" data-product-id="${product.id}">
                 ${product.image ? `<img src="${product.image}" alt="">` : ''}
                 <div class="info">
                     <div class="name">${product.name}</div>
                     ${product.farm ? `<div class="farm-subtitle">${product.farm}</div>` : ''}
-                    <div class="price">${product.tarifs && product.tarifs.length ? product.tarifs[0].price.toFixed(2) + '€' : 'N/A'}</div>
+                    <div class="price">${displayPrice}</div>
                 </div>
             </div>
-        `).join('') || '<p class="no-results">Bientôt disponible.</p>';
+            `;
+        }).join('') || '<p class="no-results">Bientôt disponible.</p>';
     }
 
     function renderProductPage(productId) {
