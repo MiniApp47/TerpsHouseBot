@@ -679,7 +679,7 @@ if (activeConfig.luffa) {
                     description: 'La Grappe Fruit est une variété de cannabis hybride Elle est connue pour ses arômes citronnés, terreux et légèrement diesel, ainsi que pour ses effets puissants mêlant euphorie mentale et relaxation du corps. Très populaire dans la culture cannabis, elle a servi de base à de nombreuses autres strains modernes. 🌿💨',
                     image: 'ProductJaune.jpg',
                     video: 'VideoJaune.mp4',
-                    tarifs: [{weight: '5g', price: 30}, {weight: '10g', price: 50}, {weight: '25g', price: 110}, {weight: '50g', price: 180}, {weight: '100g', price: 350}]
+                    tarifs: [{weight: '5g (Sur Place)', price: 30}, {weight: '10g', price: 50}, {weight: '25g', price: 110}, {weight: '50g', price: 180}, {weight: '100g', price: 350}]
                 }
             ]},
           
@@ -697,7 +697,7 @@ if (activeConfig.luffa) {
                     description: '',
                     image: 'ProductGB.jpg',
                     video: 'VideoGB.mp4',
-                    tarifs: [{weight: '1.2g', price: 20}, {weight: '5g', price: 80}, {weight: '10g', price: 150}, {weight: '100g', price: 750}]
+                    tarifs: [{weight: '1.2g (Sur Place)', price: 20}, {weight: '5g', price: 80}, {weight: '10g', price: 150}, {weight: '100g', price: 750}]
                 },
                 {
                     id: 'Pinyati',
@@ -707,7 +707,7 @@ if (activeConfig.luffa) {
                     description: '',
                     image: 'ProductPin.jpg',
                     video: 'VideoPin.mp4',
-                    tarifs: [{weight: '1.2g', price: 20}, {weight: '5g', price: 80}, {weight: '10g', price: 150}, {weight: '100g', price: 750}]
+                    tarifs: [{weight: '1.2g (Sur Place)', price: 20}, {weight: '5g', price: 80}, {weight: '10g', price: 150}, {weight: '100g', price: 750}]
                 },
                 {
                     id: 'CALI_CEREAL',
@@ -717,7 +717,7 @@ if (activeConfig.luffa) {
                     description: 'Strain très connue aux US, Cereal Milk a un goût sucré / crémeux avec des notes de lait et de céréales.\nEffet propre, relaxant mais pas trop lourd.\nProduit bien travaillé, texture propre, bonne odeur dès l’ouverture.',
                     image: 'ProductCereal.jpg',
                     video: 'VideoCereal.mp4',
-                    tarifs: [{weight: '1.2g', price: 20}, {weight: '5g', price: 80}, {weight: '10g', price: 150}, {weight: '100g', price: 750}]
+                    tarifs: [{weight: '1.2g (Sur Place)', price: 20}, {weight: '5g', price: 80}, {weight: '10g', price: 150}, {weight: '100g', price: 750}]
                 },
                {
                     id: 'skittlez',
@@ -727,7 +727,7 @@ if (activeConfig.luffa) {
                     description: '',
                     image: 'ProductSkit.jpg',
                     video: 'VideoSkit.mp4',
-                    tarifs: [{weight: '1.2g', price: 20}, {weight: '5g', price: 80}, {weight: '10g', price: 150}, {weight: '100g', price: 750}]
+                    tarifs: [{weight: '1.2g (Sur Place)', price: 20}, {weight: '5g', price: 80}, {weight: '10g', price: 150}, {weight: '100g', price: 750}]
                 },
                  /*  {
                     id: 'CALI_CEREAL',
@@ -791,7 +791,7 @@ if (activeConfig.luffa) {
                     image: 'ProductAmne.jpg',
                     video: 'VideoAmne.mp4',
                     tarifs: [
-                        {weight: '2g', price: 20}, 
+                        {weight: '2g (Sur Place)', price: 20}, 
                         {weight: '5g', price: 40}, 
                         {weight: '10g', price: 70},
                         {weight: '25g', price: 160}, 
