@@ -567,6 +567,20 @@ if (activeConfig.luffa) {
                 } */
             ]},
             { id: 'DRY_120', name: 'DRY 120u 🛖', products: [
+                 {
+                    id: 'purpule punch',
+                    name: '💜 purple punch 👊', 
+                    farm: '🧬 Jebli Farm',
+                    strains: [],
+                    description: '',
+                    image: 'Product120pp.jpg',
+                    video: 'Video120pp.mp4',
+                    tarifs: [
+                        {weight: '1.7g', price: 20}, {weight: '5g', price: 60},
+                        {weight: '10g', price: 110}, {weight: '25g', price: 200},
+                        {weight: '100g', price: 500},
+                    ]
+                }
               /*   {
                     id: 'DRY_120_DARKS',
                     name: 'TIRAMISU (120u) ☕️', // Nom de la souche utilisé en titre
@@ -577,7 +591,7 @@ if (activeConfig.luffa) {
                     video: 'VideoTira.mov',
                     tarifs: [{weight: '1 olive', price: 90}, {weight: '5 olives', price: 450}, {weight: '10 olives', price: 780}]
                 }, */
-                {
+              /*   {
                     id: 'DRY_120_PIRATE',
                     name: 'BUBBA DRY (120u) 🏴‍☠️', // Nom de la souche utilisé en titre
                     farm: '🧬 Pirate Del Sur',
@@ -586,7 +600,7 @@ if (activeConfig.luffa) {
                     image: 'ProductPirate.jpg',
                     video: 'VideoPirate.mov',
                     tarifs: [{weight: '1.4g (Sur Place)', price: 20}, {weight: '5g', price: 70}, {weight: '10g', price: 120}, {weight: '25g', price: 260}]
-                },
+                }, */
                /*  {
                     id: 'DRY_120_JEBLI',
                     name: 'DRY 120u JEBLI 🇲🇦', // Différencié
