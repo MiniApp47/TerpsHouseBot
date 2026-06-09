@@ -322,7 +322,7 @@ if (activeConfig.luffa) {
 
   /// Menu LE MANS (72)
   const catalog72 = [
-    {
+    /* {
         id: 'PACKS', name: '🎁 PACKS TERPS HOUSE', type: 'Packs', quality: '🎁 Offres', image: 'CategT72Pack.png',
         // 1. On utilise "products" direct au lieu de "farms" pour zapper l'étape intermédiaire
         products: [
@@ -355,7 +355,7 @@ if (activeConfig.luffa) {
                 tarifs: [{ weight: '1 Pack', price: 120, oldPrice: '140€' }]
             }
         ]
-    },
+    }, */
     {
         id: 'HASH', name: '🍫 HASH', type: 'Hash', quality: '🍫 Hashish', image: 'CategT72Hash.png',
         farms: [
