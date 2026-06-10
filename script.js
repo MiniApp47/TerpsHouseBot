@@ -360,6 +360,36 @@ if (activeConfig.luffa) {
         id: 'HASH', name: '🍫 HASH', type: 'Hash', quality: '🍫 Hashish', image: 'CategT72Hash.png',
         farms: [
             { id: 'STATIC_US', name: 'STATIC US 🇺🇸', products: [
+                 {
+                    id: 'RAZBERRY',
+                    name: 'RAZBERRY MINTS 🍒', // Différencié
+                    farm: '🧬 Saha Terps ',
+                    strains: [],
+                    description: '',
+                    image: 'ProductRM.jpg',
+                    video: 'VideoRM.mp4',
+                    tarifs: [{ weight: '1g', price: 30 }, { weight: '5g', price: 160 }, { weight: '10g', price: 270 }]
+                },
+                 {
+                    id: 'SUB ZERO',
+                    name: 'SUB ZERO 0️⃣', // Différencié
+                    farm: '🧬 Saha Terps ',
+                    strains: [],
+                    description: '',
+                    image: 'ProductSZ.jpg',
+                    video: 'VideoSZ.mp4',
+                    tarifs: [{ weight: '1g', price: 40 }, { weight: '5g', price: 170 }, { weight: '10g', price: 320 }]
+                },
+                   {
+                    id: 'staticuswel',
+                    name: 'STATIC US 🗽 (WeFlips)', // Différencié
+                    farm: '🥷🏼 WEFLIPS 🥷🏼',
+                    strains: ['Sherbet 🍧', 'Gush Mints 🍬'],
+                    description: '',
+                    image: 'ProductWF.jpg',
+                    video: 'VideoWF.mp4',
+                    tarifs: [{weight: '1g', price: 40}, {weight: '5g', price: 170}, {weight: '10g', price: 320}]
+                },
                 {
                     id: 'STATIC_US_SAHA',
                     name: 'STATIC US 🇺🇸 (Saha Terps)', // Différencié
@@ -453,6 +483,16 @@ if (activeConfig.luffa) {
                 }
             ]},
             { id: 'FROZEN_US', name: 'FROZEN US 🇺🇸', products: [
+                 {
+                    id: 'GAS STATION',
+                    name: 'GAS STATION ⛽', // Différencié
+                    farm: '🥷🏼 WEFLIPS 🥷🏼',
+                    strains: [],
+                    description: '',
+                    image: 'ProductGS.jpg',
+                    video: 'VideoGS.mp4',
+                    tarifs: [{weight: '1g', price: 30}, {weight: '5g', price: 150}, {weight: '10g', price: 280}]
+                },
              /*    {
                     id: 'natchos',
                     name: 'Natchos 🌵', // Différencié
