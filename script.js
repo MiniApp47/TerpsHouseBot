@@ -368,7 +368,7 @@ if (activeConfig.luffa) {
                     description: '',
                     image: 'ProductRM.jpg',
                     video: 'VideoRM.mp4',
-                    tarifs: [{ weight: '1g', price: 30 }, { weight: '5g', price: 160 }, { weight: '10g', price: 270 }]
+                    tarifs: [{ weight: '1g (Sur Place)', price: 30 }, { weight: '5g', price: 160 }, { weight: '10g', price: 270 }]
                 },
                  {
                     id: 'SUB ZERO',
@@ -378,7 +378,7 @@ if (activeConfig.luffa) {
                     description: '',
                     image: 'ProductSZ.jpg',
                     video: 'VideoSZ.mp4',
-                    tarifs: [{ weight: '1g', price: 40 }, { weight: '5g', price: 170 }, { weight: '10g', price: 320 }]
+                    tarifs: [{ weight: '1g (Sur Place)', price: 40 }, { weight: '5g', price: 170 }, { weight: '10g', price: 320 }]
                 },
                    {
                     id: 'staticuswel',
@@ -388,9 +388,9 @@ if (activeConfig.luffa) {
                     description: '',
                     image: 'ProductWF.jpg',
                     video: 'VideoWF.mp4',
-                    tarifs: [{weight: '1g', price: 40}, {weight: '5g', price: 170}, {weight: '10g', price: 320}]
+                    tarifs: [{weight: '1g (Sur Place)', price: 40}, {weight: '5g', price: 170}, {weight: '10g', price: 320}]
                 },
-                {
+               /*  {
                     id: 'STATIC_US_SAHA',
                     name: 'STATIC US 🇺🇸 (Saha Terps)', // Différencié
                     farm: '🧬 Saha Terps (⚠️ Exclusivité)',
@@ -398,8 +398,8 @@ if (activeConfig.luffa) {
                     description: 'Produit très haut de gamme, static propre, très riche en goût, texture sableuse / fondante, full terps.\nQualité US, grosse odeur dès l’ouverture.\n\n🥭 Guava Cake: Profil fruité / crémeux avec dominante goyave.\n🍬 Atomic Runtz: Saveur bonbon fruité avec côté gaz typique Runtz.',
                     image: 'ProductStaticUs.jpg',
                     video: 'VideoStaticUs.mp4',
-                    tarifs: [{ weight: '1g', price: 50 }, { weight: '5g', price: 180 }, { weight: '10g', price: 300 }, { weight: '20g', price: 560 }]
-                }
+                    tarifs: [{ weight: '1g (Sur Place)', price: 50 }, { weight: '5g', price: 180 }, { weight: '10g', price: 300 }, { weight: '20g', price: 560 }]
+                } */
             ]},
             { id: 'STATIC', name: 'STATIC ⚡️', products: [
                 {
@@ -491,7 +491,7 @@ if (activeConfig.luffa) {
                     description: '',
                     image: 'ProductGS.jpg',
                     video: 'VideoGS.mp4',
-                    tarifs: [{weight: '1g', price: 30}, {weight: '5g', price: 150}, {weight: '10g', price: 280}]
+                    tarifs: [{weight: '1g (Sur Place)', price: 30}, {weight: '5g', price: 150}, {weight: '10g', price: 280}]
                 },
              /*    {
                     id: 'natchos',
@@ -513,7 +513,7 @@ if (activeConfig.luffa) {
                     videos: ['VideoFrozTh.mov','VideoFrozTh2.mov'],
                     tarifs: [{weight: '1g', price: 30}, {weight: '5g', price: 120}, {weight: '10g', price: 230}]
                 }, */
-                {
+               /*  {
                     id: 'FROZEN_CALIPLATES',
                     name: 'FROZEN CALIPLATES 🇺🇸', // Différencié
                     farm: '🧬 CALIPLATES',
@@ -521,8 +521,8 @@ if (activeConfig.luffa) {
                     description: '🔥 OMG: Gas sucré + notes crémeuses. Fumée bien grasse, effet rapide et lourd.\n🧊 Otter Pops: Profil fruité glacé, très aromatique. High clean puis détente.',
                     image: 'ProductCalip.jpg',
                     video: 'VideoCalip.mp4',
-                    tarifs: [{weight: '1g', price: 40}, {weight: '2.5g', price: 70}, {weight: '5g', price: 140}, {weight: '10g', price: 250}]
-                },
+                    tarifs: [{weight: '1g ', price: 40}, {weight: '2.5g', price: 70}, {weight: '5g', price: 140}, {weight: '10g', price: 250}]
+                }, */
             ]},
             { id: 'FROZEN', name: 'FROZEN ❄️', products: [
                
@@ -674,9 +674,10 @@ if (activeConfig.luffa) {
                     id: 'DRY_90_VVS',
                     name: 'DRY 90u VVS 💎', // Différencié
                     farm: '🧬 VVS',
+                    isRestock: true, // 🔒 INTERRUPTEUR DE RUPTURE DE STOCK
                     strains: ['Super cherry', 'Lemon acai', 'Horchetta x sprtzzel', 'Icc 2', 'Lulo runtz', 'Lary reeses', 'Mimosa', 'Papayadawg', 'Zmo x papayadawg'],
                     description: 'Sélection Dry 90u VVS, qualité premium, nombreux strains disponibles (à choisir).',
-                    image: 'Product90.jpg',
+                    image: 'ProductRestok.png',
                     video: 'Video90.mp4',
                     tarifs: [
                         {weight: '5g', price: 40},
@@ -1287,8 +1288,11 @@ const appData = menuRouter[currentFranchise] || catalog72;
                 }
             }
 
+            // --- BOUCLIER RESTOCK : Grise l'image et bloque les clics ---
+            const restockStyle = product.isRestock ? '    filter: grayscale(50%); opacity: 0.7; pointer-events: none;' : '';
+
             return `
-            <div class="product-card product-item-card" data-product-id="${product.id}">
+            <div class="product-card product-item-card" data-product-id="${product.id}" style="${restockStyle}">
                 ${product.image ? `<img src="${product.image}" alt="">` : ''}
                 <div class="info">
                     <div class="name">${product.name}</div>
