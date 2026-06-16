@@ -322,6 +322,55 @@ if (activeConfig.luffa) {
 
   /// Menu LE MANS (72)
   const catalog72 = [
+    {
+        id: 'PACKS', name: '🏆 PACKS ÉVÉNEMENT', type: 'Packs', quality: '🏆 Packs', image: 'CategT72Pack.png',
+        products: [
+            {
+                id: 'PACK_MAROC',
+                name: '🇲🇦 PACK MAROC',
+                farm: '🧬 Sélection Premium',
+                strains: [],
+                packDetails: '10g Frozen PDS + 10g VVS Darksfarm + 5g 120u Jebli', // INFO CACHÉE POUR LE BOT
+                description: 'La puissance et le goût à l\'état pur.\n\n <span class="pack-link" data-id="GMO">👁️ 10g Frozen PDS</span>\n <span class="pack-link" data-id="STATIC_VVS">👁️ 10g VVS Darksfarm</span> \n <span class="pack-link" data-id="purpule punch">👁️ 5g 120u Jebli</span>\n\n<span style="font-size: 0.8rem; color: var(--hint-color); font-style: italic; display: block; text-align: center; margin-top: 15px;">👆 Clique sur un produit pour voir sa fiche</span>',
+                image: 'PackMaroc.jpg',
+                video: '',
+                tarifs: [{ weight: '1 Pack', price: 290, oldPrice: '330€' }]
+            },
+            {
+                id: 'PACK_USA',
+                name: '🇺🇸 PACK ÉTATS-UNIS',
+                farm: '🧬 Sélection Premium',
+                strains: [],
+                packDetails: '5g Static Saha Terp + 5g Frozen Wepfli + 5g Cali US', // INFO CACHÉE POUR LE BOT
+                description: 'L\'excellence californienne dans ton salon.\n\n <span class="pack-link" data-id="RAZBERRY">👁️ 5g Static Saha Terp</span>\n <span class="pack-link" data-id="GAS STATION">👁️ 5g Frozen Wepfli</span> \n <span class="pack-link" data-id="CALI_CEREAL">👁️ 5g Cali US</span>\n\n<span style="font-size: 0.8rem; color: var(--hint-color); font-style: italic; display: block; text-align: center; margin-top: 15px;">👆 Clique sur un produit pour voir sa fiche</span>',
+                image: 'PackUSA.jpg',
+                video: '',
+                tarifs: [{ weight: '1 Pack', price: 350, oldPrice: '390€' }]
+            },
+            {
+                id: 'PACK_FRANCE',
+                name: '🇫🇷 PACK FRANCE',
+                farm: '🧬 Sélection Premium',
+                strains: [],
+                packDetails: '10g 120u Jebli + 5g 90u Darks Farm + 5g Cali US', // INFO CACHÉE POUR LE BOT
+                description: 'Le trio parfait pour les connaisseurs.\n\n <span class="pack-link" data-id="purpule punch">👁️ 10g 120u Jebli</span>\n <span class="pack-link" data-id="CaliH">👁️ 5g 90u Darks Farm</span> \n <span class="pack-link" data-id="CALI_CEREAL">👁️ 5g Cali US</span>\n\n<span style="font-size: 0.8rem; color: var(--hint-color); font-style: italic; display: block; text-align: center; margin-top: 15px;">👆 Clique sur un produit pour voir sa fiche</span>',
+                image: 'PackFrance.jpg',
+                video: '',
+                tarifs: [{ weight: '1 Pack', price: 200, oldPrice: '240€' }]
+            },
+            {
+                id: 'PACK_BRESIL',
+                name: '🇧🇷 PACK BRÉSIL',
+                farm: '🧬 Sélection Premium',
+                strains: [],
+                packDetails: '5g Amnesia + 10g Gelato 73u + 10g Jaune', // INFO CACHÉE POUR LE BOT
+                description: 'Le combo quantité/qualité imbattable.\n\n <span class="pack-link" data-id="AMNESIA">👁️ 5g Amnesia</span>\n <span class="pack-link" data-id="DRY_73_JEBLI">👁️ 10g Gelato 73u</span> \n <span class="pack-link" data-id="Grappe Fruit 🍇">👁️ 10g Jaune</span>\n\n<span style="font-size: 0.8rem; color: var(--hint-color); font-style: italic; display: block; text-align: center; margin-top: 15px;">👆 Clique sur un produit pour voir sa fiche</span>',
+                image: 'PackBresil.jpg',
+                video: '',
+                tarifs: [{ weight: '1 Pack', price: 110, oldPrice: '150€' }]
+            }
+        ]
+    },
     /* {
         id: 'PACKS', name: '🎁 PACKS TERPS HOUSE', type: 'Packs', quality: '🎁 Offres', image: 'CategT72Pack.png',
         // 1. On utilise "products" direct au lieu de "farms" pour zapper l'étape intermédiaire
@@ -1429,9 +1478,14 @@ const appData = menuRouter[currentFranchise] || catalog72;
         document.getElementById('confirmation-items-count').innerText = `${totalItems} article(s)`;
         document.getElementById('confirmation-total-price').innerText = `${subTotal.toFixed(2)}€`;
 
-        document.getElementById('confirmation-items-list').innerHTML = cart.map((item, i) => `
-            <div style="margin-bottom:10px;">${i + 1}. ${item.name} | ${item.quantity}x ${item.weight} | ${item.totalPrice.toFixed(2)}€</div>
-        `).join('');
+       document.getElementById('confirmation-items-list').innerHTML = cart.map((item, i) => {
+            const packVisual = item.packDetails ? `<br><span style="font-size: 0.85rem; color: var(--brand-color);">🎁 Inclus : ${item.packDetails}</span>` : '';
+            return `
+            <div style="margin-bottom:12px; line-height: 1.4; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 8px;">
+                <b>${i + 1}. ${item.name}</b> ${packVisual} <br> 
+                <span style="color: var(--hint-color);">Quantité : ${item.quantity}x ${item.weight} | ${item.totalPrice.toFixed(2)}€</span>
+            </div>`;
+        }).join('');
 
         document.getElementById('confirmation-summary').innerHTML = `
             <div class="summary-line total"><span>💰 Total final:</span><span>${subTotal.toFixed(2)}€</span></div>
@@ -1586,17 +1640,11 @@ function formatOrderMessage() {
     let msg = `*🛒 COMMANDE ${activeConfig.name}*\n\n`;
     cart.forEach((i, idx) => {
         const strainText = i.strainName ? ` [${i.strainName}]` : '';
-        msg += `*${idx + 1}. ${i.rawName || i.name}${strainText}*\n• Quantité: ${i.quantity}x ${i.weight}\n• Prix: ${i.totalPrice.toFixed(2)}€\n\n`;
+        const packContent = i.packDetails ? `\n• 🎁 Inclus : ${i.packDetails}` : ''; // Affiche les détails du pack
+        
+        msg += `*${idx + 1}. ${i.rawName || i.name}${strainText}*${packContent}\n• Quantité: ${i.quantity}x ${i.weight}\n• Prix: ${i.totalPrice.toFixed(2)}€\n\n`;
     });
     msg += `*💰 TOTAL: ${total.toFixed(2)}€*\n💳 Paiement: ${paymentMethod}`;
-
-    // --- INJECTION LOTERIE : UNIQUEMENT POUR LE 72 ---
-   /*  if (currentFranchise === '72') {
-        const tickets = calculateTickets(total);
-        if (tickets > 0) {
-            msg += `\n\n🎰 *TICKETS LOTERIE DÉBLOQUÉS : ${tickets} 🎟*`;
-        }
-    } */
 
     return encodeURIComponent(msg);
 }
@@ -1722,16 +1770,18 @@ function formatOrderMessage() {
             currentView = 'farms'; renderHomePage();
         }
 
-     // Ajout au panier avec prise en compte du Strain
+    // Ajout au panier avec prise en compte du Strain
      if (target.closest('.add-to-cart-btn')) {
         const btn = target.closest('.add-to-cart-btn');
         const pId = btn.dataset.productId;
         const weight = btn.dataset.weight;
         const price = parseFloat(btn.dataset.price);
 
+        // NOUVEAU : On déclare le produit ici pour qu'il soit accessible à tout le bloc !
+        const product = getProductById(pId);
+
         // --- 🚀 INTERCEPTEUR VIP / GROS VOLUME (PRIX À 0) ---
         if (price === 0) {
-            const product = getProductById(pId);
             // On récupère le bon Telegram selon la franchise en cours
             const tgUrl = activeConfig.telegram || activeConfig.telegramLivraison;
             // Création du message pré-rempli
@@ -1752,7 +1802,7 @@ function formatOrderMessage() {
         const cartItemId = selectedStrain ? `${pId}-${weight}-${selectedStrain}` : `${pId}-${weight}`;
         
         // On formate le nom affiché dans le panier (avec la couleur de la marque)
-        const productBaseName = getProductById(pId).name;
+        const productBaseName = product.name;
         const displayName = selectedStrain 
             ? `${productBaseName} <br><span style="color: var(--brand-color); font-size: 0.85rem;">${selectedStrain}</span>` 
             : productBaseName;
@@ -1765,19 +1815,22 @@ function formatOrderMessage() {
             cart.push({ 
                 id: cartItemId, 
                 productId: pId, 
-                name: displayName, // Contient le Strain en couleur
+                name: displayName, 
                 weight: weight, 
                 quantity: 1, 
                 unitPrice: price, 
                 totalPrice: price,
-                rawName: productBaseName, // Pour le message Telegram
-                strainName: selectedStrain // Pour le message Telegram
+                rawName: productBaseName, 
+                strainName: selectedStrain,
+                packDetails: product.packDetails || '' // <-- La variable fonctionne maintenant parfaitement ici
             });
         }
         renderCart();
         if(tg && tg.HapticFeedback) tg.HapticFeedback.notificationOccurred('success');
         showNotification('🛒 Ajouté au panier • Voir ➔');
-        }
+    }
+
+
         // --- 🚀 ROUTAGE DIRECT VERS PRODUIT (Panier ou Liens internes) ---
         if (target.closest('.item-details[data-product-id]')) {
             const pId = target.closest('.item-details').dataset.productId;
