@@ -579,7 +579,7 @@ if (activeConfig.luffa) {
                     id: 'Frozen PDS 💠',
                     name: 'Frozen PDS 💠', // Différencié
                     farm: 'Farm PDS',
-                    strains: ['Hansoloburger 🍔' ,'Strawnana Mints 🍓' ],
+                    strains: ['Hansoloburger 🍔' ,'Strawnana Mints 🍓','Papaya Crush 🥭' ],
                     description: '',
                     image: 'ProductHens.jpg',
                     video: 'VideoHens.mp4',
