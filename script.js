@@ -576,8 +576,18 @@ if (activeConfig.luffa) {
             { id: 'FROZEN', name: 'FROZEN ❄️', products: [
                
                 {
+                    id: 'Frozen PDS 💠',
+                    name: 'Frozen PDS 💠', // Différencié
+                    farm: 'Farm PDS',
+                    strains: ['Hansoloburger 🍔' ,'Strawnana Mints 🍓' ],
+                    description: '',
+                    image: 'ProductHens.jpg',
+                    video: 'VideoHens.mp4',
+                    tarifs: [{weight: '1.1g (Sur Place)', price: 20}, {weight: '2.5g', price: 50}, {weight: '5g', price: 90}, {weight: '10g', price: 160}]
+                },
+                {
                     id: 'Frozen 🧊',
-                    name: 'Frozen 🧊', // Différencié
+                    name: 'Frozen VVS 🧊', // Différencié
                     farm: '🧬 VVS',
                     strains: ['Clémentine 🍊' ,'Super Mimosa 🌼' , 'Hb x Tc 🔄'],
                     description: '',
@@ -604,7 +614,7 @@ if (activeConfig.luffa) {
                         {weight: '10 olive', price: 1000},
                     ]
                 },
-                {
+               /*  {
                     id: 'GMO',
                     name: '🍊 GMO', // Différencié
                     farm: '🧬 Pirate Del Sur',
@@ -613,7 +623,7 @@ if (activeConfig.luffa) {
                     image: 'ProductGmo.jpg',
                     video: 'VideoGmo.mp4',
                     tarifs: [{weight: '1.1g (Sur Place)', price: 20}, {weight: '2.5g', price: 50}, {weight: '5g', price: 90}, {weight: '10g', price: 160}]
-                },
+                }, */
               /*   {
                     id: 'FROZEN_PIRATE',
                     name: '🆕 Sherbanger', // Différencié
