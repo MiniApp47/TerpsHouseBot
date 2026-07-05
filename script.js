@@ -793,7 +793,7 @@ if (activeConfig.luffa) {
                     description: 'La Grappe Fruit est une variété de cannabis hybride Elle est connue pour ses arômes citronnés, terreux et légèrement diesel, ainsi que pour ses effets puissants mêlant euphorie mentale et relaxation du corps. Très populaire dans la culture cannabis, elle a servi de base à de nombreuses autres strains modernes. 🌿💨',
                     image: 'ProductJaune.jpg',
                     video: 'VideoJaune.mp4',
-                    tarifs: [{weight: '5g (Sur Place)', price: 30}, {weight: '10g', price: 50}, {weight: '25g', price: 110}, {weight: '50g', price: 180}, {weight: '100g', price: 350}]
+                    tarifs: [{weight: '5g', price: 30}, {weight: '10g', price: 50}, {weight: '25g', price: 110}, {weight: '50g', price: 180}, {weight: '100g', price: 350}]
                 }
             ]},
           
