@@ -757,7 +757,7 @@ if (activeConfig.luffa) {
                      {weight: '10g', price: 90}]
                 } */
             ]},
-            { id: 'DRY_73', name: 'DRY 73u', products: [
+          /*   { id: 'DRY_73', name: 'DRY 73u', products: [
                 {
                     id: 'DRY_73_JEBLI',
                     name: 'GELATO (73u) 🍦', // Nom de la souche utilisé en titre
@@ -771,7 +771,7 @@ if (activeConfig.luffa) {
                         {weight: '100g', price: 400}
                     ]
                 }
-            ]},
+            ]}, */
             { id: 'SEMI_DRY', name: 'SEMI DRY', products: [
               /*   {
                     id: 'SEMIDRY_JEBLI',
