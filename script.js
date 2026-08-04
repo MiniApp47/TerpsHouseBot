@@ -600,18 +600,15 @@ if (activeConfig.luffa) {
                                         ]
                 },
                 {
-                    id: 'Olive 🫒',
-                    name: 'Olive 🫒', // Différencié
+                    id: 'Gary Payton 🫒',
+                    name: 'Gary Payton 🫒', // Différencié
                     farm: '👨🏻‍🌾 Jebli farm',
                     strains: [],
                     description: '',
-                    image: 'ProductOl.jpg',
-                    video: 'VideoOl.mp4',
+                    image: 'ProductGP.jpg',
+                    video: 'VideoGP.mov',
                     tarifs: [
-                        {weight: '5g', price: 70},
-                        {weight: '1 olive (10g)', price: 140},
-                        {weight: '5 olive', price: 700},
-                        {weight: '10 olive', price: 1000},
+                        {weight: '1 olive (10g)', price: 100},
                     ]
                 },
                /*  {
@@ -675,8 +672,8 @@ if (activeConfig.luffa) {
                     image: 'Product120pp.jpg',
                     video: 'Video120pp.mp4',
                     tarifs: [
-                        {weight: '1.7g (Sur Place)', price: 20}, {weight: '5g', price: 60},
-                        {weight: '10g', price: 110}, {weight: '25g', price: 200},
+                        {weight: '1.7g (Sur Place)', price: 20}, {weight: '5g', price: 50},
+                        {weight: '10g', price: 90}, {weight: '25g', price: 200},
                         {weight: '100g', price: 500},
                     ]
                 }
