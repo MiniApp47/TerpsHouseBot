@@ -801,6 +801,16 @@ if (activeConfig.luffa) {
         farms: [
             { id: 'CALI_US', name: 'CALI US 🇺🇸', products: [
                 {
+                    id: 'ICE CREAM CAKE',
+                    name: 'ICE CREAM CAKE 🍦', // Déjà unique, on retire juste les strains
+                    farm: '🇺🇸 Cali US',
+                    strains: [], // Plus de sélection
+                    description: '',
+                    image: 'ProductICC.jpg',
+                    video: 'VideoICC.mp4',
+                    tarifs: [{weight: '1.2g (Sur Place)', price: 20}, {weight: '5g', price: 80}, {weight: '10g', price: 150}, {weight: '100g', price: 750}]
+                },
+                /* {
                     id: 'gelato berries',
                     name: 'Gelato Berries 🫐', // Déjà unique, on retire juste les strains
                     farm: '🇺🇸 Cali US',
@@ -839,7 +849,7 @@ if (activeConfig.luffa) {
                     image: 'ProductSkit.jpg',
                     video: 'VideoSkit.mp4',
                     tarifs: [{weight: '1.2g (Sur Place)', price: 20}, {weight: '5g', price: 80}, {weight: '10g', price: 150}, {weight: '100g', price: 750}]
-                },
+                }, */
                  /*  {
                     id: 'CALI_CEREAL',
                     name: 'CEREAL MILK 🥣🥛', // Déjà unique, on retire juste les strains
