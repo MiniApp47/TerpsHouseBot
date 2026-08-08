@@ -216,7 +216,7 @@ if (activeConfig.luffa) {
             id: 'HASH', name: '🍫 HASH 75', type: 'Hash', quality: '🍫 Hashish', image: 'CategT75Hash.png', 
             farms: [
                 { id: 'FROZEN_US', name: 'FROZEN US 🇺🇸', products: [
-                    {
+                   /*  {
                         id: 'FROZEN_THE_MIDDLE_75', 
                         name: 'FROZEN The Middle 🇺🇸',
                         farm: 'The Middle 🌱',
@@ -225,10 +225,10 @@ if (activeConfig.luffa) {
                         image: 'ProductFrozTh.jpg',
                         video: 'VideoFrozTh.mp4',
                         tarifs: [{weight: '1g', price: 30}, {weight: '5g', price: 120}, {weight: '10g', price: 230}]
-                    }
+                    } */
                 ]},
                 { id: 'FROZEN', name: 'FROZEN ❄️', products: [
-                    {
+                   /*  {
                         id: 'FROZEN_VVS_75',
                         name: 'FROZEN VVS ❄️',
                         farm: '🧬 VVS',
@@ -237,10 +237,10 @@ if (activeConfig.luffa) {
                         image: 'Produit24K.jpg',
                         video: 'Video24K.mov',
                         tarifs: [{weight: '1.1g', price: 20}, {weight: '5g', price: 80}, {weight: '10g', price: 140}]
-                    }
+                    } */
                 ]},
                 { id: 'DRY_120', name: 'DRY 120u 🛖', products: [
-                    {
+                   /*  {
                         id: 'DRY_120_PIRATE_75',
                         name: 'BUBBA DRY (120u) 🏴‍☠️',
                         farm: '🧬 Pirate Del Sur',
@@ -249,10 +249,25 @@ if (activeConfig.luffa) {
                         image: 'ProductPirate.jpg',
                         video: 'VideoPirate.mov',
                         tarifs: [{weight: '1.6g', price: 20}, {weight: '5g', price: 60}, {weight: '10g', price: 100}, {weight: '25g', price: 240}]
-                    }
+                    }*/
                 ]},
                 { id: 'DRY_90', name: 'DRY 90u ⚡️', products: [
                     {
+                        id: 'DryMaradonag',
+                        name: 'DryMaradona', 
+                        farm: '🎩 Maradona Farm',
+                        strains: [],
+                        description: '',
+                        image: 'ProductDD.png',
+                        video: 'VideoDD.mp4',
+                        tarifs: [
+                            {weight: '5g', price: 50}, 
+                            {weight: '10g', price: 70}, 
+                            {weight: '50g', price: 250}, 
+                            {weight: '100g', price: 450}
+                        ]
+                    } 
+                   /*  {
                         id: 'CaliH_75',
                         name: 'CaliH 🎓', 
                         farm: '🎩 Darks Farm',
@@ -267,10 +282,10 @@ if (activeConfig.luffa) {
                             {weight: '50g', price: 450}, 
                             {weight: '100g', price: 660}
                         ]
-                    }
+                    } */
                 ]},
                 { id: 'DRY_73', name: 'DRY 73u', products: [
-                    {
+                    /* {
                         id: 'DRY_73_JEBLI_75',
                         name: 'GELATO (73u) 🍦',
                         farm: '🧬 Jebli Farm',
@@ -279,10 +294,24 @@ if (activeConfig.luffa) {
                         image: 'ProductGG.jpg',
                         video: 'VideoGG.mp4',
                         tarifs: [{weight: '5g', price: 40}, {weight: '10g', price: 60}, {weight: '25g', price: 130}, {weight: '50g', price: 250}, {weight: '100g', price: 380}]
-                    }
+                    } */
                 ]},
                 { id: 'STATIC', name: 'STATIC ⚡️', products: [
-                    {
+                     {
+                    id: '🏝️ oasis tropical',
+                    name: '🏝️ Oasis Tropical',
+                    farm: '🧬 PIRATE DEL SUR',
+                    strains: [],
+                    description: '☀️ DOUBLE STATIC ☀️',
+                    image: 'ProductOa.jpg',
+                    video: 'VideoOa.mp4',
+                    tarifs: [
+                        {weight: '1g (Sur Place) ', price: 30}, 
+                        {weight: '5g', price: 100}, 
+                        {weight: '10g', price: 190}
+                    ]
+                },
+                   /*  {
                         id: 'STATIC_VVS_75',
                         name: 'STATIC VVS 2K25 💎',
                         farm: '🧬 VVS',
@@ -291,13 +320,13 @@ if (activeConfig.luffa) {
                         image: 'ProductDevil.jpg',
                         video: 'VideoDevil.mp4',
                         tarifs: [{weight: '1g', price: 20}, {weight: '5g', price: 100}, {weight: '10g', price: 190}, {weight: '20g', price: 360}, {weight: '25g', price: 430}]
-                    }
+                    } */
                 ]}
             ] 
         },
         { id: 'WEED', name: '🌿 WEED 75', type: 'Weed', quality: '🌿 Fleurs', image: 'CategT75Weed.png', farms: [
             { id: 'CALI_US', name: 'CALI US 🇺🇸', products: [
-                {
+               /*  {
                     id: 'CALI_MOCHI',
                     name: 'MOCHI GELATO 🍧',
                     farm: '🇺🇸 Cali US',
@@ -306,7 +335,7 @@ if (activeConfig.luffa) {
                     image: 'ProductMochi1.jpg',
                     video: 'VideoMochi1.mp4',
                     tarifs: [{weight: '1.2g (Sur Place)', price: 20}, {weight: '3.5g', price: 60}, {weight: '5g', price: 80}, {weight: '10g', price: 150}, {weight: '100g', price: 850}]
-                },
+                }, */
             ]
         },
         ] },
@@ -709,7 +738,7 @@ if (activeConfig.luffa) {
                 } */
             ]},
             { id: 'DRY_90', name: 'DRY 90u ⚡️', products: [
-                {
+                /* {
                     id: 'CaliH',
                     name: 'CaliH 🎓', 
                     farm: '🎩 Darks Farm',
@@ -725,7 +754,7 @@ if (activeConfig.luffa) {
                         {weight: '50g', price: 400}, 
                         {weight: '100g', price: 700}
                     ]
-                },
+                }, */
                 {
                     id: 'DRY_90_VVS',
                     name: 'DRY 90u VVS 💎', // Différencié
