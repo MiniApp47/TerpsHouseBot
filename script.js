@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function () {
         '72': { 
             phone: '', // Reste utilisé pour la commande WA et le lien WA
             // telegram: 'https://t.me/THPRISE2COMMANDE_bot', // 🤖 TON NOUVEAU BOT UNIQUE
-            telegramLivraison: 'https://t.me/volantrs3', // Commande Panier
+            telegramLivraison: 'https://t.me/volantrs', // Commande Panier
             telegramSurPlace: 'https://t.me/LeDispensair72', // Commande Panier
             telegramInfo: 'https://t.me/terphouseoff', // NOUVEAU : Le canal pour la page Links
             snapchat: 'https://snapchat.com/t/WV38isH8',
