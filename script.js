@@ -24,21 +24,23 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const franchiseConfig = {
         '72': { 
-            phone: '', // Reste utilisé pour la commande WA et le lien WA
-            // telegram: 'https://t.me/THPRISE2COMMANDE_bot', // 🤖 TON NOUVEAU BOT UNIQUE
-            telegramLivraison: 'https://t.me/LeDispensair72', // Commande Panier
-            telegramSurPlace: 'https://t.me/LeDispensair72', // Commande Panier
-            telegramInfo: 'https://t.me/terphouseoff', // NOUVEAU : Le canal pour la page Links
-            snapchat: 'https://snapchat.com/t/WV38isH8',
-            instagram: 'https://www.instagram.com/terphouse.officiel?igsh=dHlud2NoOXo5NDhz&utm_source=qr',
-            luffa: 'https://callup.luffa.im/c/2hQvSV5uoon',
-            tiktok: 'https://www.tiktok.com/@terphouse0?_r=1&_t=ZN-94IxTeNWpTK',
-            name: 'TerpsHouse72',
-            logo: 'LogoT72.jpg',
-            bgImage: 'Fondecran2.jpg',
-            theme: { main: '#2a78c4b3', shadow: '#2ac4c4e3' },
-            categoryImages: { 'HASH': 'CategT72Hash.png', 'WEED': 'CategT72Weed.png', 'AUTRE': 'CategT73Autre.png' }
-        },
+    phone: '33775019851',
+
+    telegramInfo: 'https://t.me/terphouseoff',
+    snapchat: 'https://snapchat.com/t/WV38isH8',
+    instagram: 'https://www.instagram.com/terphouse.officiel?igsh=dHlud2NoOXo5NDhz&utm_source=qr',
+    luffa: 'https://callup.luffa.im/c/2hQvSV5uoon',
+    tiktok: 'https://www.tiktok.com/@terphouse0?_r=1&_t=ZN-94IxTeNWpTK',
+    name: 'TerpsHouse72',
+    logo: 'LogoT72.jpg',
+    bgImage: 'Fondecran2.jpg',
+    theme: { main: '#2a78c4b3', shadow: '#2ac4c4e3' },
+    categoryImages: { 
+        'HASH': 'CategT72Hash.png',
+        'WEED': 'CategT72Weed.png',
+        'AUTRE': 'CategT73Autre.png'
+    }
+},
         'bxl': { 
             phone: '447541995981', 
             telegram: 'https://t.me/terphousebxl',
@@ -1556,8 +1558,13 @@ const appData = menuRouter[currentFranchise] || catalog72;
                       <div style="color: var(--brand-color); font-size: 1.1rem; margin-bottom: 8px; font-weight: bold; text-align: center;">🤝 Mode choisi : Sur Place</div>
                       <input type="hidden" id="order-mode-select" value="MeetUp">
                   </div>
-                  <button class="main-action-btn send-order-btn" data-platform="telegram" data-url="${activeConfig.telegramSurPlace}?text=${orderMsgEncoded}" data-is-bot="true" style="${tgStyle}; margin-bottom: 10px;">COMMANDER EN SUR PLACE 🤝</button>
-                `;
+<button class="main-action-btn send-order-btn"
+    data-platform="whatsapp"
+    data-url="https://wa.me/${activeConfig.phone}?text=${orderMsgEncoded}"
+    data-is-bot="true"
+    style="${waStyle}; margin-bottom: 10px;">
+    COMMANDER EN SUR PLACE 🤝
+</button>                `;
             } else {
                 // 2. INTERFACE "LIVRAISON" -> Envoi à @volantrs3
                 checkoutHTML += `
@@ -1578,8 +1585,13 @@ const appData = menuRouter[currentFranchise] || catalog72;
                       <div style="color: var(--text-color); font-size: 0.9rem; margin-bottom: 8px; font-weight: bold;">📍 Adresse précise (Obligatoire) :</div>
                       <textarea id="delivery-address" placeholder="N° Rue, Ville, Code Postal..." style="width: 100%; box-sizing: border-box; padding: 12px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.3); color: white; min-height: 65px; font-family: inherit; font-size: 1rem;"></textarea>
                   </div>
-                  <button class="main-action-btn send-order-btn" data-platform="telegram" data-url="${activeConfig.telegramLivraison}?text=${orderMsgEncoded}" data-is-bot="true" style="${tgStyle}; margin-bottom: 10px;">COMMANDER EN LIVRAISON 🚀</button>
-                `;
+<button class="main-action-btn send-order-btn"
+    data-platform="whatsapp"
+    data-url="https://wa.me/${activeConfig.phone}?text=${orderMsgEncoded}"
+    data-is-bot="true"
+    style="${waStyle}; margin-bottom: 10px;">
+    COMMANDER EN LIVRAISON 🚀
+</button>                `;
             }
         }
         // --- SYSTÈME SPÉCIFIQUE 75 : DOUBLE BOUTON DIRECT (TG & WA) DANS LE PANIER ---
