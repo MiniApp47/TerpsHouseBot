@@ -23,18 +23,27 @@ document.addEventListener('DOMContentLoaded', function () {
     const currentFranchise = urlParams.get('franchise') || '72'; 
 
     const franchiseConfig = {
-        '72': { 
-    phone: '33775019851',
+       '72': { 
+    phone: '',
+
+    telegramLivraison: 'https://t.me/LeDispensair72',
+    telegramSurPlace: 'https://t.me/LeDispensair72',
 
     telegramInfo: 'https://t.me/terphouseoff',
     snapchat: 'https://snapchat.com/t/WV38isH8',
     instagram: 'https://www.instagram.com/terphouse.officiel?igsh=dHlud2NoOXo5NDhz&utm_source=qr',
     luffa: 'https://callup.luffa.im/c/2hQvSV5uoon',
     tiktok: 'https://www.tiktok.com/@terphouse0?_r=1&_t=ZN-94IxTeNWpTK',
+
     name: 'TerpsHouse72',
     logo: 'LogoT72.jpg',
     bgImage: 'Fondecran2.jpg',
-    theme: { main: '#2a78c4b3', shadow: '#2ac4c4e3' },
+
+    theme: { 
+        main: '#2a78c4b3',
+        shadow: '#2ac4c4e3'
+    },
+
     categoryImages: { 
         'HASH': 'CategT72Hash.png',
         'WEED': 'CategT72Weed.png',
@@ -1547,53 +1556,156 @@ const appData = menuRouter[currentFranchise] || catalog72;
         const tgStyle = `background: linear-gradient(45deg, #2a67ee, #16e6d5); color: black; text-shadow: none;`;
         const waStyle = `background: linear-gradient(45deg, #25D366, #128C7E); text-shadow: 0px 1px 2px rgba(0,0,0,0.5);`;
 
-       // --- SYSTÈME SPÉCIFIQUE 72 : PANIER INTELLIGENT (SANS BOUTONS) ---
-        if (currentFranchise === '72') {
-            const isMeetUp = globalDeliveryMode === 'MeetUp';
+// --- SYSTÈME SPÉCIFIQUE 72 : PANIER INTELLIGENT ---
+if (currentFranchise === '72') {
 
-            if (isMeetUp) {
-                // 1. INTERFACE "SUR PLACE" -> Envoi à @LeDispensair72
-                checkoutHTML += `
-                  <div style="margin-bottom: 15px;">
-                      <div style="color: var(--brand-color); font-size: 1.1rem; margin-bottom: 8px; font-weight: bold; text-align: center;">🤝 Mode choisi : Sur Place</div>
-                      <input type="hidden" id="order-mode-select" value="MeetUp">
-                  </div>
-<button class="main-action-btn send-order-btn"
-    data-platform="whatsapp"
-    data-url="https://wa.me/${activeConfig.phone}?text=${orderMsgEncoded}"
-    data-is-bot="true"
-    style="${waStyle}; margin-bottom: 10px;">
-    COMMANDER EN SUR PLACE 🤝
-</button>                `;
-            } else {
-                // 2. INTERFACE "LIVRAISON" -> Envoi à @volantrs3
-                checkoutHTML += `
-                  <div style="margin-bottom: 15px;">
-                      <div style="color: var(--brand-color); font-size: 1.1rem; margin-bottom: 8px; font-weight: bold; text-align: center;">🚀 Mode choisi : Livraison</div>
-                      
-                      <div style="color: var(--text-color); font-size: 0.9rem; margin-bottom: 8px; font-weight: bold; margin-top: 15px;">📍 Sélectionne ta zone de livraison :</div>
-                      <select id="order-mode-select" style="width: 100%; padding: 12px; border-radius: 12px; border: 1px solid var(--brand-color); background: rgba(0,0,0,0.5); color: white; font-size: 1rem; outline: none;">
-                          <option value="Zone0">🚀 Zone Le Mans (Min 50€)</option>
-                          <option value="Zone1">🚀 Zone 15km (Min 100€ + 10€ frais)</option>
-                          <option value="Zone2">🚀 Zone 25km (Min 200€ + 20€ frais)</option>
-                          <option value="Zone3">🚀 Zone 35km (Min 250€ + 30€ frais)</option>
-                          <option value="Zone4">🚀 Zone 40km (Min 300€ + 40€ frais)</option>
-                          <option value="Zone+">🚀 +40km (À voir avec livreur)</option>
-                      </select>
-                  </div>
-                  <div style="width: 100%; margin-bottom: 15px; text-align: left;">
-                      <div style="color: var(--text-color); font-size: 0.9rem; margin-bottom: 8px; font-weight: bold;">📍 Adresse précise (Obligatoire) :</div>
-                      <textarea id="delivery-address" placeholder="N° Rue, Ville, Code Postal..." style="width: 100%; box-sizing: border-box; padding: 12px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.3); color: white; min-height: 65px; font-family: inherit; font-size: 1rem;"></textarea>
-                  </div>
-<button class="main-action-btn send-order-btn"
-    data-platform="whatsapp"
-    data-url="https://wa.me/${activeConfig.phone}?text=${orderMsgEncoded}"
-    data-is-bot="true"
-    style="${waStyle}; margin-bottom: 10px;">
-    COMMANDER EN LIVRAISON 🚀
-</button>                `;
-            }
-        }
+    const isMeetUp = globalDeliveryMode === 'MeetUp';
+
+    if (isMeetUp) {
+
+        // SUR PLACE -> @LeDispensair72
+        checkoutHTML += `
+            <div style="margin-bottom: 15px;">
+                <div style="
+                    color: var(--brand-color);
+                    font-size: 1.1rem;
+                    margin-bottom: 8px;
+                    font-weight: bold;
+                    text-align: center;
+                ">
+                    🤝 Mode choisi : Sur Place
+                </div>
+
+                <input
+                    type="hidden"
+                    id="order-mode-select"
+                    value="MeetUp"
+                >
+            </div>
+
+            <button
+                class="main-action-btn send-order-btn"
+                data-platform="telegram"
+                data-url="${activeConfig.telegramSurPlace}?text=${orderMsgEncoded}"
+                data-is-bot="true"
+                style="${tgStyle}; margin-bottom: 10px;"
+            >
+                COMMANDER EN SUR PLACE 🤝
+            </button>
+        `;
+
+    } else {
+
+        // LIVRAISON -> @LeDispensair72
+        checkoutHTML += `
+            <div style="margin-bottom: 15px;">
+
+                <div style="
+                    color: var(--brand-color);
+                    font-size: 1.1rem;
+                    margin-bottom: 8px;
+                    font-weight: bold;
+                    text-align: center;
+                ">
+                    🚀 Mode choisi : Livraison
+                </div>
+
+                <div style="
+                    color: var(--text-color);
+                    font-size: 0.9rem;
+                    margin-bottom: 8px;
+                    font-weight: bold;
+                    margin-top: 15px;
+                ">
+                    📍 Sélectionne ta zone de livraison :
+                </div>
+
+                <select
+                    id="order-mode-select"
+                    style="
+                        width: 100%;
+                        padding: 12px;
+                        border-radius: 12px;
+                        border: 1px solid var(--brand-color);
+                        background: rgba(0,0,0,0.5);
+                        color: white;
+                        font-size: 1rem;
+                        outline: none;
+                    "
+                >
+                    <option value="Zone0">
+                        🚀 Zone Le Mans (Min 50€)
+                    </option>
+
+                    <option value="Zone1">
+                        🚀 Zone 15km (Min 100€ + 10€ frais)
+                    </option>
+
+                    <option value="Zone2">
+                        🚀 Zone 25km (Min 200€ + 20€ frais)
+                    </option>
+
+                    <option value="Zone3">
+                        🚀 Zone 35km (Min 250€ + 30€ frais)
+                    </option>
+
+                    <option value="Zone4">
+                        🚀 Zone 40km (Min 300€ + 40€ frais)
+                    </option>
+
+                    <option value="Zone+">
+                        🚀 +40km (À voir avec livreur)
+                    </option>
+                </select>
+
+            </div>
+
+            <div style="
+                width: 100%;
+                margin-bottom: 15px;
+                text-align: left;
+            ">
+
+                <div style="
+                    color: var(--text-color);
+                    font-size: 0.9rem;
+                    margin-bottom: 8px;
+                    font-weight: bold;
+                ">
+                    📍 Adresse précise (Obligatoire) :
+                </div>
+
+                <textarea
+                    id="delivery-address"
+                    placeholder="N° Rue, Ville, Code Postal..."
+                    style="
+                        width: 100%;
+                        box-sizing: border-box;
+                        padding: 12px;
+                        border-radius: 12px;
+                        border: 1px solid rgba(255,255,255,0.2);
+                        background: rgba(0,0,0,0.3);
+                        color: white;
+                        min-height: 65px;
+                        font-family: inherit;
+                        font-size: 1rem;
+                    "
+                ></textarea>
+
+            </div>
+
+            <button
+                class="main-action-btn send-order-btn"
+                data-platform="telegram"
+                data-url="${activeConfig.telegramLivraison}?text=${orderMsgEncoded}"
+                data-is-bot="true"
+                style="${tgStyle}; margin-bottom: 10px;"
+            >
+                COMMANDER EN LIVRAISON 🚀
+            </button>
+        `;
+    }
+}
         // --- SYSTÈME SPÉCIFIQUE 75 : DOUBLE BOUTON DIRECT (TG & WA) DANS LE PANIER ---
         else if (currentFranchise === '75') {
             checkoutHTML += `
