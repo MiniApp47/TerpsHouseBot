@@ -1136,12 +1136,11 @@ if (activeConfig.luffa) {
                 image: 'ProductMs.png',
                 video: 'VideoMs.mp4',
                 tarifs: [
-                    {weight: '1g', price: 30},
-                    {weight: '3g', price: 90},
-                    {weight: '4g', price: 110},
-                    {weight: '5g', price: 130},
-                    {weight: '10g', price: 240},
-                    {weight: '25g', price: 500}
+                    {weight: '1g', price: 40},
+                    {weight: '5g', price: 140},
+                    {weight: '10g', price: 260},
+                    {weight: '25g', price: 600},
+                    {weight: '50g', price: 1050}
                 ]
             },
         ] },
