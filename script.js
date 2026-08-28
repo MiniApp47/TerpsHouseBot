@@ -24,12 +24,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const franchiseConfig = {
        '72': { 
-    phone: '',
-
-    telegramLivraison: 'https://t.me/LeDispensair72',
-    telegramSurPlace: 'https://t.me/LeDispensair72',
+    phone: '33746788110',
 
     telegramInfo: 'https://t.me/terphouseoff',
+
     snapchat: 'https://snapchat.com/t/WV38isH8',
     instagram: 'https://www.instagram.com/terphouse.officiel?igsh=dHlud2NoOXo5NDhz&utm_source=qr',
     luffa: 'https://callup.luffa.im/c/2hQvSV5uoon',
@@ -39,12 +37,12 @@ document.addEventListener('DOMContentLoaded', function () {
     logo: 'LogoT72.jpg',
     bgImage: 'Fondecran2.jpg',
 
-    theme: { 
+    theme: {
         main: '#2a78c4b3',
         shadow: '#2ac4c4e3'
     },
 
-    categoryImages: { 
+    categoryImages: {
         'HASH': 'CategT72Hash.png',
         'WEED': 'CategT72Weed.png',
         'AUTRE': 'CategT73Autre.png'
@@ -1583,14 +1581,14 @@ if (currentFranchise === '72') {
             </div>
 
             <button
-                class="main-action-btn send-order-btn"
-                data-platform="telegram"
-                data-url="${activeConfig.telegramSurPlace}?text=${orderMsgEncoded}"
-                data-is-bot="true"
-                style="${tgStyle}; margin-bottom: 10px;"
-            >
-                COMMANDER EN SUR PLACE 🤝
-            </button>
+    class="main-action-btn send-order-btn"
+    data-platform="whatsapp"
+    data-url="https://wa.me/${activeConfig.phone}?text=${orderMsgEncoded}"
+    data-is-bot="true"
+    style="${waStyle}; margin-bottom: 10px;"
+>
+    COMMANDER EN SUR PLACE 🤝
+</button>
         `;
 
     } else {
@@ -1694,14 +1692,14 @@ if (currentFranchise === '72') {
             </div>
 
             <button
-                class="main-action-btn send-order-btn"
-                data-platform="telegram"
-                data-url="${activeConfig.telegramLivraison}?text=${orderMsgEncoded}"
-                data-is-bot="true"
-                style="${tgStyle}; margin-bottom: 10px;"
-            >
-                COMMANDER EN LIVRAISON 🚀
-            </button>
+    class="main-action-btn send-order-btn"
+    data-platform="whatsapp"
+    data-url="https://wa.me/${activeConfig.phone}?text=${orderMsgEncoded}"
+    data-is-bot="true"
+    style="${waStyle}; margin-bottom: 10px;"
+>
+    COMMANDER EN LIVRAISON 🚀
+</button>
         `;
     }
 }
