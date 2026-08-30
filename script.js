@@ -490,6 +490,34 @@ if (activeConfig.luffa) {
             ]},
             { id: 'STATIC', name: 'STATIC ⚡️', products: [
                 {
+                    id: 'limosa',
+                    name: 'Limosa 🐦',
+                    farm: 'HASH BARS 🥂',
+                    strains: [],
+                    description: '',
+                    image: 'ProductL.png',
+                    video: ['VideoL1.mov','VideoL2.mov'],
+                    tarifs: [
+                        {weight: '1,1g (Sur Place) ', price: 20}, 
+                        {weight: '5g', price: 80}, 
+                        {weight: '10g', price: 140}
+                    ]
+                },
+                {
+                    id: 'Original Static 🤯',
+                    name: 'Original Static 🤯',
+                    farm: '👨🏻‍🌾 Jebli farm',
+                    strains: ['Forrbiden Fruit 🍇' , 'Bomba tx 💣'],
+                    description: '',
+                    image: 'ProductJS.png',
+                    videos: ['VideoJS1.mov','VideoJS2.mov'],
+                    tarifs: [
+                        {weight: '1,1g (Sur Place) ', price: 20}, 
+                        {weight: '5g', price: 90}, 
+                        {weight: '10g', price: 150}
+                    ]
+                },
+                {
                     id: '🏝️ oasis tropical',
                     name: '🏝️ Oasis Tropical',
                     farm: '🧬 PIRATE DEL SUR',
@@ -613,6 +641,20 @@ if (activeConfig.luffa) {
             ]},
             { id: 'FROZEN', name: 'FROZEN ❄️', products: [
                
+                {
+                    id: 'GORILLA',
+                    name: 'GORILLA 🦧', // Différencié
+                    farm: '👨🏻‍🌾 Jebli farm',
+                    strains: [],
+                    description: '',
+                    image: 'ProductGO.png',
+                    videos: ['VideoGO1.mov','VideoGO2.mov','VideoGO3.mov'],
+                    tarifs: [
+                        {weight: '1.2g (Sur Place)', price: 20},
+                        {weight: '5g', price: 70}, 
+                        {weight: '10g', price: 130}
+                    ]
+                },
                 {
                     id: 'Frozen PDS 💠',
                     name: 'Frozen PDS 💠', // Différencié
@@ -768,7 +810,7 @@ if (activeConfig.luffa) {
                     id: 'DRY_90_VVS',
                     name: 'DRY 90u VVS 💎', // Différencié
                     farm: '🧬 VVS',
-                    isRestock: true, // 🔒 INTERRUPTEUR DE RUPTURE DE STOCK
+                    // isRestock: true, // 🔒 INTERRUPTEUR DE RUPTURE DE STOCK
                     strains: ['Super cherry', 'Lemon acai', 'Horchetta x sprtzzel', 'Icc 2', 'Lulo runtz', 'Lary reeses', 'Mimosa', 'Papayadawg', 'Zmo x papayadawg'],
                     description: 'Sélection Dry 90u VVS, qualité premium, nombreux strains disponibles (à choisir).',
                     image: 'ProductRestok.png',
