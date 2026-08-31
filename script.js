@@ -513,6 +513,7 @@ if (activeConfig.luffa) {
                     videos: ['VideoJS1.mov','VideoJS2.mov'],
                     tarifs: [
                         {weight: '1,1g (Sur Place) ', price: 20}, 
+                        {weight: '2,5g', price: 50}, 
                         {weight: '5g', price: 90}, 
                         {weight: '10g', price: 150}
                     ]
