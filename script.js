@@ -447,7 +447,7 @@ if (activeConfig.luffa) {
         id: 'HASH', name: '🍫 HASH', type: 'Hash', quality: '🍫 Hashish', image: 'CategT72Hash.png',
         farms: [
             { id: 'STATIC_US', name: 'STATIC US 🇺🇸', products: [
-                 {
+               /*   {
                     id: 'RAZBERRY',
                     name: 'RAZBERRY MINTS 🍒', // Différencié
                     farm: '🧬 Saha Terps ',
@@ -456,12 +456,12 @@ if (activeConfig.luffa) {
                     image: 'ProductRM.jpg',
                     video: 'VideoRM.mp4',
                     tarifs: [{ weight: '1g (Sur Place)', price: 30 }, { weight: '5g', price: 160 }, { weight: '10g', price: 270 }]
-                },
+                }, */
                  {
                     id: 'SUB ZERO',
                     name: 'SUB ZERO 0️⃣', // Différencié
                     farm: '🧬 Saha Terps ',
-                    strains: [],
+                    strains: ['Dominion diesel ⛽' ,'Creamiez 🍦'],
                     description: '',
                     image: 'ProductSZ.jpg',
                     video: 'VideoSZ.mp4',
@@ -471,7 +471,7 @@ if (activeConfig.luffa) {
                     id: 'staticuswel',
                     name: 'STATIC US 🗽 (WeFlips)', // Différencié
                     farm: '🥷🏼 WEFLIPS 🥷🏼',
-                    strains: ['Sherbet 🍧', 'Gush Mints 🍬'],
+                    strains: ['Tropinana 🌞' , 'Ice Cream cake 🍨' , 'Grap gas 🫐'],
                     description: '',
                     image: 'ProductWF.jpg',
                     video: 'VideoWF.mp4',
@@ -599,7 +599,7 @@ if (activeConfig.luffa) {
                 }
             ]},
             { id: 'FROZEN_US', name: 'FROZEN US 🇺🇸', products: [
-                 {
+                /*  {
                     id: 'GAS STATION',
                     name: 'GAS STATION ⛽', // Différencié
                     farm: '🥷🏼 WEFLIPS 🥷🏼',
@@ -608,7 +608,7 @@ if (activeConfig.luffa) {
                     image: 'ProductGS.jpg',
                     video: 'VideoGS.mp4',
                     tarifs: [{weight: '1g (Sur Place)', price: 30}, {weight: '5g', price: 150}, {weight: '10g', price: 280}]
-                },
+                }, */
              /*    {
                     id: 'natchos',
                     name: 'Natchos 🌵', // Différencié
@@ -641,7 +641,19 @@ if (activeConfig.luffa) {
                 }, */
             ]},
             { id: 'FROZEN', name: 'FROZEN ❄️', products: [
-               
+               {
+                    id: 'pinks runtz x honey banana',
+                    name: 'Pinks runtz x Honey banana ⚱️', // Différencié
+                    farm: '👨🏻‍🌾 Jebli farm',
+                    strains: [],
+                    description: '',
+                    image: 'ProductPRH.jpg',
+                    video: 'VideoPRH.mov',
+                    tarifs: [
+                        {weight: '1', price: 140}, 
+                        {weight: '2', price: 260}, 
+                        {weight: '10', price: 850}]
+                },
                 {
                     id: 'GORILLA',
                     name: 'GORILLA 🦧', // Différencié
