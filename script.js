@@ -26,6 +26,8 @@ document.addEventListener('DOMContentLoaded', function () {
        '72': { 
     phone: '33746788110',
 
+    telegramOrder: 'https://t.me/SERVEUR72',
+
     telegramInfo: 'https://t.me/terphouseoff',
 
     snapchat: 'https://snapchat.com/t/WV38isH8',
@@ -1635,15 +1637,29 @@ if (currentFranchise === '72') {
                 >
             </div>
 
-            <button
-    class="main-action-btn send-order-btn"
-    data-platform="whatsapp"
-    data-url="https://wa.me/${activeConfig.phone}?text=${orderMsgEncoded}"
-    data-is-bot="true"
-    style="${waStyle}; margin-bottom: 10px;"
->
-    COMMANDER EN SUR PLACE 🤝
-</button>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; width: 100%; margin-bottom: 10px;">
+
+    <button
+        class="main-action-btn send-order-btn"
+        data-platform="telegram"
+        data-url="${activeConfig.telegramOrder}?text=${orderMsgEncoded}"
+        data-is-bot="true"
+        style="${tgStyle}; margin: 0;"
+    >
+        TELEGRAM 💙
+    </button>
+
+    <button
+        class="main-action-btn send-order-btn"
+        data-platform="whatsapp"
+        data-url="https://wa.me/${activeConfig.phone}?text=${orderMsgEncoded}"
+        data-is-bot="true"
+        style="${waStyle}; margin: 0;"
+    >
+        WHATSAPP 📞
+    </button>
+
+</div>
         `;
 
     } else {
@@ -1746,15 +1762,29 @@ if (currentFranchise === '72') {
 
             </div>
 
-            <button
-    class="main-action-btn send-order-btn"
-    data-platform="whatsapp"
-    data-url="https://wa.me/${activeConfig.phone}?text=${orderMsgEncoded}"
-    data-is-bot="true"
-    style="${waStyle}; margin-bottom: 10px;"
->
-    COMMANDER EN LIVRAISON 🚀
-</button>
+         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; width: 100%; margin-bottom: 10px;">
+
+    <button
+        class="main-action-btn send-order-btn"
+        data-platform="telegram"
+        data-url="${activeConfig.telegramOrder}?text=${orderMsgEncoded}"
+        data-is-bot="true"
+        style="${tgStyle}; margin: 0;"
+    >
+        TELEGRAM 💙
+    </button>
+
+    <button
+        class="main-action-btn send-order-btn"
+        data-platform="whatsapp"
+        data-url="https://wa.me/${activeConfig.phone}?text=${orderMsgEncoded}"
+        data-is-bot="true"
+        style="${waStyle}; margin: 0;"
+    >
+        WHATSAPP 📞
+    </button>
+
+</div>
         `;
     }
 }
