@@ -204,6 +204,11 @@ if (activeConfig.luffa) {
     activeContactLinks.push({ url: activeConfig.luffa, className: 'luffa', text: "LUFFA 🔗" });
 }
 
+// --- CACHER TOUS LES LIENS POUR TERPSHOUSE72 ---
+if (currentFranchise === '72') {
+    activeContactLinks.length = 0;
+}
+
     const progressBar = document.getElementById("myBar");
     const loader = document.getElementById("page-loader");
     setTimeout(() => { if (progressBar) progressBar.style.width = "100%"; }, 100);
@@ -589,7 +594,7 @@ if (activeConfig.luffa) {
                 }
             ]},
             { id: 'SINGLE_SOURCE', name: 'SINGLE SOURCE 💎', products: [
-                {
+               /*  {
                     id: 'SINGLE_CALIPLATE',
                     name: 'SINGLE SOURCE CALIPLATES 💎', // Différencié
                     farm: '🧬 Cali Plate',
@@ -598,7 +603,7 @@ if (activeConfig.luffa) {
                     image: 'ProductGary.jpg',
                     video: 'VideoGary.mp4',
                     tarifs: [{weight: '2.5g', price: 80}, {weight: '5g', price: 150}, {weight: '10g', price: 280}, {weight: '20g', price: 540}]
-                }
+                } */
             ]},
             { id: 'FROZEN_US', name: 'FROZEN US 🇺🇸', products: [
                 /*  {
