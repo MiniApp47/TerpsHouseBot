@@ -661,7 +661,7 @@ if (currentFranchise === '72') {
                         {weight: '2', price: 260}, 
                         {weight: '10', price: 850}]
                 },
-                {
+               /*  {
                     id: 'GORILLA',
                     name: 'GORILLA 🦧', // Différencié
                     farm: '👨🏻‍🌾 Jebli farm',
@@ -674,7 +674,7 @@ if (currentFranchise === '72') {
                         {weight: '5g', price: 70}, 
                         {weight: '10g', price: 130}
                     ]
-                },
+                }, */
                 {
                     id: 'Frozen PDS 💠',
                     name: 'Frozen PDS 💠', // Différencié
