@@ -496,7 +496,7 @@ if (currentFranchise === '72') {
                 } */
             ]},
             { id: 'STATIC', name: 'STATIC ⚡️', products: [
-                {
+               /*  {
                     id: 'limosa',
                     name: 'Limosa 🐦',
                     farm: 'HASH BARS 🥂',
@@ -509,7 +509,7 @@ if (currentFranchise === '72') {
                         {weight: '5g', price: 80}, 
                         {weight: '10g', price: 140}
                     ]
-                },
+                }, */
                 {
                     id: 'Original Static 🤯',
                     name: 'Original Static 🤯',
