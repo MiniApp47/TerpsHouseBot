@@ -764,6 +764,20 @@ if (currentFranchise === '72') {
             ]},
             { id: 'DRY_120', name: 'DRY 120u 🛖', products: [
                  {
+                    id: 'Milk Lime',
+                    name: 'Milk Lime', 
+                    farm: '🧬 Jebli Farm',
+                    strains: [],
+                    description: '',
+                    image: 'ProductML.jpg',
+                    video: 'VideoML.mov',
+                    tarifs: [
+                        {weight: '1.5g (Sur Place)', price: 20}, {weight: '5g', price: 60},
+                        {weight: '10g', price: 100}, {weight: '50g', price: 300},
+                        {weight: '100g', price: 560},
+                    ]
+                },
+                 {
                     id: 'purpule punch',
                     name: '💜 purple punch 👊', 
                     farm: '🧬 Jebli Farm',
