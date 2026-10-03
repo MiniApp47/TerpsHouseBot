@@ -514,7 +514,7 @@ if (currentFranchise === '72') {
                     id: 'Original Static 🤯',
                     name: 'Original Static 🤯',
                     farm: '👨🏻‍🌾 Jebli farm',
-                    strains: ['Forrbiden Fruit 🍇' , 'Bomba tx 💣'],
+                    strains: [ 'Bomba tx 💣'],
                     description: '',
                     image: 'ProductJS.png',
                     videos: ['VideoJS1.mov','VideoJS2.mov'],
@@ -539,7 +539,7 @@ if (currentFranchise === '72') {
                         {weight: '10g', price: 190}
                     ]
                 },
-                 {
+                /*  {
                     id: 'Static Olive 🫒',
                     name: 'Static Olive 🍈', // Différencié
                     farm: '👨🏻‍🌾 Jebli farm',
@@ -551,7 +551,7 @@ if (currentFranchise === '72') {
                         {weight: '5g', price: 80},
                         {weight: '1 olive (10g)', price: 160},
                     ]
-                },
+                }, */
                /*  {
                     id: '😮‍💨 Rainbow',
                     name: '😮‍💨 Rainbow',
