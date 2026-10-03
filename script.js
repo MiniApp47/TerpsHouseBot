@@ -773,7 +773,7 @@ if (currentFranchise === '72') {
                     video: 'VideoML.mov',
                     tarifs: [
                         {weight: '1.5g (Sur Place)', price: 20}, {weight: '5g', price: 60},
-                        {weight: '10g', price: 100}, {weight: '50g', price: 300},
+                        {weight: '10g', price: 110}, {weight: '50g', price: 300},
                         {weight: '100g', price: 560},
                     ]
                 },
