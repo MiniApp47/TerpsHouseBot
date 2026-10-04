@@ -659,6 +659,8 @@ if (currentFranchise === '72') {
                     tarifs: [
                         {weight: '1', price: 140}, 
                         {weight: '2', price: 260}, 
+                        {weight: '3', price: 360}, 
+                        {weight: '5', price: 550},
                         {weight: '10', price: 850}]
                 },
                /*  {
@@ -709,6 +711,9 @@ if (currentFranchise === '72') {
                     video: 'VideoGP.mov',
                     tarifs: [
                         {weight: '1 olive (10g)', price: 100},
+                        {weight: '2 olive', price: 190},
+                        {weight: '3 olive', price: 270},
+                        {weight: '5 olive', price: 400},
                     ]
                 },
                /*  {
@@ -896,6 +901,19 @@ if (currentFranchise === '72') {
                 } */
             ]},
             { id: 'JAUNE', name: 'JAUNE 🧽', products: [
+                {
+                    id: 'Mousse 🧽',
+                    name: 'Mousse 🧽',
+                    farm: '👨🏻‍🌾 Jebli farm',
+                    strains: [],
+                    description: 'La Grappe Fruit est une variété de cannabis hybride Elle est connue pour ses arômes citronnés, terreux et légèrement diesel, ainsi que pour ses effets puissants mêlant euphorie mentale et relaxation du corps. Très populaire dans la culture cannabis, elle a servi de base à de nombreuses autres strains modernes. 🌿💨',
+                    image: 'ProductM.png',
+                    video: 'VideoM.mov',
+                    tarifs: [
+                        {weight: '50g', price: 150}, 
+                        {weight: '100g', price: 260}
+                    ]
+                },
                 {
                     id: 'Grappe Fruit 🍇',
                     name: 'Grappe Fruit 🍇',
