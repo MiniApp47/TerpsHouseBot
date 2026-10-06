@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', function () {
         },
         'strong72': { 
             phone: '', // Laissé vide = Pas de bouton WhatsApp
-            telegram: 'https://t.me/meet_uup',
+            telegram: 'https://t.me/meet_uup2',
             name: 'StrongHouse72',
             logo: 'LogoStrong.png',
             bgImage: 'FondStrong.jpg',
