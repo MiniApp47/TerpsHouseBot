@@ -96,7 +96,7 @@ document.addEventListener('DOMContentLoaded', function () {
             categoryImages: { 'HASH': 'CategT72Hash.png', 'WEED': 'CategT72Weed.png', 'AUTRE': 'CategT73Autre.png' }
         },
         'strong72': { 
-            phone: '', // Laissé vide = Pas de bouton WhatsApp
+            phone: '33759406560', // Laissé vide = Pas de bouton WhatsApp
             telegram: 'https://t.me/meet_uup2',
             name: 'StrongHouse72',
             logo: 'LogoStrong.png',
