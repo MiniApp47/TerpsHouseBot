@@ -96,7 +96,7 @@ document.addEventListener('DOMContentLoaded', function () {
             categoryImages: { 'HASH': 'CategT72Hash.png', 'WEED': 'CategT72Weed.png', 'AUTRE': 'CategT73Autre.png' }
         },
         'strong72': { 
-            phone: '33759406560', // Laissé vide = Pas de bouton WhatsApp
+            phone: '34663585577', // Laissé vide = Pas de bouton WhatsApp
             telegram: 'https://t.me/meet_uup2',
             name: 'StrongHouse72',
             logo: 'LogoStrong.png',
@@ -1228,11 +1228,13 @@ if (currentFranchise === '72') {
                 image: 'ProductMs.png',
                 video: 'VideoMs.mp4',
                 tarifs: [
-                    {weight: '1g', price: 40},
-                    {weight: '5g', price: 140},
-                    {weight: '10g', price: 260},
-                    {weight: '25g', price: 600},
-                    {weight: '50g', price: 1050}
+                    {weight: '1g', price: 30},
+                    {weight: '2g', price: 50},
+                    {weight: '5g', price: 120},
+                    {weight: '10g', price: 230},
+                    {weight: '25g', price: 500},
+                    {weight: '50g', price: 900},
+                    {weight: '100g', price: 1700}
                 ]
             },
         ] },
@@ -1860,34 +1862,48 @@ if (currentFranchise === '72') {
             `;
         }
 
-        // --- SYSTÈME CLASSIQUE (AUTRES FRANCHISES) ---
-        else {
-            if (activeConfig.telegramLivraison || activeConfig.phone) {
-                checkoutHTML += `
-                  <div style="width: 100%; margin-bottom: 15px; text-align: left;">
-                      <div style="color: var(--text-color); font-size: 0.9rem; margin-bottom: 8px; font-weight: bold;">📍 Adresse (Obligatoire pour livraison) :</div>
-                      <textarea id="delivery-address" placeholder="N° Rue, Ville, Code Postal... (Laisse vide si Sur Place)" style="width: 100%; box-sizing: border-box; padding: 12px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.3); color: white; min-height: 65px; font-family: inherit; font-size: 1rem;"></textarea>
-                      <div style="font-size: 0.8rem; color: var(--brand-color); margin-top: 5px; text-align: right; font-weight: bold;">⚠️ Minimum de commande pour la livraison : 50€</div>
-                  </div>
-                `;
-            }
+        // --- BOUTONS TELEGRAM + WHATSAPP CÔTE À CÔTE ---
+const telegramOrderUrl =
+    activeConfig.telegram ||
+    activeConfig.telegramLivraison ||
+    activeConfig.telegramSurPlace;
 
-            if (activeConfig.telegramLivraison) checkoutHTML += `<button class="main-action-btn send-order-btn" data-platform="telegram" data-url="${activeConfig.telegramLivraison}?text=${orderMsgEncoded}" data-is-delivery="true" style="${tgStyle}; margin-bottom: 10px;">TLG LIVRAISON 🚀</button>`;
-            if (activeConfig.telegramSurPlace) checkoutHTML += `<button class="main-action-btn send-order-btn" data-platform="telegram" data-url="${activeConfig.telegramSurPlace}?text=${orderMsgEncoded}" style="${tgStyle}; margin-bottom: 10px;">TLG SUR PLACE 🤝</button>`;
-            if (activeConfig.telegram && !activeConfig.telegramLivraison) checkoutHTML += `<button class="main-action-btn send-order-btn" data-platform="telegram" data-url="${activeConfig.telegram}?text=${orderMsgEncoded}" style="${tgStyle}; margin-bottom: 10px;">TÉLÉGRAM 💙</button>`;
+if (telegramOrderUrl || activeConfig.phone) {
 
-            if (activeConfig.phone) {
-                checkoutHTML += `
-                    <div id="toggle-whatsapp-btn" style="text-align: center; margin-top: 5px; margin-bottom: 15px; cursor: pointer; padding: 10px;">
-                        <span style="color: var(--hint-color); font-size: 0.9rem; text-decoration: underline; font-style: italic;">Uniquement si tu n'as pas Telegram 📞</span>
-                    </div>
-                    <div id="whatsapp-buttons-container" style="display: none; flex-direction: column; width: 100%;">
-                        <button class="main-action-btn send-order-btn" data-platform="whatsapp" data-url="https://wa.me/${activeConfig.phone}?text=${orderMsgEncoded}" data-is-delivery="true" style="${waStyle}; margin-bottom: 10px;">WHATSAPP LIVRAISON 🚀</button>
-                        <button class="main-action-btn send-order-btn" data-platform="whatsapp" data-url="https://wa.me/${activeConfig.phone}?text=${orderMsgEncoded}" style="${waStyle}; margin-bottom: 10px;">WHATSAPP SUR PLACE 🤝</button>
-                    </div>
-                `;
-            }
-        }
+    checkoutHTML += `
+        <div style="
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            width: 100%;
+            margin-bottom: 15px;
+        ">
+
+            ${telegramOrderUrl ? `
+                <button
+                    class="main-action-btn send-order-btn"
+                    data-platform="telegram"
+                    data-url="${telegramOrderUrl}?text=${orderMsgEncoded}"
+                    style="${tgStyle}; margin: 0;"
+                >
+                    TÉLÉGRAM 💙
+                </button>
+            ` : ''}
+
+            ${activeConfig.phone ? `
+                <button
+                    class="main-action-btn send-order-btn"
+                    data-platform="whatsapp"
+                    data-url="https://wa.me/${activeConfig.phone}?text=${orderMsgEncoded}"
+                    style="${waStyle}; margin: 0;"
+                >
+                    WHATSAPP 📞
+                </button>
+            ` : ''}
+
+        </div>
+    `;
+}
 
         checkoutBtnsContainer.innerHTML = checkoutHTML;
         showPage('page-confirmation');
