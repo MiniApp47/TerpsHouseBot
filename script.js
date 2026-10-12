@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', function () {
         },
         '75': { 
             phone: '33605824054', 
-            telegram: 'https://t.me/terphouse75', 
+            telegram: 'https://t.me/TERPHOUSE7593', 
             snapchat: '',
             instagram: '',
             luffa: '',
