@@ -30,10 +30,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
     telegramInfo: 'https://t.me/terphouseoff',
 
-    snapchat: 'https://snapchat.com/t/WV38isH8',
-    instagram: 'https://www.instagram.com/terphouse.officiel?igsh=dHlud2NoOXo5NDhz&utm_source=qr',
-    luffa: 'https://callup.luffa.im/c/2hQvSV5uoon',
-    tiktok: 'https://www.tiktok.com/@terphouse0?_r=1&_t=ZN-94IxTeNWpTK',
+    // snapchat: 'https://snapchat.com/t/WV38isH8',
+    // instagram: 'https://www.instagram.com/terphouse.officiel?igsh=dHlud2NoOXo5NDhz&utm_source=qr',
+    // luffa: 'https://callup.luffa.im/c/2hQvSV5uoon',
+    // tiktok: 'https://www.tiktok.com/@terphouse0?_r=1&_t=ZN-94IxTeNWpTK',
+    potato: 'https://tato.im/terphouse7272',
 
     name: 'TerpsHouse72',
     logo: 'LogoT72.jpg',
@@ -104,11 +105,13 @@ document.addEventListener('DOMContentLoaded', function () {
             theme: { main: '#ff3b30', shadow: 'rgba(255, 59, 48, 0.3)' },
             // NOUVEAU : Images des catégories de Strong
             categoryImages: { 
+                 categoryImages: { 
                 'COCO': 'CategCoco.png', 
                 'MARRON': 'CategMarron.png', 
                 'MDMA': 'CategMdma.png',
                 'TAZ': 'CategTaz.png',
                 'KETAMINE': 'CategKeta.png'
+            }
             }
         }
     };
@@ -184,7 +187,7 @@ if (activeConfig.phone) {
 // Règle 2 : S'il y a un Telegram unique (BXL, 37, Strong)
 // Règle 2 : S'il y a un Telegram Info général (Pour la page Links)
 if (activeConfig.telegramInfo) {
-    activeContactLinks.push({ url: activeConfig.telegramInfo, className: 'telegram', text: "CANAL TÉLÉGRAM 📣" });
+    activeContactLinks.push({ url: activeConfig.telegramInfo, className: 'telegram', text: "TÉLÉGRAM 📣" });
 } else if (activeConfig.telegram) {
     // Fallback pour BXL / 37 / Strong qui n'ont qu'un seul lien Telegram
     activeContactLinks.push({ url: activeConfig.telegram, className: 'telegram', text: "TÉLÉGRAM 💙" });
@@ -203,12 +206,19 @@ if (activeConfig.instagram) {
 if (activeConfig.luffa) {
     activeContactLinks.push({ url: activeConfig.luffa, className: 'luffa', text: "LUFFA 🔗" });
 }
-
-// --- CACHER TOUS LES LIENS POUR TERPSHOUSE72 ---
-if (currentFranchise === '72') {
-    activeContactLinks.length = 0;
+if (activeConfig.potato) {
+    activeContactLinks.push({
+        url: activeConfig.potato,
+        className: 'potato',
+        text: "POTATO 🥔"
+    });
 }
 
+// --- CACHER TOUS LES LIENS POUR TERPSHOUSE72 ---
+/* if (currentFranchise === '72') {
+    activeContactLinks.length = 0;
+}
+ */
     const progressBar = document.getElementById("myBar");
     const loader = document.getElementById("page-loader");
     setTimeout(() => { if (progressBar) progressBar.style.width = "100%"; }, 100);
@@ -1188,7 +1198,7 @@ if (currentFranchise === '72') {
 
     // Catalogue Strong (Arborescence à 2 niveaux - Produits directs)
     const catalogStrong = [
-        { id: 'COCO', name: '❄️ COCO', type: 'Coco', quality: 'Premium', image: 'CategCoco.png', products: [
+                 { id: 'COCO', name: '❄️ COCO', type: 'Coco', quality: 'Premium', image: 'CategCoco.png', products: [
             {
                 id: 'Coca écaille',
                 name: 'Coca écaille',
