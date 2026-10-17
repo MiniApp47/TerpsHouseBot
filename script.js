@@ -520,7 +520,7 @@ if (activeConfig.potato) {
                         {weight: '10g', price: 140}
                     ]
                 }, */
-                {
+               /*  {
                     id: 'Original Static 🤯',
                     name: 'Original Static 🤯',
                     farm: '👨🏻‍🌾 Jebli farm',
@@ -534,7 +534,7 @@ if (activeConfig.potato) {
                         {weight: '5g', price: 90}, 
                         {weight: '10g', price: 150}
                     ]
-                },
+                }, */
                 {
                     id: '🏝️ oasis tropical',
                     name: '🏝️ Oasis Tropical',
@@ -545,8 +545,8 @@ if (activeConfig.potato) {
                     video: 'VideoOa.mp4',
                     tarifs: [
                         {weight: '1g (Sur Place) ', price: 30}, 
-                        {weight: '5g', price: 100}, 
-                        {weight: '10g', price: 190}
+                        {weight: '5g', price: 110}, 
+                        {weight: '10g', price: 200}
                     ]
                 },
                 /*  {
@@ -577,7 +577,7 @@ if (activeConfig.potato) {
                         {weight: '25g', price: 470}
                     ]
                 }, */
-                {
+               /*  {
                     id: 'STATIC_VVS',
                     name: 'STATIC VVS 2K25 💎',
                     farm: '🧬 VVS',
@@ -601,7 +601,7 @@ if (activeConfig.potato) {
                         { weight: '10g', price: 250 }, 
                         { weight: '25g', price: 550 }
                     ]
-                }
+                } */
             ]},
             { id: 'SINGLE_SOURCE', name: 'SINGLE SOURCE 💎', products: [
                /*  {
@@ -658,6 +658,16 @@ if (activeConfig.potato) {
                 }, */
             ]},
             { id: 'FROZEN', name: 'FROZEN ❄️', products: [
+                 {
+                    id: 'GELATO 41 ❄️',
+                    name: 'GELATO 41 ❄️', // Différencié
+                    farm: '👨🏻‍🌾  PDS',
+                    strains: [],
+                    description: '',
+                    image: 'ProductG4.jpg',
+                    videos: ['VideoG4.mov','VideoG41.mov'],
+                    tarifs: [{weight: '1.1g (Sur Place)', price: 20}, {weight: '2.5g', price: 50}, {weight: '5g', price: 90}, {weight: '10g', price: 160}]
+                },
                {
                     id: 'pinks runtz x honey banana',
                     name: 'Pinks runtz x Honey banana ⚱️', // Différencié
@@ -778,6 +788,16 @@ if (activeConfig.potato) {
                 } */
             ]},
             { id: 'DRY_120', name: 'DRY 120u 🛖', products: [
+                {
+                    id: 'DRY_120_E',
+                    name: 'DRY (120u) 🏴‍☠️', 
+                    farm: '🧬 PDS',
+                    strains: [], 
+                    description: '',
+                    image: 'Product12.jpg',
+                    videos: ['Video12.mov','Video121.mov'],
+                    tarifs: [{weight: '1.4g (Sur Place)', price: 20}, {weight: '5g', price: 70}, {weight: '10g', price: 120}, {weight: '50g', price: 320},{weight: '100g', price: 610}]
+                },
                  {
                     id: 'Milk Lime',
                     name: 'Milk Lime', 
@@ -787,12 +807,12 @@ if (activeConfig.potato) {
                     image: 'ProductML.jpg',
                     video: 'VideoML.mov',
                     tarifs: [
-                        {weight: '1.5g (Sur Place)', price: 20}, {weight: '5g', price: 60},
-                        {weight: '10g', price: 110}, {weight: '50g', price: 300},
-                        {weight: '100g', price: 560},
+                        {weight: '1.5g (Sur Place)', price: 20}, {weight: '5g', price: 50},
+                        {weight: '10g', price: 90}, {weight: '50g', price: 280},
+                        {weight: '100g', price: 540},
                     ]
                 },
-                 {
+                /*  {
                     id: 'purpule punch',
                     name: '💜 purple punch 👊', 
                     farm: '🧬 Jebli Farm',
@@ -805,7 +825,7 @@ if (activeConfig.potato) {
                         {weight: '10g', price: 90}, {weight: '25g', price: 200},
                         {weight: '100g', price: 500},
                     ]
-                }
+                } */
               /*   {
                     id: 'DRY_120_DARKS',
                     name: 'TIRAMISU (120u) ☕️', // Nom de la souche utilisé en titre
@@ -916,15 +936,18 @@ if (activeConfig.potato) {
                     name: 'Mousse 🧽',
                     farm: '👨🏻‍🌾 Jebli farm',
                     strains: [],
-                    description: 'La Grappe Fruit est une variété de cannabis hybride Elle est connue pour ses arômes citronnés, terreux et légèrement diesel, ainsi que pour ses effets puissants mêlant euphorie mentale et relaxation du corps. Très populaire dans la culture cannabis, elle a servi de base à de nombreuses autres strains modernes. 🌿💨',
+                    description: 'La Mousse est une variété de cannabis hybride Elle est connue pour ses arômes citronnés, terreux et légèrement diesel, ainsi que pour ses effets puissants mêlant euphorie mentale et relaxation du corps. Très populaire dans la culture cannabis, elle a servi de base à de nombreuses autres strains modernes. 🌿💨',
                     image: 'ProductM.png',
                     video: 'VideoM.mov',
                     tarifs: [
+                        {weight: '2,1g', price: 20}, 
+                        {weight: '5g', price: 30}, 
+                        {weight: '10g', price: 50}, 
                         {weight: '50g', price: 150}, 
                         {weight: '100g', price: 260}
                     ]
                 },
-                {
+               /*  {
                     id: 'Grappe Fruit 🍇',
                     name: 'Grappe Fruit 🍇',
                     farm: '👨🏻‍🌾 Jebli farm',
@@ -933,7 +956,7 @@ if (activeConfig.potato) {
                     image: 'ProductJaune.jpg',
                     video: 'VideoJaune.mp4',
                     tarifs: [{weight: '5g', price: 30}, {weight: '10g', price: 50}, {weight: '25g', price: 110}, {weight: '50g', price: 180}, {weight: '100g', price: 350}]
-                }
+                } */
             ]},
           
         ]
@@ -950,7 +973,7 @@ if (activeConfig.potato) {
                     description: '',
                     image: 'ProductICC.jpg',
                     video: 'VideoICC.mp4',
-                    tarifs: [{weight: '1.2g (Sur Place)', price: 20}, {weight: '5g', price: 80}, {weight: '10g', price: 150}, {weight: '100g', price: 750}]
+                    tarifs: [{weight: '1.5g (Sur Place)', price: 20}, {weight: '5g', price: 70}, {weight: '10g', price: 120}, {weight: '100g', price: 750}]
                 },
                 /* {
                     id: 'gelato berries',
