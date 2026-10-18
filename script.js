@@ -1228,8 +1228,8 @@ if (activeConfig.potato) {
                 farm: 'StrongSelection 🏆',
                 strains: [], // Plus de sélection
                 description: '',
-                image: 'ProductEc.png',
-                video: 'VideoEc.mov',
+                image: 'ProductECC.png',
+                video: 'VideoEC.mp4',
                 tarifs: [
                     {weight: '1g', price: 60},
                     {weight: '5g', price: 230},
@@ -1252,6 +1252,22 @@ if (activeConfig.potato) {
             },
         ] },
         { id: 'MARRON', name: '🍫 MARRON', type: 'Marron', quality: 'Standard', image: 'CategMarron.png', products: [
+            {
+                id: 'Pure',
+                name: 'Pure',
+                farm: 'StrongSelection 🏆',
+                strains: [], // Plus de sélection
+                description: '',
+                image: 'ProductP.jpg',
+                video: 'VideoP.mp4',
+                tarifs: [
+                    {weight: '1g', price: 50},
+                    {weight: '2g', price: 90},
+                    {weight: '5g', price: 220},
+                    {weight: '10g', price: 400},
+                    {weight: '25g', price: 900},
+                ]
+            },
             {
                 id: 'Héroïne',
                 name: 'Héroïne Ms',
