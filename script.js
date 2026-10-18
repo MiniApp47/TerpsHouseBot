@@ -660,9 +660,9 @@ if (activeConfig.potato) {
             { id: 'FROZEN', name: 'FROZEN ❄️', products: [
                  {
                     id: 'GELATO 41 ❄️',
-                    name: 'GELATO 41 ❄️', // Différencié
+                    name: 'FROZEN PDS ❄️', // Différencié
                     farm: '👨🏻‍🌾  PDS',
-                    strains: [],
+                    strains: ['rs4 ☄️', 'gelato41 🍭' , 'Candy fumez 🍬', 'Tropicana fruit 🦜' , 'fier og 🧙🏽‍♀️'],
                     description: '',
                     image: 'ProductG4.jpg',
                     videos: ['VideoG4.mov','VideoG41.mov'],
@@ -697,7 +697,7 @@ if (activeConfig.potato) {
                         {weight: '10g', price: 130}
                     ]
                 }, */
-                {
+               /*  {
                     id: 'Frozen PDS 💠',
                     name: 'Frozen PDS 💠', // Différencié
                     farm: 'Farm PDS',
@@ -706,7 +706,7 @@ if (activeConfig.potato) {
                     image: 'ProductHens.jpg',
                     video: 'VideoHens.mp4',
                     tarifs: [{weight: '1.1g (Sur Place)', price: 20}, {weight: '2.5g', price: 50}, {weight: '5g', price: 90}, {weight: '10g', price: 160}]
-                },
+                }, */
                 {
                     id: 'Frozen 🧊',
                     name: 'Frozen VVS 🧊', // Différencié
@@ -792,7 +792,7 @@ if (activeConfig.potato) {
                     id: 'DRY_120_E',
                     name: 'DRY (120u) 🏴‍☠️', 
                     farm: '🧬 PDS',
-                    strains: [], 
+                    strains: ['rainbow 🌈' , 'tropico 🌴', 'sherberger 🍹'], 
                     description: '',
                     image: 'Product12.jpg',
                     videos: ['Video12.mov','Video121.mov'],
