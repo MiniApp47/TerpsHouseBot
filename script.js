@@ -377,55 +377,50 @@ if (activeConfig.potato) {
 
   /// Menu LE MANS (72)
   const catalog72 = [
-    {
-        id: 'PACKS', name: '🏆 PACKS ÉVÉNEMENT', type: 'Packs', quality: '🏆 Packs', image: 'CategT72Pack.png',
-        products: [
-            {
-                id: 'PACK_MAROC',
-                name: '🇲🇦 PACK MAROC',
-                farm: '🧬 Sélection Premium',
-                strains: [],
-                packDetails: '10g Frozen PDS + 10g VVS Darksfarm + 5g 120u Jebli', // INFO CACHÉE POUR LE BOT
-                description: 'La puissance et le goût à l\'état pur.\n\n <span class="pack-link" data-id="GMO">👁️ 10g Frozen PDS</span>\n <span class="pack-link" data-id="STATIC_VVS">👁️ 10g VVS Darksfarm</span> \n <span class="pack-link" data-id="purpule punch">👁️ 5g 120u Jebli</span>\n\n<span style="font-size: 0.8rem; color: var(--hint-color); font-style: italic; display: block; text-align: center; margin-top: 15px;">👆 Clique sur un produit pour voir sa fiche</span>',
-                image: 'PackMaroc.jpg',
-                video: '',
-                tarifs: [{ weight: '1 Pack', price: 290, oldPrice: '330€' }]
-            },
-            {
-                id: 'PACK_USA',
-                name: '🇺🇸 PACK ÉTATS-UNIS',
-                farm: '🧬 Sélection Premium',
-                strains: [],
-                packDetails: '5g Static Saha Terp + 5g Frozen Wepfli + 5g Cali US', // INFO CACHÉE POUR LE BOT
-                description: 'L\'excellence californienne dans ton salon.\n\n <span class="pack-link" data-id="RAZBERRY">👁️ 5g Static Saha Terp</span>\n <span class="pack-link" data-id="GAS STATION">👁️ 5g Frozen Wepfli</span> \n <span class="pack-link" data-id="CALI_CEREAL">👁️ 5g Cali US</span>\n\n<span style="font-size: 0.8rem; color: var(--hint-color); font-style: italic; display: block; text-align: center; margin-top: 15px;">👆 Clique sur un produit pour voir sa fiche</span>',
-                image: 'PackUSA.jpg',
-                video: '',
-                tarifs: [{ weight: '1 Pack', price: 350, oldPrice: '390€' }]
-            },
-            {
-                id: 'PACK_FRANCE',
-                name: '🇫🇷 PACK FRANCE',
-                farm: '🧬 Sélection Premium',
-                strains: [],
-                packDetails: '10g 120u Jebli + 5g 90u Darks Farm + 5g Cali US', // INFO CACHÉE POUR LE BOT
-                description: 'Le trio parfait pour les connaisseurs.\n\n <span class="pack-link" data-id="purpule punch">👁️ 10g 120u Jebli</span>\n <span class="pack-link" data-id="CaliH">👁️ 5g 90u Darks Farm</span> \n <span class="pack-link" data-id="CALI_CEREAL">👁️ 5g Cali US</span>\n\n<span style="font-size: 0.8rem; color: var(--hint-color); font-style: italic; display: block; text-align: center; margin-top: 15px;">👆 Clique sur un produit pour voir sa fiche</span>',
-                image: 'PackFrance.jpg',
-                video: '',
-                tarifs: [{ weight: '1 Pack', price: 200, oldPrice: '240€' }]
-            },
-            {
-                id: 'PACK_BRESIL',
-                name: '🇧🇷 PACK BRÉSIL',
-                farm: '🧬 Sélection Premium',
-                strains: [],
-                packDetails: '5g Amnesia + 10g Gelato 73u + 10g Jaune', // INFO CACHÉE POUR LE BOT
-                description: 'Le combo quantité/qualité imbattable.\n\n <span class="pack-link" data-id="AMNESIA">👁️ 5g Amnesia</span>\n <span class="pack-link" data-id="DRY_73_JEBLI">👁️ 10g Gelato 73u</span> \n <span class="pack-link" data-id="Grappe Fruit 🍇">👁️ 10g Jaune</span>\n\n<span style="font-size: 0.8rem; color: var(--hint-color); font-style: italic; display: block; text-align: center; margin-top: 15px;">👆 Clique sur un produit pour voir sa fiche</span>',
-                image: 'PackBresil.jpg',
-                video: '',
-                tarifs: [{ weight: '1 Pack', price: 110, oldPrice: '150€' }]
-            }
-        ]
-    },
+   {
+    id: 'PACKS',
+    name: '🏆 PACKS ÉVÉNEMENT',
+    type: 'Packs',
+    quality: '🏆 Packs',
+    image: 'CategT72Pack.png',
+    products: [
+        {
+            id: 'PACK_MOULA',
+            name: '💜 PACK MOULA',
+            farm: '🧬 Sélection Premium',
+            strains: [],
+            packDetails: '5g Cali US + 5g 120u PDS + 5g Frozen PDS',
+            description: 'Le pack parfait pour du lourd, équilibré et bien rentable.\n\n <span class="pack-link" data-id="ICE CREAM CAKE">👁️ 5g Cali US</span>\n <span class="pack-link" data-id="DRY_120_E">👁️ 5g 120u PDS</span>\n <span class="pack-link" data-id="GELATO 41 ❄️">👁️ 5g Frozen PDS</span>\n\n<span style="font-size: 0.8rem; color: var(--hint-color); font-style: italic; display: block; text-align: center; margin-top: 15px;">👆 Clique sur un produit pour voir sa fiche</span>',
+            image: 'PackMoula.jpg',
+            video: '',
+            tarifs: [{ weight: '1 Pack', price: 190, oldPrice: '220€' }]
+        },
+
+        {
+            id: 'PACK_MAXI_MOULA',
+            name: '💙 PACK MAXI MOULA',
+            farm: '🧬 Sélection Premium',
+            strains: [],
+            packDetails: '10g Cali US + 5g Frozen PDS + 5g 120u PDS',
+            description: 'Le gros pack rentable pour ceux qui veulent plus lourd, plus longtemps.\n\n <span class="pack-link" data-id="ICE CREAM CAKE">👁️ 10g Cali US</span>\n <span class="pack-link" data-id="GELATO 41 ❄️">👁️ 5g Frozen PDS</span>\n <span class="pack-link" data-id="DRY_120_E">👁️ 5g 120u PDS</span>\n\n<span style="font-size: 0.8rem; color: var(--hint-color); font-style: italic; display: block; text-align: center; margin-top: 15px;">👆 Clique sur un produit pour voir sa fiche</span>',
+            image: 'PackMaxiMoula.jpg',
+            video: '',
+            tarifs: [{ weight: '1 Pack', price: 250, oldPrice: '280€' }]
+        },
+
+        {
+            id: 'PACK_MINI_MOULA',
+            name: '💚 PACK MINI MOULA',
+            farm: '🧬 Sélection Premium',
+            strains: [],
+            packDetails: '5g Cali US + 5g Milk Lime + 10g Jaune',
+            description: 'Le petit pack rentable et efficace pour tous les jours.\n\n <span class="pack-link" data-id="ICE CREAM CAKE">👁️ 5g Cali US</span>\n <span class="pack-link" data-id="Milk Lime">👁️ 5g Milk Lime</span>\n <span class="pack-link" data-id="Mousse 🧽">👁️ 10g Jaune</span>\n\n<span style="font-size: 0.8rem; color: var(--hint-color); font-style: italic; display: block; text-align: center; margin-top: 15px;">👆 Clique sur un produit pour voir sa fiche</span>',
+            image: 'PackMiniMoula.jpg',
+            video: '',
+            tarifs: [{ weight: '1 Pack', price: 140, oldPrice: '170€' }]
+        }
+    ]
+},
     /* {
         id: 'PACKS', name: '🎁 PACKS TERPS HOUSE', type: 'Packs', quality: '🎁 Offres', image: 'CategT72Pack.png',
         // 1. On utilise "products" direct au lieu de "farms" pour zapper l'étape intermédiaire
