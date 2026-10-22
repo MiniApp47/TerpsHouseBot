@@ -717,7 +717,7 @@ if (activeConfig.potato) {
                     video: 'VideoSM.mp4',
                    tarifs: [
                         { weight: '1.5g (Sur Place)', price: 20 },
-                        { weight: '5g', price: 70 }, 
+                        { weight: '5g', price: 80 }, 
                         { weight: '10g', price: 130 }
                                         ]
                 },
