@@ -943,7 +943,7 @@ if (activeConfig.potato) {
                     image: 'ProductM.png',
                     video: 'VideoM.mov',
                     tarifs: [
-                        {weight: '2,1g', price: 20}, 
+                        {weight: '2,1g (Sur Place)', price: 20}, 
                         {weight: '5g', price: 30}, 
                         {weight: '10g', price: 50}, 
                         {weight: '50g', price: 150}, 
