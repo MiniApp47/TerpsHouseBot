@@ -794,7 +794,7 @@ if (activeConfig.potato) {
                     tarifs: [
                         {weight: '1.4g (Sur Place)', price: 20}, 
                         {weight: '5g', price: 70}, 
-                        {weight: '10g', price: 130}, 
+                        {weight: '10g', price: 120}, 
                         {weight: '50g', price: 320},
                         {weight: '100g', price: 610}
                     ]
@@ -810,7 +810,7 @@ if (activeConfig.potato) {
                     tarifs: [
                         {weight: '1.5g (Sur Place)', price: 20}, 
                         {weight: '5g', price: 60},
-                        {weight: '10g', price: 110}, 
+                        {weight: '10g', price: 100}, 
                         {weight: '50g', price: 280},
                         {weight: '100g', price: 540},
                     ]
