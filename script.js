@@ -477,7 +477,7 @@ if (activeConfig.potato) {
                     description: '',
                     image: 'ProductSZ.jpg',
                     video: 'VideoSZ.mp4',
-                    tarifs: [{ weight: '1g (Sur Place)', price: 40 }, { weight: '5g', price: 170 }, { weight: '10g', price: 320 }]
+                    tarifs: [{weight: '1g (Sur Place)', price: 40}, {weight: '2,5g', price: 70}, {weight: '5g', price: 140}, {weight: '10g', price: 250}]
                 },
                    {
                     id: 'staticuswel',
@@ -487,7 +487,7 @@ if (activeConfig.potato) {
                     description: '',
                     image: 'ProductWF.jpg',
                     video: 'VideoWF.mp4',
-                    tarifs: [{weight: '1g (Sur Place)', price: 40}, {weight: '5g', price: 170}, {weight: '10g', price: 320}]
+                    tarifs: [{weight: '1g (Sur Place)', price: 40}, {weight: '2,5g', price: 70}, {weight: '5g', price: 140}, {weight: '10g', price: 250}]
                 },
                /*  {
                     id: 'STATIC_US_SAHA',
