@@ -1112,14 +1112,24 @@ if (activeConfig.potato) {
         farms: [
             { id: 'Puff', name: 'Puff 💨', products: [
                 {
-                    id: 'puffthc',
-                    name: 'Puff THC 💭',
+                    id: '32k',
+                    name: '32k 💭',
+                    farm: '🧬 Vape',
+                    strains: ['Fraise kiwi 🍓🥝', 'Myrtille Framboise cerise 🫐', 'Pastèque mangue pêche 🍑', 'Fruité rouge 🍓🍉', 'Fruité du dragon 🐉'],
+                    description: '32k de taff \n Puff thc',
+                    image: 'Product32.jpg',
+                    video: '',
+                    tarifs: [{weight: '1 puff', price: 30}]
+                },
+                {
+                    id: 'Recharge',
+                    name: 'Recharge 💭',
                     farm: '🧬 Vape',
                     strains: [],
-                    description: '',
-                    image: 'ProductPuf.jpg',
-                    video: 'VideoPuf.mov',
-                    tarifs: [{weight: '1 puff', price: 60}]
+                    description: 'Recharge liquide thc',
+                    image: 'ProductREC.jpg',
+                    video: '',
+                    tarifs: [{weight: '0,5g', price: 15}]
                 }
             ]},
             { id: 'Cigarettes', name: 'Cigarettes 🚬', products: [
