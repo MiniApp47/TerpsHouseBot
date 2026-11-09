@@ -501,6 +501,21 @@ if (activeConfig.potato) {
                 } */
             ]},
             { id: 'STATIC', name: 'STATIC ⚡️', products: [
+                {
+                    id: 'clementine slush',
+                    name: 'clementine slush',
+                    farm: '👨🏻‍🌾 Jérôme génétique',
+                    strains: [ ],
+                    description: '',
+                    image: 'ProductCS.jpg',
+                    video: 'VideoCS.mp4',
+                    tarifs: [
+                        {weight: '1g (Sur Place) ', price: 30}, 
+                        {weight: '2,5g', price: 60}, 
+                        {weight: '5g', price: 100}, 
+                        {weight: '10g', price: 190}
+                    ]
+                },
                /*  {
                     id: 'limosa',
                     name: 'Limosa 🐦',
